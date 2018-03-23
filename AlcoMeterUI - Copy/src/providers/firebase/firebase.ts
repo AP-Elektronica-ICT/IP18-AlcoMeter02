@@ -16,9 +16,9 @@ export class FirebaseProvider {
   
   constructor(public db: AngularFireDatabase) {
     console.log('Hello FirebaseProvider Provider');
-    var userID:number;     
+    var userCount:number;     
     this.db.database.ref('UserDatabase/Users/UserCount').on('value', snapshot =>{
-      userID = snapshot.val();
+      userCount = snapshot.val();
     });
   }
 
@@ -33,19 +33,18 @@ export class FirebaseProvider {
     })                                                                                            //
   }
 
-  addUser(birthDay,birthMonth,birthYear, gender, weight, height, firstName, lastName, sendData, email ){
-    var userID:number;     
+  addUser(userID,birthDay,birthMonth,birthYear, gender, weight, height, firstName, lastName, email ){
+    var userCount:number;     
     this.db.database.ref('UserDatabase/Users/UserCount').on('value', snapshot =>{
-      userID = snapshot.val();
+      userCount = snapshot.val();
     }); 
                  
     const itemRef = this.db.database.ref('UserDatabase/Users/' + userID).set({                    //
       firstName:firstName, lastName:lastName, gender:gender, weight:weight, height:height,        // adds user into user database
-      birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear, sendData:sendData,           //
-      userID:userID   , email:email                                                               //
+      birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear,email:email                   //
     }) ;                                                                                          //
-    userID++;                                                                                     // this is temp userID 
-    const itemRef2 = this.db.database.ref('UserDatabase/Users').update({UserCount:userID})        //
+    userCount++;                                                                                  // this is number of users 
+    const itemRef2 = this.db.database.ref('UserDatabase/Users').update({UserCount:userCount})     //
     
   }                                                                                               
   
@@ -71,9 +70,10 @@ export class FirebaseProvider {
     return items;
   }
 
+ 
   //Get user vars
   //Subscriben anders krijg je observable
-
+  //#region "getUserVars"
   getWeight(userID){
     var weight;
     weight = this.db.object('UserDatabase/Users/' + userID + '/weight').valueChanges();
@@ -116,5 +116,5 @@ export class FirebaseProvider {
   }
 
 
-  
+  //#endregion "getUserVars"
 }

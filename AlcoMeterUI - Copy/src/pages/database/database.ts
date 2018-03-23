@@ -71,8 +71,9 @@ export class DatabasePage {
   }
 
 
-  addItem(){
-                                      
+  addItem(userID, age, gender, location,alcoholLevel){
+//#region "RandomTestVars"
+    /*                               
     userID = 1;                                         // userID = ID of the user, have to get it from firebase
     age = Math.floor(Math.random()*99) + 16;            //
     var gendernum = Math.floor(Math.random()*2) + 1     //
@@ -86,8 +87,9 @@ export class DatabasePage {
     location = 'Belgium';                               //
     var alcoholLeveltemp:Number = Math.random()*1;      //
     alcoholLevel = +alcoholLeveltemp.toFixed(1);        //
-
-
+    */
+//#endregion "RandomTestVars"
+   
     var today = new Date();                                                                                         //
     var date = today.getDate();                                                                                     //
     var month = today.getMonth()+1;                                                                                 //  getting date and time  
@@ -105,15 +107,14 @@ export class DatabasePage {
     var timestring = hourstring + ':' + minutesstring;                                                              //  this value is only used to sort the data 
     var sortingms = Date.UTC(year,month,date,hour,minutes,seconds,ms);                                              //
     
-
-    
     this.firebaseProvider.addItem(userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
     var items = this.firebaseProvider.getList();
     
   }
 
-  addUser(){
-
+  addUser(birthDay, birthMonth, birthYear, gender, weight, height, firstName, lastName, email){
+//#region "RandomTestVars"
+    /*
     age = Math.floor(Math.random()*83) + 16;            //
                                                         //
     var genderNum = Math.floor(Math.random()*2)+1;      //
@@ -138,30 +139,25 @@ export class DatabasePage {
                                                         //
     height = Math.floor(Math.random()* 90) +120;        //
     weight = Math.floor(Math.random()* 90) +50;         //
-
-    
-
-    this.firebaseProvider.addUser(birthday,birthMonth,birthYear,gender,weight,height,"Test","User",sendData, "TestUser@gmail.com");
+    */
+//#endregion "RandomTestVars"
+    this.firebaseProvider.addUser(birthDay,birthMonth,birthYear,gender,weight,height,firstName,lastName,sendData, email);
 
   }
 
-  updateUser(){
-    var newHeight = 150;
-    var newWeight = 160;
-    var newUserID = 3;
-    var newGender = "male";
-
+  updateUser(newHeight, newWeight, newUserID,newGender){
+//#region "RandomTestVars"
+    /*var newHeight = 150;    //
+    var newWeight = 160;      // Random values for testing
+    var newUserID = 3;        // 
+    var newGender = "male";*/ //
+//#endregion "RandomTestVars"
     this.firebaseProvider.updateUser(newUserID,newHeight,newWeight,newGender);
-
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DatabasePage');
   }
 
-  getUser(){
-    genderuser = this.firebaseProvider.getWeight(15);
-  }
 
 }
