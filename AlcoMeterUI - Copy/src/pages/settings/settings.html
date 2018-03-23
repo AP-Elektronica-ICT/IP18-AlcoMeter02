@@ -8,7 +8,57 @@
     <custom-navbar></custom-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-row>
+    <ion-col col-5>
+      <ion-item>
+          <ion-label color="primary" stacked>Gewicht (kg)</ion-label>
+          <ion-input placeholder="Weight"  type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Lengte (cm)</ion-label>
+        <ion-input [(ngModel)]="length" placeholder="Lengte"  type="number"></ion-input>
+      </ion-item> 
+    </ion-col>
+    <ion-col col-7>
+        <ion-buttons>
+            <button ion-button icon-only class="callCab" (click)="callNumber()">
+              <ion-icon name="call"></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-col>
+  </ion-row>
+  
+  <ion-item>
+    <ion-label color="primary" stacked>E-mail</ion-label>
+    <ion-input [(ngModel)]="mail" type="email" placeholder="E-mail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Wachtwoord</ion-label>
+    <ion-input [(ngModel)]="pass" type="password" placeholder="Wachtwoord"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Wachtwoord bevestiging</ion-label>
+    <ion-input [(ngModel)]="passconf" type="password" placeholder="Wachtwoord bevestiging"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label color="primary" stacked>Terugbel nummer</ion-label>
+      <ion-input [(ngModel)]="length" placeholder="Terugbel nummer"  type="number"></ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>Geboortedatum</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" placeholder="dd/mm/yyyy"></ion-datetime>
+  </ion-item>
+  <ion-item>
+  <ion-label color="primary" stacked>Gender</ion-label>
+  <ion-select placeholder="Choose your gender" [(ngModel)]="gender">
+    <ion-option value="f">Female</ion-option>
+    <ion-option value="m">Male</ion-option>
+  </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label color="grey" >Sla mijn alcoholpromille gegevens op</ion-label>
+      <ion-checkbox [(ngModel)]="saveData"></ion-checkbox>
+  </ion-item>
+        <button ion-button full (click)="saveChanges()">Sla wijzigingen op</button>
 </ion-content>
