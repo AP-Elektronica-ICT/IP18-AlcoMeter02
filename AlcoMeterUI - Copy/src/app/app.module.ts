@@ -12,6 +12,11 @@ import * as firebase from 'firebase/app';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register'; 
+//import { TabsPage } from '../pages/tabs/tabs';
+import { DatabasePage } from '../pages/database/database';
+//import { ResultPage } from '../pages/result/result';
+//import { AboutPage } from '../pages/about/about';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDZp1w9Tl7zI1QKTGCpeyqzTrtTyC-bIew",
@@ -24,29 +29,47 @@ export const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig); 
 
+
+import { HttpModule } from '@angular/http';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
+
+
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage, 
-    RegisterPage
+    RegisterPage,
+    DatabasePage
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireDatabaseModule, 
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    //AboutPage,
+    //ContactPage,
+    //HomePage,
+    //TabsPage,
+    //DatabasePage
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    RegisterPage
+    RegisterPage,
+    //TabsPage,
+    DatabasePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}

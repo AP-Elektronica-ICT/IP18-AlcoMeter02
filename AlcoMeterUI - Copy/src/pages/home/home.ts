@@ -3,6 +3,9 @@ import { NavController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app'; 
 import { RegisterPage } from '../register/register';
+//import { ResultPage } from '../result/result';
+//import { AboutPage } from '../about/about';
+import { DatabasePage } from '../database/database';
 
 @Component({
   selector: 'page-home',
