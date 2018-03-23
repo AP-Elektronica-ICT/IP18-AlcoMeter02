@@ -23,6 +23,8 @@ var birthMonth:Number;
 var birthYear:Number;
 var firstName:String;
 var lastName:String;
+var user;
+var genderuser;
 
 
 
@@ -37,10 +39,37 @@ export class DatabasePage {
   weight = -1;
   height = -1;
   userID = -1;
+
+  //uservars
+  genderUser;
+  heightUser;
+  weightUser;
+  firstNameUser;
+  lastNameUser;
+  birthDayUser;
+  birthMonthUser;
+  birthYearUser;
+  
+  
+ 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     
     
   }
+
+  ngOnInit(){
+    console.log("onInit")
+    this.firebaseProvider.getWeight(15).subscribe(val => this.weightUser = val);
+    this.firebaseProvider.getHeight(15).subscribe(val => this.heightUser = val);
+    this.firebaseProvider.getBirthDay(15).subscribe(val => this.birthDayUser = val);
+    this.firebaseProvider.getBirthMonth(15).subscribe(val => this.birthMonthUser = val);
+    this.firebaseProvider.getBirthYear(15).subscribe(val => this.birthYearUser = val);
+    this.firebaseProvider.getGender(15).subscribe(val => this.genderUser = val);
+    this.firebaseProvider.getFirstName(15).subscribe(val => this.firstNameUser = val);
+    this.firebaseProvider.getLastName(15).subscribe(val => this.lastNameUser = val);
+  }
+
 
   addItem(){
                                       
@@ -112,7 +141,7 @@ export class DatabasePage {
 
     
 
-    this.firebaseProvider.addUser(birthday,birthMonth,birthYear,gender,weight,height,"Test","User",sendData, "TestUser@");
+    this.firebaseProvider.addUser(birthday,birthMonth,birthYear,gender,weight,height,"Test","User",sendData, "TestUser@gmail.com");
 
   }
 
@@ -131,5 +160,8 @@ export class DatabasePage {
     console.log('ionViewDidLoad DatabasePage');
   }
 
+  getUser(){
+    genderuser = this.firebaseProvider.getWeight(15);
+  }
 
 }

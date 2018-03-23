@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase, snapshotChanges} from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
@@ -33,11 +33,7 @@ export class FirebaseProvider {
     })                                                                                            //
   }
 
-  addUser(birthDay,birthMonth,birthYear, gender, weight, height, firstName, lastName, sendData, email ){//
-
-    /*  this.db.database.ref('UserDatabase/userCount').once('value').then(function(snapshot){
-       userID = 5;
-     }) ;   */
+  addUser(birthDay,birthMonth,birthYear, gender, weight, height, firstName, lastName, sendData, email ){
     var userID:number;     
     this.db.database.ref('UserDatabase/Users/UserCount').on('value', snapshot =>{
       userID = snapshot.val();
@@ -46,40 +42,79 @@ export class FirebaseProvider {
     const itemRef = this.db.database.ref('UserDatabase/Users/' + userID).set({                    //
       firstName:firstName, lastName:lastName, gender:gender, weight:weight, height:height,        // adds user into user database
       birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear, sendData:sendData,           //
-      userID:userID                                                                               //
+      userID:userID   , email:email                                                               //
     }) ;                                                                                          //
-    
-
-    /*const itemRef = this.db.database.ref('UserDatabase/Users/' + email).set({                    //
-      firstName:firstName, lastName:lastName, gender:gender.toLowerCase, weight:weight, height:height,        // adds user into user database
-      birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear, sendData:sendData,           //
-      email:email                                                                               //
-    }) ;                                                                                          //
-    
-    */
-    
     userID++;                                                                                     // this is temp userID 
     const itemRef2 = this.db.database.ref('UserDatabase/Users').update({UserCount:userID})        //
     
   }                                                                                               
   
-  updateUser(userID, height , weight , gender){
-    var userRef = this.db.database.ref('UserDatabase/Users');
-    var specificRef = userRef.child(userID);
-    if (height != -1) {
-      specificRef.update({height:height})
-    }
-    if (weight != -1) {
-      specificRef.update({weight:weight})
-    }
-    if (gender != ".") {
-      specificRef.update({gender:gender})
-    }
-  }
+  updateUser(userID, height , weight , gender){                          //
+    var userRef = this.db.database.ref('UserDatabase/Users');            //
+    var specificRef = userRef.child(userID);                             //
+    if (height != -1) {                                                  //
+      specificRef.update({height:height})                                //
+    }                                                                    //  Updates user with UserID:userID
+    if (weight != -1) {                                                  //  Updates the email,height and/or weight
+      specificRef.update({weight:weight})                                //  If value doesn't need to change use values:
+    }                                                                    //       height: -1
+    if (gender != ".") {                                                 //       weight: -1
+      specificRef.update({gender:gender})                                //       gender: "."
+    }                                                                    //
+  }                                                                      //
+
+ 
 
   getList(){
     var items: Observable<any[]>;
     items = this.db.list('Readings').valueChanges();
     return items;
   }
+
+  //Get user vars
+  //Subscriben anders krijg je observable
+
+  getWeight(userID){
+    var weight;
+    weight = this.db.object('UserDatabase/Users/' + userID + '/weight').valueChanges();
+    return weight;
+  }
+  getFirstName(userID){
+    var firstName;
+    firstName = this.db.object('UserDatabase/Users/' + userID + '/firstName').valueChanges();
+    return firstName;
+  }
+  getLastName(userID){
+    var lastName;
+    lastName = this.db.object('UserDatabase/Users/' + userID + '/lastName').valueChanges();
+    return lastName;
+  }
+  getGender(userID){
+    var gender;
+    gender = this.db.object('UserDatabase/Users/' + userID + '/gender').valueChanges();
+    return gender;
+  }
+  getHeight(userID){
+    var height;
+    height = this.db.object('UserDatabase/Users/' + userID + '/height').valueChanges();
+    return height;
+  }
+  getBirthDay(userID){
+    var birthDay;
+    birthDay = this.db.object('UserDatabase/Users/' + userID + '/birthDay').valueChanges();
+    return birthDay;
+  }
+  getBirthMonth(userID){
+    var birthMonth;
+    birthMonth = this.db.object('UserDatabase/Users/' + userID + '/birthMonth').valueChanges();
+    return birthMonth;
+  }
+  getBirthYear(userID){
+    var birthYear;
+    birthYear= this.db.object('UserDatabase/Users/' + userID + '/birthYear').valueChanges();
+    return birthYear;
+  }
+
+
+  
 }
