@@ -25690,3 +25690,8 @@ page-contact .ios page-home .scroll-content, page-contact .md page-home .scroll-
 page-contact .ios page-home ion-card-header, page-contact .md page-home ion-card-header {
   font-weight: bold;
 }
+
+page-home #map {
+  height: 100%;
+  width: auto;
+}
