@@ -50,7 +50,7 @@ export class HomePage {
   fbLogin(){
     var provider = new firebase.auth.FacebookAuthProvider(); 
 
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function(result)  {
       alert("fbLog worked")
       var token = result.credential.accessToken;
       var user = result.user;

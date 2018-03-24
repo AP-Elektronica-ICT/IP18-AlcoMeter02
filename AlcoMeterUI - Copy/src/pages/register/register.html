@@ -15,10 +15,6 @@
         <ion-label color="primary" stacked>Last Name</ion-label>
         <ion-input [(ngModel)]="lastName" type="text" placeholder="Last name"></ion-input>
       </ion-item>
-      <ion-item>
-          <ion-label color="primary" stacked>Weight (kg)</ion-label>
-          <ion-input [(ngModel)]="weight" placeholder="Weight"></ion-input>
-        </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Birth date</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="birthDate" placeholder="day/month/year" pickerFormat="DD MMMM YYYY"></ion-datetime>
@@ -26,8 +22,8 @@
         <ion-item>
         <ion-label color="primary" stacked>Gender</ion-label>
         <ion-select placeholder="Choose your gender" [(ngModel)]="gender">
-          <ion-option value="f">Female</ion-option>
-          <ion-option value="m">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+          <ion-option value="Male">Male</ion-option>
         </ion-select>
       </ion-item>
         <button ion-button full (click)="register()">Register</button>

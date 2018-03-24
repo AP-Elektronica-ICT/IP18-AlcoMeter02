@@ -50,9 +50,18 @@ export class RegisterPage {
 
   register() {
     
-    firebase.auth().createUserWithEmailAndPassword(this.mail, this.pass).then(function(response){
+    firebase.auth().createUserWithEmailAndPassword(this.mail, this.pass).then((response) =>{
       var userID = firebase.auth().currentUser.uid;
-      this.nextPage(); 
+      console.log(this.gender);
+        var date = this.birthDate;
+        var datestring = date.replace(/-/g,"");
+        var year = datestring.substr(0,4);
+        var month = datestring.substr(4,2);
+        var day = datestring.substr(6,2);
+      console.log(datestring)
+      this.firebaseProvider.addUser(userID,day,month,year,this.gender,this.firstName,this.lastName,this.mail, ".");
+      
+     // this.nextPage(); 
       
     })
     .catch(function(error) {
@@ -63,6 +72,15 @@ export class RegisterPage {
     
     
 
+  }
+
+  log(){
+    var date = this.birthDate;
+      var datestring = date.replace(/-/g,"");
+      var year = datestring.substr(0,4);
+      var month = datestring.substr(4,2);
+      var day = datestring.substr(6,2);
+      console.log("Year: " +year  +" Month: " + month + " Day: " + day);
   }
 
 }

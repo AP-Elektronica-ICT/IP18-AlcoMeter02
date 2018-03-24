@@ -33,32 +33,36 @@ export class FirebaseProvider {
     })                                                                                            //
   }
 
-  addUser(userID,birthDay,birthMonth,birthYear, gender, weight, height, firstName, lastName, email ){
+  addUser(userID,birthDay,birthMonth,birthYear, gender, firstName, lastName, email, phoneNumber ){
     var userCount:number;     
     this.db.database.ref('UserDatabase/Users/UserCount').on('value', snapshot =>{
       userCount = snapshot.val();
     }); 
                  
     const itemRef = this.db.database.ref('UserDatabase/Users/' + userID).set({                    //
-      firstName:firstName, lastName:lastName, gender:gender, weight:weight, height:height,        // adds user into user database
-      birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear,email:email                   //
+      firstName:firstName, lastName:lastName, gender:gender,                                      // adds user into user database
+      birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear,email:email,                  //
+      phoneNumber: phoneNumber
     }) ;                                                                                          //
     userCount++;                                                                                  // this is number of users 
     const itemRef2 = this.db.database.ref('UserDatabase/Users').update({UserCount:userCount})     //
     
   }                                                                                               
   
-  updateUser(userID, height , weight , gender){                          //
+  updateUser(userID, phoneNumber, gender){                               //
     var userRef = this.db.database.ref('UserDatabase/Users');            //
     var specificRef = userRef.child(userID);                             //
-    if (height != -1) {                                                  //
+    /*if (height != -1) {                                                //
       specificRef.update({height:height})                                //
     }                                                                    //  Updates user with UserID:userID
     if (weight != -1) {                                                  //  Updates the email,height and/or weight
       specificRef.update({weight:weight})                                //  If value doesn't need to change use values:
-    }                                                                    //       height: -1
-    if (gender != ".") {                                                 //       weight: -1
-      specificRef.update({gender:gender})                                //       gender: "."
+    }  */                                                                //       gender: "."
+    if (phoneNumber != "."){                                             //       phoneNumber: "."
+      specificRef.update({phoneNumber:phoneNumber});                     //
+    }                                                                    //
+    if (gender != ".") {                                                 //       
+      specificRef.update({gender:gender})                                //       
     }                                                                    //
   }                                                                      //
 
@@ -74,11 +78,11 @@ export class FirebaseProvider {
   //Get user vars
   //Subscriben anders krijg je observable
   //#region "getUserVars"
-  getWeight(userID){
+  /*getWeight(userID){
     var weight;
     weight = this.db.object('UserDatabase/Users/' + userID + '/weight').valueChanges();
     return weight;
-  }
+  }*/
   getFirstName(userID){
     var firstName;
     firstName = this.db.object('UserDatabase/Users/' + userID + '/firstName').valueChanges();
@@ -93,12 +97,12 @@ export class FirebaseProvider {
     var gender;
     gender = this.db.object('UserDatabase/Users/' + userID + '/gender').valueChanges();
     return gender;
-  }
+  }/*
   getHeight(userID){
     var height;
     height = this.db.object('UserDatabase/Users/' + userID + '/height').valueChanges();
     return height;
-  }
+  }*/
   getBirthDay(userID){
     var birthDay;
     birthDay = this.db.object('UserDatabase/Users/' + userID + '/birthDay').valueChanges();
