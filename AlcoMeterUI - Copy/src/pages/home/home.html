@@ -3,10 +3,10 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
-        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>
-    </ion-card>
-    
-    
-  <button [navPush]="rs" ion-button full>Start Test</button>
-</ion-content>
+    <ion-input type="email" [(ngModel)]="user" placeholder="E-mail"></ion-input>
+    <ion-input type="password" [(ngModel)]="pass" placeholder="Password Input"></ion-input>
+    <button ion-button full (click)="login()">Login</button>
+    <button ion-button full (click)="fbLogin()">facebook</button>
+    <button ion-button full (click)="gLogin()">Google+</button>
+    <button ion-button class="content" [navPush]="rs">Register</button>
+  </ion-content>
