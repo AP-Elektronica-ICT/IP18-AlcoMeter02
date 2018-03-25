@@ -11,26 +11,28 @@ import * as firebase from 'firebase/app';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { RegisterPage } from '../pages/register/register'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CustomNavbarComponent } from '../components/custom-navbar/custom-navbar';
+import { CallForHelpComponent } from '../components/call-for-help/call-for-help';
 import { CallNumber } from '@ionic-native/call-number';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthProvider } from '../providers/auth/auth';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDZp1w9Tl7zI1QKTGCpeyqzTrtTyC-bIew",
+var config = {
+  apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
   authDomain: "alcometer-abfbf.firebaseapp.com",
   databaseURL: "https://alcometer-abfbf.firebaseio.com",
   projectId: "alcometer-abfbf",
   storageBucket: "alcometer-abfbf.appspot.com",
   messagingSenderId: "1031304897035"
-}
-firebase.initializeApp(firebaseConfig);
+};
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -38,16 +40,17 @@ firebase.initializeApp(firebaseConfig);
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     SettingsPage, 
     CustomNavbarComponent,
+    CallForHelpComponent,
     RegisterPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig), 
+    HttpClientModule,
+    AngularFireModule.initializeApp(config), 
     AngularFireDatabaseModule, 
     AngularFireAuthModule
   ],
@@ -57,17 +60,16 @@ firebase.initializeApp(firebaseConfig);
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     SettingsPage,
     RegisterPage
-    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

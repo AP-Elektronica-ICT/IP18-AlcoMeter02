@@ -46,12 +46,11 @@ export class FirebaseProvider {
     }) ;                                                                                          //
     userCount++;                                                                                  // this is number of users 
     const itemRef2 = this.db.database.ref('UserDatabase/Users').update({UserCount:userCount})     //
-    
   }                                                                                               
   
-  updateUser(userID, phoneNumber, gender){                               //
+  updateUser(userID, phoneNumber){                               //
     var userRef = this.db.database.ref('UserDatabase/Users');            //
-    var specificRef = userRef.child(userID);                             //
+    var specificRef = userRef.child(userID);                             //git
     /*if (height != -1) {                                                //
       specificRef.update({height:height})                                //
     }                                                                    //  Updates user with UserID:userID
@@ -60,9 +59,6 @@ export class FirebaseProvider {
     }  */                                                                //       gender: "."
     if (phoneNumber != "."){                                             //       phoneNumber: "."
       specificRef.update({phoneNumber:phoneNumber});                     //
-    }                                                                    //
-    if (gender != ".") {                                                 //       
-      specificRef.update({gender:gender})                                //       
     }                                                                    //
   }                                                                      //
 
@@ -118,7 +114,16 @@ export class FirebaseProvider {
     birthYear= this.db.object('UserDatabase/Users/' + userID + '/birthYear').valueChanges();
     return birthYear;
   }
-
+  getEmail(userID){
+    var email;
+    email= this.db.object('UserDatabase/Users/' + userID + '/email').valueChanges();
+    return email;
+  }
+  getPhone(userID){
+    var phone;
+    phone = this.db.object('UserDatabase/Users/' + userID + '/phoneNumber').valueChanges();
+    return phone;
+  }
 
   //#endregion "getUserVars"
 }

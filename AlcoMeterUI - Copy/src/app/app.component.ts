@@ -2,21 +2,20 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { TabsPage } from '../pages/tabs/tabs';
-import { ResultPage } from '../pages/result/result';
 import { ContactPage } from '../pages/contact/contact';
 import { AboutPage } from '../pages/about/about';
 import { SettingsPage } from '../pages/settings/settings';
-import { NavController } from 'ionic-angular';
-
+import * as firebase from 'firebase/app'; 
+import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = HomePage;
   pageTitle: string;
   pages: Array<{title: string, page: any}>;
+  userId : string;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -25,18 +24,15 @@ export class MyApp {
       splashScreen.hide();
     });
     this.pages = [
-      { title: 'Home', page: TabsPage },
-      { title: 'Results', page: ResultPage },
-      { title: 'Contact', page: ContactPage },
+      { title: 'Results', page: ContactPage },
       { title: 'About', page: AboutPage },
       { title: 'Settings', page: SettingsPage }
     ];
+    if(firebase.auth().currentUser != null){
+      this.userId = firebase.auth().currentUser.uid;
+    }
   }
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.rootPage = page.page;
-    this.pageTitle = page.title;
   }
-  
 }

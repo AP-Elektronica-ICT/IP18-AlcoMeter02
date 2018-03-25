@@ -1,4 +1,11 @@
-<!-- Generated template for the CallForHelpComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-footer *ngIf="userId">
+  <ion-toolbar>
+          <button *ngIf="isValid" ion-button full (click)="callMyNumber()">
+            <ion-icon name="call"></ion-icon>
+            <!-- {{phone}} !-->
+          </button>
+          <button *ngIf="!isValid" ion-button full (click)="showMessage()">
+            <ion-icon name="alert"></ion-icon>
+          </button>
+  </ion-toolbar>
+</ion-footer>

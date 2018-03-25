@@ -1,5 +1,5 @@
-<ion-navbar>
-    <ion-buttons start>
+<ion-navbar hideBackButton>
+    <ion-buttons start *ngIf="userId">
       <button ion-button icon-only (click)="openNavigation()">
         <ion-icon name="menu"></ion-icon>
       </button>
@@ -7,7 +7,7 @@
     <ion-title>
       {{pageTitle}}
     </ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="userId">
       <button ion-button icon-only (click)="openSettings()">
         <ion-icon name="settings"></ion-icon>
       </button>

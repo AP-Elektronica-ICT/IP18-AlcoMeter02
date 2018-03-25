@@ -25682,6 +25682,11 @@ ion-navbar.toolbar {
   margin-top: 70px;
 }
 
+.callCab {
+  background: #1ac94f !important;
+  position: fixed;
+}
+
 ion-buttons[start] {
   -webkit-box-ordinal-group: 3;
   -webkit-order: 2;
@@ -25700,9 +25705,4 @@ page-contact .ios page-home .scroll-content, page-contact .md page-home .scroll-
 
 page-contact .ios page-home ion-card-header, page-contact .md page-home ion-card-header {
   font-weight: bold;
-}
-
-.callCab {
-  width: 200px;
-  height: 120px;
 }

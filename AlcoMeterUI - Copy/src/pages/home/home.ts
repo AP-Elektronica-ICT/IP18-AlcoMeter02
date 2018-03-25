@@ -4,6 +4,11 @@ import { AboutPage } from '../../pages/about/about';
 import { RegisterPage} from '../../pages/register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app'; 
+import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AuthProvider } from './../../providers/auth/auth';
+import { ContactPage } from '../contact/contact';
+import { SettingsPage } from '../settings/settings';
+
 
 @Component({
   selector: 'page-home',
@@ -12,24 +17,35 @@ import * as firebase from 'firebase/app';
 export class HomePage {
 
   rs = RegisterPage;
-  user: string; 
-  pass: string;
-  constructor(private nav: NavController){
+  ct = ContactPage;
 
+  user: string;
+  pass: string;
+  userId: string;
+  currentUser: any;
+  constructor(private nav: NavController, public firebaseProvider: FirebaseProvider, public auth: AuthProvider){
+    if(this.userId){
+      this.nav.push(SettingsPage);
+    }
   }
-  nextPage(){
-    console.log("nextPage worked!"); 
+  ionViewDidLoad() {
+    if(firebase.auth().currentUser != null){
+      this.userId = firebase.auth().currentUser.uid;
+    }
   }
   login(){
     console.log(this.user, this.pass);
     firebase.auth().signInWithEmailAndPassword(this.user, this.pass).then(function(response){
-      alert("hello");
-      this.nextPage(); 
+      console.log(firebase.auth().currentUser);
     })
     .catch(function(error) {
       var errorMessage = error.message;
-      alert("invalid username/password"); 
+      alert(errorMessage);
     });
+    if(firebase.auth().currentUser != null){
+      this.userId = firebase.auth().currentUser.uid;
+    }
+    this.nav.push(AboutPage);
   }
   gLogin(){
     var provider = new firebase.auth.GoogleAuthProvider(); 
@@ -47,7 +63,6 @@ export class HomePage {
   }
   fbLogin(){
     var provider = new firebase.auth.FacebookAuthProvider(); 
-
     firebase.auth().signInWithPopup(provider).then(function(result)  {
       alert("fbLog worked")
       var token = result.credential.accessToken;

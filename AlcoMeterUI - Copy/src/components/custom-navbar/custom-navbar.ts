@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
-import { ResultPage } from '../../pages/result/result';
-import { AboutPage } from '../../pages/about/about';
 import { SettingsPage } from '../../pages/settings/settings';
 import { HomePage } from '../../pages/home/home';
-import { ContactPage } from '../../pages/contact/contact';
-import { TabsPage } from '../../pages/tabs/tabs';
-
+import * as firebase from 'firebase/app'; 
 /**
  * Generated class for the CustomNavbarComponent component.
  *
@@ -23,20 +19,27 @@ export class CustomNavbarComponent {
   rootPage: any;
   text: string;
   pageTitle: string;
+  userId: string;
+
   constructor(public menuCtrl: MenuController, public nav: NavController) {
-    this.text = 'Hello World';
+    if(firebase.auth().currentUser != null){
+      this.userId = firebase.auth().currentUser.uid;
+    }
   }
-  
-  
+  ionViewDidLoad() {
+    this.checkUserId();
+  }
+  checkUserId(){
+    if(firebase.auth().currentUser != null){
+      this.userId = firebase.auth().currentUser.uid;
+    }
+  }
   openSettings(){
-    console.log("openSettings");
     this.nav.push(SettingsPage);
   }
   openNavigation(){
-    console.log("openNavigation");
     this.menuCtrl.open();
   }
-  category: any;
   openPage(p) {
     this.rootPage = p;
   }

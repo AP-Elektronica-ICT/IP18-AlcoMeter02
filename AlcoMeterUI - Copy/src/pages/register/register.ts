@@ -16,10 +16,6 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
-
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
   }
   public mail: any = ""; 
@@ -49,19 +45,27 @@ export class RegisterPage {
 
 
   register() {
-    
     firebase.auth().createUserWithEmailAndPassword(this.mail, this.pass).then((response) =>{
       var userID = firebase.auth().currentUser.uid;
-      console.log(this.gender);
         var date = this.birthDate;
         var datestring = date.replace(/-/g,"");
         var year = datestring.substr(0,4);
         var month = datestring.substr(4,2);
         var day = datestring.substr(6,2);
-      console.log(datestring)
+
       this.firebaseProvider.addUser(userID,day,month,year,this.gender,this.firstName,this.lastName,this.mail, ".");
-      
-     // this.nextPage(); 
+      console.log("email");
+      console.log(this.mail);
+      console.log("pass");
+      console.log(this.pass);
+      firebase.auth().signInWithEmailAndPassword(this.mail, this.pass).then(function(response){
+        console.log("nextPage worked!");
+        console.log(firebase.auth().currentUser);
+      })
+      .catch(function(error) {
+        var errorMessage = error.message;
+        alert(errorMessage);
+      });
       
     })
     .catch(function(error) {
