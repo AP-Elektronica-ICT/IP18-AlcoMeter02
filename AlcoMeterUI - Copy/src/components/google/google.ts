@@ -28,7 +28,7 @@ export class GoogleComponent {
     let coords = new google.maps.LatLng(51.2300507,4.41608839);
     let mapOptions: google.maps.MapOptions = {
       center: coords,
-      zoom: 11,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
