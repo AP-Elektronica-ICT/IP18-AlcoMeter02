@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { CallNumber} from '@ionic-native/call-number';
+import { FirebaseProvider } from './../../providers/firebase/firebase'; 
+import { CallNumber} from '@ionic-native/call-number'; 
 import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the CallForHelpComponent component.
