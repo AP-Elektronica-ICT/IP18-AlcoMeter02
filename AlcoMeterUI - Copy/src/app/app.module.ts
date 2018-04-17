@@ -12,6 +12,7 @@ import { CallForHelpComponent} from '../components/call-for-help/call-for-help';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -24,6 +25,7 @@ import { ResultPage } from '../pages/result/result';
 import { GoogleComponent } from '../components/google/google';
 import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
+import { GeocodeProvider } from '../providers/geocode/geocode';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -73,7 +75,9 @@ firebase.initializeApp(config);
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    AuthProvider
+    AuthProvider,
+    Geolocation,
+    GeocodeProvider
   ]
 })
 export class AppModule {}
