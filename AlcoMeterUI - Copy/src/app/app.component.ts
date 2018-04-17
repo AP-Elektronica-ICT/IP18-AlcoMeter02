@@ -25,6 +25,7 @@ export class MyApp {
       splashScreen.hide();
     });
     this.pages = [
+      { title: 'Home', page: AboutPage },
       { title: 'Result', page: ResultPage },
       { title: 'About', page: AboutPage },
       { title: 'Settings', page: SettingsPage }
