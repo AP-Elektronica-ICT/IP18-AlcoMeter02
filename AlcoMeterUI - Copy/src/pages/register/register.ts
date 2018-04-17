@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AboutPage } from '../about/about';
 
 /**
  * Generated class for the RegisterPage page.
@@ -18,89 +15,31 @@ import { AboutPage } from '../about/about';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  registerForm: FormGroup;
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public firebaseProvider: FirebaseProvider,
-    private formBuilder: FormBuilder) {
-      this.registerForm = this.formBuilder.group({
-        email: ['', Validators.compose([
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
-          Validators.required
-        ])],
-        password: ['', Validators.compose([
-          Validators.minLength(6),
-          Validators.required
-        ])],
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        birthdate: ['', Validators.required],
-        gender: ['', Validators.required]
-      });
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  onSignIn() {
-    //this.logger.info('SignInPage: onSignIn()');
-  }
-  
-  ngOnInit(){
-    firebase.auth().onAuthStateChanged(function(user){
-      if(user){
-        firebase.auth().signOut();
-      }
-    })
-    
-  }
-  
+  mail: any = ""; 
+  pass: any = ""; 
+
+  agreement: boolean; 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
-
-
   register() {
-    firebase.auth().createUserWithEmailAndPassword(
-      this.registerForm.controls['email'].value, 
-      this.registerForm.controls['password'].value).then((response) =>{
-      var userID = firebase.auth().currentUser.uid;
-        var date = this.registerForm.controls['birthdate'].value;
-        var datestring = date.replace(/-/g,"");
-        var year = datestring.substr(0,4);
-        var month = datestring.substr(4,2);
-        var day = datestring.substr(6,2);
-
-      this.firebaseProvider.addUser(
-        userID,
-        day,
-        month,
-        year,
-        this.registerForm.controls['gender'].value,
-        this.registerForm.controls['firstname'].value,
-        this.registerForm.controls['lastname'].value,
-        this.registerForm.controls['email'].value,
-        ".");
-      console.log("email");
-      console.log(this.registerForm.controls['email'].value);
-      console.log("pass");
-      console.log(this.registerForm.controls['password'].value);
-      firebase.auth().signInWithEmailAndPassword(
-        this.registerForm.controls['email'].value, 
-        this.registerForm.controls['password'].value).then(function(response){
-        console.log("nextPage worked!");
-      })
-      .catch(function(error) {
-        var errorMessage = error.message;
-        alert(errorMessage);
-      });
-      
+    if(this.agreement == true){
+    firebase.auth().createUserWithEmailAndPassword(this.mail, this.pass).then((response) =>{
+      alert("hello");
+      alert("thanks for agreeing"); 
     })
-    .catch(function(error) {
+    .catch((error) =>{
+      alert("thanks for agreeing, unfortunatly something went wrong!")
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorMessage);
     });
-    this.navCtrl.push(AboutPage);
   }
-
+  else{
+    alert("You have to agree to send data to register to this service!"); 
+  }
+  }
 }
