@@ -3,57 +3,62 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { ResultPage } from '../result/result';
 import { AboutPage } from '../about/about';
 import { ContactPage} from '../contact/contact';
-
+import { SettingsPage} from '../settings/settings';
+import { RegisterPage} from '../register/register';
+import * as firebase from 'firebase';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AuthProvider } from './../../providers/auth/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  rs = AboutPage;
-  GoResult = ResultPage;
-
   rs = RegisterPage;
   ct = ContactPage;
 
-  user: string;
-  pass: string;
+  loginForm: FormGroup;
+
   userId: string;
   currentUser: any;
-  constructor(private nav: NavController, public firebaseProvider: FirebaseProvider, public auth: AuthProvider){
-    if(this.userId){
-      this.nav.push(SettingsPage);
-    }
-  constructor(public loadingCtrl: LoadingController){ }
-
-  Load() {
-    this.loadingCtrl.create({
-      //spinner: "true",
-      content: "Please wait for your result",
-      
-      duration: 3000,
-      dismissOnPageChange:	true
-      //dismissOnPageChange: true
-    }).present();
+  errorMessage: string;
+  constructor(
+    private nav: NavController, 
+    public firebaseProvider: FirebaseProvider, 
+    public auth: AuthProvider,
+    private formBuilder: FormBuilder,
+    public alertCtr: AlertController
+  ) {
+      this.loginForm = this.formBuilder.group({
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
   }
+
+  
   ionViewDidLoad() {
     if(firebase.auth().currentUser != null){
       this.userId = firebase.auth().currentUser.uid;
     }
   }
   login(){
-    console.log(this.user, this.pass);
-    firebase.auth().signInWithEmailAndPassword(this.user, this.pass).then(function(response){
-      console.log(firebase.auth().currentUser);
+    firebase.auth().signInWithEmailAndPassword(
+      this.loginForm.controls['email'].value, 
+      this.loginForm.controls['password'].value).then(function(response){
+      console.log("Login success!");
+      this.nav.push(AboutPage);
     })
     .catch(function(error) {
-      var errorMessage = error.message;
-      alert(errorMessage);
+      //this.errorMessage = error.message;
+      console.log("Login failed!");
+      alert(error.message);
     });
     if(firebase.auth().currentUser != null){
       this.userId = firebase.auth().currentUser.uid;
     }
-    this.nav.push(AboutPage);
+    
   }
   gLogin(){
     var provider = new firebase.auth.GoogleAuthProvider(); 
@@ -79,8 +84,5 @@ export class HomePage {
       var errorMessage = error.message;
       alert("connection with facebook failed");
     });
-  }
-  navRegister(){
-    this.nav.push(RegisterPage); 
   }
 }

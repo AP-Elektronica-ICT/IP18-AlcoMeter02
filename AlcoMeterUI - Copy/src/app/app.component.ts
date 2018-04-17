@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactPage } from '../pages/contact/contact';
 import { AboutPage } from '../pages/about/about';
 import { SettingsPage } from '../pages/settings/settings';
+import { ResultPage} from '../pages/result/result';
 import * as firebase from 'firebase/app'; 
 import { HomePage } from '../pages/home/home';
 
@@ -24,7 +25,7 @@ export class MyApp {
       splashScreen.hide();
     });
     this.pages = [
-      { title: 'Results', page: ContactPage },
+      { title: 'Result', page: ResultPage },
       { title: 'About', page: AboutPage },
       { title: 'Settings', page: SettingsPage }
     ];

@@ -25694,6 +25694,11 @@ ion-buttons[start] {
   order: 2;
 }
 
+google #map {
+  height: 50%;
+  width: auto;
+}
+
 page-about ion-slide {
   background-size: cover;
   height: auto;
@@ -25704,5 +25709,25 @@ page-contact .ios page-home .scroll-content, page-contact .md page-home .scroll-
 }
 
 page-contact .ios page-home ion-card-header, page-contact .md page-home ion-card-header {
+  font-weight: bold;
+}
+
+.validator-error {
+  color: red;
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+.validator-error {
+  color: red;
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+page-result .ios page-home .scroll-content, page-result .md page-home .scroll-content {
+  background-color: #f4f4f4;
+}
+
+page-result .ios page-home ion-card-header, page-result .md page-home ion-card-header {
   font-weight: bold;
 }

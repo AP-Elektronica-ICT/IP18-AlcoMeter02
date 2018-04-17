@@ -3,17 +3,24 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-input required type="email" [(ngModel)]="user" placeholder="E-mail"></ion-input>
-    <ion-input required type="password" [(ngModel)]="pass" placeholder="Password Input"></ion-input>
-    <button ion-button full (click)="login()">Login</button>
-    <!--
-        <button ion-button full (click)="fbLogin()">facebook</button>
-        <button ion-button full (click)="gLogin()">Google+</button>
-    -->
-    <button ion-button full class="content" [navPush]="rs">Register</button>
-    <!--
-    <button ion-button full class="content" [navPush]="ct">Ga verder zonder registratie</button>
-    -->
+        <form [formGroup]="loginForm">
+            <ion-item>
+                <ion-label color="primary" stacked>E-mail</ion-label>
+                <ion-input [formControl]="loginForm.controls['email']" type="email" placeholder="E-mail"></ion-input>
+            </ion-item>
+                <div *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty"  class="validator-error">
+                        Please enter a valid email.
+                </div>
+            <ion-item>
+                <ion-label color="primary" stacked>Password</ion-label>
+                <ion-input [formControl]="loginForm.controls['password']" [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>
+            </ion-item>
+                <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty" class="validator-error">
+                    Please enter a valid password.
+                </div>
+            <button ion-button full [disabled]="!loginForm.valid" (click)="login()">Login</button>
+            <button ion-button full class="content" [navPush]="rs">Register</button>
+        </form>
   </ion-content>
   
   <call-for-help>

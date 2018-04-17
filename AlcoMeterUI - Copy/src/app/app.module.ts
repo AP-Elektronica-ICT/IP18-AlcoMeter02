@@ -7,17 +7,23 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database'; 
 import { AngularFireAuthModule } from 'angularfire2/auth'; 
 import * as firebase from 'firebase/app';
+import { CustomNavbarComponent} from '../components/custom-navbar/custom-navbar';
+import { CallForHelpComponent} from '../components/call-for-help/call-for-help';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
-import { RegisterPage } from '../pages/register/register'; 
-
+import { RegisterPage } from '../pages/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ResultPage } from '../pages/result/result';
-import {  GoogleComponent } from '../components/google/google';
+import { GoogleComponent } from '../components/google/google';
+import { AuthProvider } from '../providers/auth/auth';
+import { CallNumber } from '@ionic-native/call-number';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -35,10 +41,8 @@ firebase.initializeApp(config);
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     ResultPage,
-    GoogleComponent
-
+    GoogleComponent,
     SettingsPage, 
     CustomNavbarComponent,
     CallForHelpComponent,
@@ -59,8 +63,7 @@ firebase.initializeApp(config);
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
-    ResultPage
+    ResultPage,
     SettingsPage,
     RegisterPage
   ],
