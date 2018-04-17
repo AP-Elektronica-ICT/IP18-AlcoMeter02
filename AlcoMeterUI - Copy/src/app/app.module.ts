@@ -25,6 +25,8 @@ import { GoogleComponent } from '../components/google/google';
 import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
   authDomain: "alcometer-abfbf.firebaseapp.com",
@@ -73,7 +75,8 @@ firebase.initializeApp(config);
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    AuthProvider
+    AuthProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
