@@ -8,13 +8,14 @@ import { RegisterPage} from '../register/register';
 import * as firebase from 'firebase';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AuthProvider } from './../../providers/auth/auth';
+import { TutorialPage } from '../tutorial/tutorial';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  rs = AboutPage;
+ 
   
 
   //rs = RegisterPage;

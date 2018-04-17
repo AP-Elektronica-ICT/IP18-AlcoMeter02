@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { ResultPage } from '../result/result';
+import { TutorialPage } from '../tutorial/tutorial';
 
 @Component({
   selector: 'page-about',
@@ -8,6 +9,7 @@ import { ResultPage } from '../result/result';
 })
 export class AboutPage {
   GoResult = ResultPage;
+  rs = TutorialPage;
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController) {
 
   }

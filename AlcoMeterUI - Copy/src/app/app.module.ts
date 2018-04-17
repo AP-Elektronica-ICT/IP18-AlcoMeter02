@@ -26,6 +26,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -48,7 +49,8 @@ firebase.initializeApp(config);
     SettingsPage, 
     CustomNavbarComponent,
     CallForHelpComponent,
-    RegisterPage
+    RegisterPage,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ firebase.initializeApp(config);
     HomePage,
     ResultPage,
     SettingsPage,
-    RegisterPage
+    RegisterPage,
+    TutorialPage
   ],
   providers: [
     StatusBar,
