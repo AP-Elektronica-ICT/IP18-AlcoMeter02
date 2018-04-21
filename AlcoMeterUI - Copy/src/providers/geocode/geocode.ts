@@ -18,7 +18,7 @@ export class GeocodeProvider {
 
   getCountry(lat,long){
     
-      return this.http.get<IRootObject>(this.APIUrl + 'latlng=' + lat + ',' + long + '&result_type=country&key=' + this.APIKey)
+      return this.http.get<IRootObject>(this.APIUrl + 'latlng=' + lat + ',' + long + '&result_type=country&key=' + this.APIKey + '&language=en')
     
   }
 

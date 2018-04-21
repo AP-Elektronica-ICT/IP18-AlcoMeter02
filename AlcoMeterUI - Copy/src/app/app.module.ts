@@ -13,6 +13,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -77,7 +78,8 @@ firebase.initializeApp(config);
     FirebaseProvider,
     AuthProvider,
     Geolocation,
-    GeocodeProvider
+    GeocodeProvider,
+    AndroidPermissions
   ]
 })
 export class AppModule {}
