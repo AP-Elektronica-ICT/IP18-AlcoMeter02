@@ -25,7 +25,7 @@ export class HomePage {
   currentUser: any;
   errorMessage: string;
   constructor(
-    private nav: NavController, 
+    public nav: NavController, 
     public firebaseProvider: FirebaseProvider, 
     public auth: AuthProvider,
     private formBuilder: FormBuilder,
@@ -36,25 +36,20 @@ export class HomePage {
         password: ['', Validators.required]
       });
   }
-
-  
-  ionViewDidLoad() {
-    if(firebase.auth().currentUser != null){
-      this.userId = firebase.auth().currentUser.uid;
-    }
-  }
-  login(){
-    firebase.auth().signInWithEmailAndPassword(
+  async login(){
+    var me = this;
+    const user = await firebase.auth().signInWithEmailAndPassword(
       this.loginForm.controls['email'].value, 
-      this.loginForm.controls['password'].value).then(function(response){
-      console.log("Login success!");
-      this.nav.push(AboutPage);
-    })
+      this.loginForm.controls['password'].value)
     .catch(function(error) {
-      //this.errorMessage = error.message;
       console.log("Login failed!");
       alert(error.message);
     });
+    if(user){
+        console.log(user);
+        this.auth.loginState = true;
+        me.nav.push(AboutPage);
+    }
     if(firebase.auth().currentUser != null){
       this.userId = firebase.auth().currentUser.uid;
     }

@@ -17,10 +17,9 @@ import { HttpClient } from "@angular/common/http";
 })
 export class SettingsPage {
   public userId : string;
-  public phone : string;
-  phoneInput : string;
+  public phone : number;
   constructor(private http: HttpClient, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController) {
-    this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phoneInput = val });
+    this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
     if(firebase.auth().currentUser != null){
       this.userId = firebase.auth().currentUser.uid;
       this.getUserData(this.userId);
@@ -33,8 +32,8 @@ export class SettingsPage {
     this.firebaseProvider.getPhone(id).subscribe(val => this.phone = val);
   }
   updateSettings(){
-    if(this.phoneInput != null){
-      this.firebaseProvider.updateUser(this.userId, this.phoneInput);
+    if(this.phone != null){
+      this.firebaseProvider.updateUser(this.userId, this.phone);
       this.showAlert();
     }
   }

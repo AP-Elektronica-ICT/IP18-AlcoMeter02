@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
-
+import { AuthProvider } from './../../providers/auth/auth';
 import { SettingsPage } from '../../pages/settings/settings';
 import { HomePage } from '../../pages/home/home';
 import * as firebase from 'firebase/app'; 
@@ -21,19 +21,7 @@ export class CustomNavbarComponent {
   pageTitle: string;
   userId: string;
 
-  constructor(public menuCtrl: MenuController, public nav: NavController) {
-    if(firebase.auth().currentUser != null){
-      this.userId = firebase.auth().currentUser.uid;
-    }
-  }
-  ionViewDidLoad() {
-    this.checkUserId();
-  }
-  checkUserId(){
-    if(firebase.auth().currentUser != null){
-      this.userId = firebase.auth().currentUser.uid;
-    }
-  }
+  constructor(public menuCtrl: MenuController, public nav: NavController, public auth: AuthProvider) {}
   openSettings(){
     this.nav.push(SettingsPage);
   }
