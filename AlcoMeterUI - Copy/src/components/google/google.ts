@@ -9,7 +9,7 @@ import {} from '@types/googlemaps';
  * Components.
  */
 @Component({
-  selector: 'google',
+  selector: 'google-component',
   templateUrl: 'google.html'
 })
 export class GoogleComponent {
@@ -18,7 +18,6 @@ export class GoogleComponent {
   map: any;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
-
   }
 
   ngOnInit(){

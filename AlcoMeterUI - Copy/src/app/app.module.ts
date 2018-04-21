@@ -24,8 +24,8 @@ import { ResultPage } from '../pages/result/result';
 import { GoogleComponent } from '../components/google/google';
 import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
-
 import { Geolocation } from '@ionic-native/geolocation';
+import { ComponentsModule} from '../components/components.module';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -44,10 +44,10 @@ firebase.initializeApp(config);
     ContactPage,
     HomePage,
     ResultPage,
-    GoogleComponent,
+    //GoogleComponent,
     SettingsPage, 
-    CustomNavbarComponent,
-    CallForHelpComponent,
+    //CustomNavbarComponent,
+    //CallForHelpComponent,
     RegisterPage
   ],
   imports: [
@@ -57,7 +57,8 @@ firebase.initializeApp(config);
     HttpClientModule,
     AngularFireModule.initializeApp(config), 
     AngularFireDatabaseModule, 
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
