@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AuthProvider } from './../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AboutPage } from '../about/about';
 
@@ -24,7 +25,9 @@ export class RegisterPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public firebaseProvider: FirebaseProvider,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    public auth: AuthProvider
+  ) {
       this.registerForm = this.formBuilder.group({
         email: ['', Validators.compose([
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
@@ -60,10 +63,12 @@ export class RegisterPage {
 
 
   register() {
+    var me = this;
     firebase.auth().createUserWithEmailAndPassword(
       this.registerForm.controls['email'].value, 
-      this.registerForm.controls['password'].value).then((response) =>{
-      var userID = firebase.auth().currentUser.uid;
+      this.registerForm.controls['password'].value)
+    .then((response) =>{
+        var userID = firebase.auth().currentUser.uid;
         var date = this.registerForm.controls['birthdate'].value;
         var datestring = date.replace(/-/g,"");
         var year = datestring.substr(0,4);
@@ -80,13 +85,13 @@ export class RegisterPage {
         this.registerForm.controls['lastname'].value,
         this.registerForm.controls['email'].value,
         ".");
-      console.log("email");
-      console.log(this.registerForm.controls['email'].value);
-      console.log("pass");
-      console.log(this.registerForm.controls['password'].value);
       firebase.auth().signInWithEmailAndPassword(
         this.registerForm.controls['email'].value, 
-        this.registerForm.controls['password'].value).then(function(response){
+        this.registerForm.controls['password'].value)
+      .then(function(response){
+        console.log(response);
+        me.auth.loginState = true;
+        me.navCtrl.push(AboutPage);
         console.log("nextPage worked!");
       })
       .catch(function(error) {
@@ -98,9 +103,10 @@ export class RegisterPage {
     .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
+      alert(errorMessage);
       console.log(errorMessage);
     });
-    this.navCtrl.push(AboutPage);
+    
   }
 
 }

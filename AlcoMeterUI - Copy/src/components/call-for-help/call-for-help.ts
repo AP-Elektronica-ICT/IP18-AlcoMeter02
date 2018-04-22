@@ -19,16 +19,18 @@ export class CallForHelpComponent {
   phone: string;
   isValid: Boolean;
   userId: string;
-  constructor(public firebaseProvider: FirebaseProvider, public auth: AuthProvider, private callNumber: CallNumber, public alertCtrl: AlertController) {
-    console.log('Hello CallForHelpComponent Component');
+  constructor(
+    public firebaseProvider: FirebaseProvider, 
+    public auth: AuthProvider, 
+    private callNumber: CallNumber, 
+    public alertCtrl: AlertController) {
     if(this.auth.loginState){
       this.userId = this.auth.getLoggedUID();
       async () => {
         await this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
       }
-      
       //console.log(this.phone);
-      if(this.phone == "." && this.phone != null)
+      if(this.phone == "." || this.phone == null)
       {
         this.isValid = false;
       } 
