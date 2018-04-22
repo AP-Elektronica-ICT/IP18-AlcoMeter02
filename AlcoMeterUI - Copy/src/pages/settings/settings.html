@@ -14,7 +14,10 @@
         <ion-input [(ngModel)]="phone" type="number"></ion-input>
     </ion-item>
         <ion-buttons>
-            <button ion-button full (click)="updateSettings()">Sla mijn telefoonnummer op</button>
+            <button ion-button full (click)="updateSettings()">Save my callback number</button>
+        </ion-buttons>
+        <ion-buttons>
+            <button ion-button full (click)="logout()">Logout from my account</button>
         </ion-buttons>
 </ion-content>
 <call-for-help>

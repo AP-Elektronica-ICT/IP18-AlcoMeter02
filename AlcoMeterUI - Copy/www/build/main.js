@@ -1,1 +1,1719 @@
-webpackJsonp([2],{128:function(l,n,u){"use strict";u.d(n,"a",function(){return e});u(4),u(30);var a=u(181),e=(u.n(a),function(){function l(l,n,u){var e=this;this.http=l,this.firebaseProvider=n,this.alertCtrl=u,this.firebaseProvider.getPhone(this.userId).subscribe(function(l){e.phone=l}),null!=a.auth().currentUser&&(this.userId=a.auth().currentUser.uid,this.getUserData(this.userId))}return l.prototype.ngOnInit=function(){},l.prototype.getUserData=function(l){var n=this;this.firebaseProvider.getPhone(l).subscribe(function(l){return n.phone=l})},l.prototype.updateSettings=function(){null!=this.phone&&(this.firebaseProvider.updateUser(this.userId,this.phone),this.showAlert())},l.prototype.showAlert=function(){this.alertCtrl.create({title:"Wijziging",subTitle:"Telefoonnummer opgeslagen!",buttons:["OK"]}).present()},l}())},198:function(l,n){function u(l){return Promise.resolve().then(function(){throw new Error("Cannot find module '"+l+"'.")})}u.keys=function(){return[]},u.resolve=u,l.exports=u,u.id=198},224:function(l,n,u){function a(l){var n=e[l];return n?u.e(n[1]).then(function(){return u(n[0])}):Promise.reject(new Error("Cannot find module '"+l+"'."))}var e={"../pages/history/history.module.ngfactory":[599,1],"../pages/result/result.module.ngfactory":[600,0]};a.keys=function(){return Object.keys(e)},a.id=224,l.exports=a},33:function(l,n,u){"use strict";u.d(n,"a",function(){return e});u(4);var a=u(578),e=(u.n(a),function(){function l(l){this.db=l,console.log("Hello FirebaseProvider Provider");this.db.database.ref("UserDatabase/Users/UserCount").on("value",function(l){l.val()})}return l.prototype.addItem=function(l,n,u,a,e,t,o,r){this.db.database.ref("ReadingDatabase/Readings/").push().set({date:t,time:o,age:n,gender:u,location:a,alcoholLevel:e,sortingms:r}),this.db.database.ref("ReadingDatabase/Users/"+l+"/").push().set({date:t,time:o,location:a,alcoholLevel:e,sortingms:r})},l.prototype.addUser=function(l,n,u,a,e,t,o,r,i){var s;this.db.database.ref("UserDatabase/Users/UserCount").on("value",function(l){s=l.val()});this.db.database.ref("UserDatabase/Users/"+l).set({firstName:t,lastName:o,gender:e,birthDay:n,birthMonth:u,birthYear:a,email:r,phoneNumber:i});s++;this.db.database.ref("UserDatabase/Users").update({UserCount:s})},l.prototype.updateUser=function(l,n){var u=this.db.database.ref("UserDatabase/Users").child(l);"."!=n&&u.update({phoneNumber:n})},l.prototype.getList=function(){return this.db.list("Readings").valueChanges()},l.prototype.getFirstName=function(l){return this.db.object("UserDatabase/Users/"+l+"/firstName").valueChanges()},l.prototype.getLastName=function(l){return this.db.object("UserDatabase/Users/"+l+"/lastName").valueChanges()},l.prototype.getGender=function(l){return this.db.object("UserDatabase/Users/"+l+"/gender").valueChanges()},l.prototype.getBirthDay=function(l){return this.db.object("UserDatabase/Users/"+l+"/birthDay").valueChanges()},l.prototype.getBirthMonth=function(l){return this.db.object("UserDatabase/Users/"+l+"/birthMonth").valueChanges()},l.prototype.getBirthYear=function(l){return this.db.object("UserDatabase/Users/"+l+"/birthYear").valueChanges()},l.prototype.getEmail=function(l){return this.db.object("UserDatabase/Users/"+l+"/email").valueChanges()},l.prototype.getPhone=function(l){return this.db.object("UserDatabase/Users/"+l+"/phoneNumber").valueChanges()},l}())},35:function(l,n,u){"use strict";u.d(n,"a",function(){return t});u(4);var a=u(127),e=(u.n(a),u(181)),t=(u.n(e),function(){function l(l){this.firebaseProvider=l,this.loginState=!1,this.loginState&&(this.UID=this.getLoggedUID(),this.phone=this.getPhoneNumber())}return l.prototype.getLoggedUID=function(){return this.UID=e.auth().currentUser.uid,this.UID},l.prototype.getPhoneNumber=function(){var l=this;return this.phone=this.firebaseProvider.getPhone(this.UID).subscribe(function(n){return l.phone=n}),this.phone},l.prototype.logout=function(){1==this.loginState&&(e.auth().signOut(),this.loginState=!1,this.UID=null)},l}())},429:function(l,n,u){"use strict";function a(l){return e._19(0,[e._16(402653184,1,{barCanvas:0}),(l()(),e._18(-1,null,["\n"])),(l()(),e.Z(2,0,null,null,5,"ion-header",[],null,null,null,null,null)),e.Y(3,16384,null,0,t.a,[o.a,e.j,e.z,[2,r.a]],null,null),(l()(),e._18(-1,null,["\n    "])),(l()(),e.Z(5,0,null,null,1,"custom-navbar",[],null,null,null,i.c,i.b)),e.Y(6,49152,null,0,s.a,[c.a,d.a,g.a],null,null),(l()(),e._18(-1,null,["\n"])),(l()(),e._18(-1,null,["\n\n\n"])),(l()(),e.Z(9,0,null,null,28,"ion-content",[["padding",""],["text-center",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,_.b,_.a)),e.Y(10,4374528,null,0,h.a,[o.a,p.a,f.a,e.j,e.z,m.a,b.a,e.u,[2,r.a],[2,d.a]],null,null),(l()(),e._18(-1,1,["\n\n  "])),(l()(),e.Z(12,0,null,1,23,"ion-card",[],null,null,null,null,null)),e.Y(13,16384,null,0,v.a,[o.a,e.j,e.z],null,null),(l()(),e._18(-1,null,["\n    "])),(l()(),e.Z(15,0,null,null,2,"ion-card-header",[],null,null,null,null,null)),e.Y(16,16384,null,0,j.a,[o.a,e.j,e.z],null,null),(l()(),e._18(-1,null,["\n      Your alchohol test\n    "])),(l()(),e._18(-1,null,["\n    "])),(l()(),e.Z(19,0,null,null,15,"ion-card-content",[],null,null,null,null,null)),e.Y(20,16384,null,0,y.a,[o.a,e.j,e.z],null,null),(l()(),e._18(-1,null,["\n      "])),(l()(),e.Z(22,0,[[1,0],["barCanvas",1]],null,0,"canvas",[],null,null,null,null,null)),(l()(),e._18(-1,null,[" \n      "])),(l()(),e._18(-1,null,["\n      "])),(l()(),e.Z(25,0,null,null,1,"p",[],null,null,null,null,null)),(l()(),e._18(26,null,["Voltage: ",""])),(l()(),e._18(-1,null,["\n      "])),(l()(),e.Z(28,0,null,null,1,"p",[],null,null,null,null,null)),(l()(),e._18(29,null,["Promille: ",""])),(l()(),e._18(-1,null,["\n      "])),(l()(),e.Z(31,0,null,null,2,"button",[["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.Random()&&a}return a},C.b,C.a)),e.Y(32,1097728,null,0,Y.a,[[8,""],o.a,e.j,e.z],null,null),(l()(),e._18(-1,0,[" Test "])),(l()(),e._18(-1,null,["\n\n    "])),(l()(),e._18(-1,null,["\n    \n    \n  "])),(l()(),e._18(-1,1,["\n  "])),(l()(),e._18(-1,1,["\n"])),(l()(),e._18(-1,null,["\n"])),(l()(),e.Z(39,0,null,null,2,"call-for-help",[],null,null,null,k.c,k.b)),e.Y(40,49152,null,0,Z.a,[w.a,g.a,P.a,z.a],null,null),(l()(),e._18(-1,null,["\n"])),(l()(),e._18(-1,null,["\n\n"]))],null,function(l,n){var u=n.component;l(n,9,0,e._13(n,10).statusbarPadding,e._13(n,10)._hasRefresher);l(n,26,0,u.voltage);l(n,29,0,u.promilleLevel)})}u.d(n,"a",function(){return D});var e=u(0),t=u(46),o=u(2),r=u(7),i=u(62),s=u(57),c=u(25),d=u(22),g=u(35),_=u(58),h=u(24),p=u(6),f=u(10),m=u(8),b=u(29),v=u(76),j=u(97),y=u(96),C=u(27),Y=u(17),k=u(75),Z=u(67),w=u(33),P=u(45),z=u(43),F=u(95),I=u(19),U=e.X({encapsulation:2,styles:[],data:{}}),D=e.V("page-result",F.a,function(l){return e._19(0,[(l()(),e.Z(0,0,null,null,1,"page-result",[],null,null,null,a,U)),e.Y(1,49152,null,0,F.a,[d.a,I.a],null,null)],null,null)},{},{},[])},430:function(l,n,u){"use strict";function a(l){return b._19(0,[b._16(402653184,1,{mapElement:0}),(l()(),b.Z(1,0,[[1,0],["map",1]],null,0,"div",[["id","map"]],null,null,null,null,null))],null,null)}function e(l){return b._19(0,[(l()(),b.Z(0,0,null,null,7,"button",[["class","item item-block"],["ion-item",""],["menuClose",""]],null,[[null,"click"]],function(l,n,u){var a=!0,e=l.component;if("click"===n){a=!1!==b._13(l,6).close()&&a}if("click"===n){a=!1!==e.openPage(l.context.$implicit)&&a}return a},sl.b,sl.a)),b.Y(1,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,3,{contentLabel:0}),b._16(603979776,4,{_buttons:1}),b._16(603979776,5,{_icons:1}),b.Y(5,16384,null,0,hl.a,[],null,null),b.Y(6,16384,null,0,pl.a,[fl.a],{menuClose:[0,"menuClose"]},null),(l()(),b._18(7,2,["\n              ","\n            "]))],function(l,n){l(n,6,0,"")},function(l,n){l(n,7,0,n.context.$implicit.title)})}function t(l){return b._19(0,[(l()(),b.Z(0,0,null,null,33,"ion-menu",[["role","navigation"]],null,null,null,ml.b,ml.a)),b._15(6144,null,bl.a,null,[vl.a]),b.Y(2,245760,null,2,vl.a,[fl.a,b.j,gl.a,jl.a,b.z,yl.a,Cl.l,Yl.a,kl.a],{content:[0,"content"]},null),b._16(335544320,1,{menuContent:0}),b._16(335544320,2,{menuNav:0}),(l()(),b._18(-1,0,["\n        "])),(l()(),b.Z(6,0,null,0,6,"ion-toolbar",[["class","toolbar"]],[[2,"statusbar-padding",null]],null,null,Zl.b,Zl.a)),b.Y(7,49152,null,0,wl.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,3,["\n          "])),(l()(),b.Z(9,0,null,3,2,"ion-title",[],null,null,null,Pl.b,Pl.a)),b.Y(10,49152,null,0,zl.a,[gl.a,b.j,b.z,[2,wl.a],[2,Fl.a]],null,null),(l()(),b._18(-1,0,["Navigatie"])),(l()(),b._18(-1,3,["\n        "])),(l()(),b._18(-1,0,["\n      \n        "])),(l()(),b.Z(14,0,null,0,18,"ion-content",[],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(15,4374528,[[1,4]],0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n          "])),(l()(),b.Z(17,0,null,1,14,"ion-list",[["class","navList"]],null,null,null,null,null)),b.Y(18,16384,null,0,Ml.a,[gl.a,b.j,b.z,jl.a,Cl.l,Yl.a],null,null),(l()(),b._18(-1,null,["\n            "])),(l()(),b.U(16777216,null,null,1,null,e)),b.Y(21,802816,null,0,Ll.h,[b.I,b.F,b.p],{ngForOf:[0,"ngForOf"]},null),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(23,0,null,null,7,"button",[["class","item item-block"],["ion-item",""],["menuClose",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==b._13(l,29).close()&&a}return a},sl.b,sl.a)),b.Y(24,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,6,{contentLabel:0}),b._16(603979776,7,{_buttons:1}),b._16(603979776,8,{_icons:1}),b.Y(28,16384,null,0,hl.a,[],null,null),b.Y(29,16384,null,0,pl.a,[fl.a],{menuClose:[0,"menuClose"]},null),(l()(),b._18(-1,2,["Sluit menu"])),(l()(),b._18(-1,null,["\n          "])),(l()(),b._18(-1,1,["\n        "])),(l()(),b._18(-1,0,["\n      "])),(l()(),b._18(-1,null,["\n"])),(l()(),b.Z(35,0,null,null,2,"ion-nav",[["id","nav"],["swipeBackEnabled","true"]],null,null,null,Rl.b,Rl.a)),b._15(6144,null,bl.a,null,[Bl.a]),b.Y(37,4374528,[["content",4]],0,Bl.a,[[2,Dl.a],[2,ol.a],kl.a,gl.a,jl.a,b.j,b.u,b.z,b.i,Cl.l,El.a,[2,Vl.a],Yl.a,b.k],{swipeBackEnabled:[0,"swipeBackEnabled"],root:[1,"root"]},null),(l()(),b._18(-1,null,["\n\n"]))],function(l,n){var u=n.component;l(n,2,0,b._13(n,37));l(n,21,0,u.pages);l(n,29,0,"");l(n,37,0,"true",u.rootPage)},function(l,n){l(n,6,0,b._13(n,7)._sbPadding);l(n,14,0,b._13(n,15).statusbarPadding,b._13(n,15)._hasRefresher)})}function o(l){return b._19(0,[(l()(),b.Z(0,0,null,null,5,"ion-header",[],null,null,null,null,null)),b.Y(1,16384,null,0,Tl.a,[gl.a,b.j,b.z,[2,Dl.a]],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(3,0,null,null,1,"custom-navbar",[],null,null,null,el.c,el.b)),b.Y(4,49152,null,0,O.a,[fl.a,ol.a,U.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n  "])),(l()(),b.Z(7,0,null,null,18,"ion-content",[["padding",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(8,4374528,null,0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n    "])),(l()(),b.Z(10,0,null,1,4,"ion-card",[],null,null,null,null,null)),b.Y(11,16384,null,0,Al.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n        "])),(l()(),b.Z(13,0,null,null,0,"img",[["src","https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n    "])),(l()(),b._18(-1,1,["\n    \n    \n  "])),(l()(),b.Z(16,0,null,1,3,"button",[["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==b._13(l,18).onClick()&&a}return a},xl.b,xl.a)),b.Y(17,1097728,null,0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),b.Y(18,16384,null,0,Wl.a,[[2,ol.a]],{navPush:[0,"navPush"]},null),(l()(),b._18(-1,0,["Tutorial"])),(l()(),b._18(-1,1,["\n  "])),(l()(),b.Z(21,0,null,1,3,"button",[["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0,e=l.component;if("click"===n){a=!1!==b._13(l,23).onClick()&&a}if("click"===n){a=!1!==e.Load()&&a}return a},xl.b,xl.a)),b.Y(22,1097728,null,0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),b.Y(23,16384,null,0,Wl.a,[[2,ol.a]],{navPush:[0,"navPush"]},null),(l()(),b._18(-1,0,["Start Test"])),(l()(),b._18(-1,1,["\n  \n\n"])),(l()(),b._18(-1,null,["\n\n"])),(l()(),b.Z(27,0,null,null,2,"call-for-help",[],null,null,null,tl.c,tl.b)),b.Y(28,49152,null,0,W.a,[P.a,U.a,T.a,ql.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n"]))],function(l,n){var u=n.component;l(n,17,0,"");l(n,18,0,u.rs);l(n,22,0,"");l(n,23,0,u.GoResult)},function(l,n){l(n,7,0,b._13(n,8).statusbarPadding,b._13(n,8)._hasRefresher)})}function r(l){return b._19(0,[b._16(402653184,1,{barCanvas:0}),b._16(402653184,2,{doughnutCanvas:0}),b._16(402653184,3,{lineCanvas:0}),(l()(),b.Z(3,0,null,null,5,"ion-header",[],null,null,null,null,null)),b.Y(4,16384,null,0,Tl.a,[gl.a,b.j,b.z,[2,Dl.a]],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(6,0,null,null,1,"custom-navbar",[],null,null,null,el.c,el.b)),b.Y(7,49152,null,0,O.a,[fl.a,ol.a,U.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n\n"])),(l()(),b.Z(10,0,null,null,34,"ion-content",[],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(11,4374528,null,0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n \n  "])),(l()(),b.Z(13,0,null,1,12,"ion-card",[],null,null,null,null,null)),b.Y(14,16384,null,0,Al.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(16,0,null,null,2,"ion-card-header",[],null,null,null,null,null)),b.Y(17,16384,null,0,Kl.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n      Bar Chart\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(20,0,null,null,4,"ion-card-content",[],null,null,null,null,null)),b.Y(21,16384,null,0,Jl.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n      "])),(l()(),b.Z(23,0,[[1,0],["barCanvas",1]],null,0,"canvas",[],null,null,null,null,null)),(l()(),b._18(-1,null,["\n    "])),(l()(),b._18(-1,null,["\n  "])),(l()(),b._18(-1,1,["\n\n  "])),(l()(),b.Z(27,0,null,1,12,"ion-card",[],null,null,null,null,null)),b.Y(28,16384,null,0,Al.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(30,0,null,null,2,"ion-card-header",[],null,null,null,null,null)),b.Y(31,16384,null,0,Kl.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n      Doughnut Chart\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(34,0,null,null,4,"ion-card-content",[],null,null,null,null,null)),b.Y(35,16384,null,0,Jl.a,[gl.a,b.j,b.z],null,null),(l()(),b._18(-1,null,["\n      "])),(l()(),b.Z(37,0,[[2,0],["doughnutCanvas",1]],null,0,"canvas",[],null,null,null,null,null)),(l()(),b._18(-1,null,["\n    "])),(l()(),b._18(-1,null,["\n  "])),(l()(),b._18(-1,1,["\n  "])),(l()(),b.Z(41,0,null,1,2,"call-for-help",[],null,null,null,tl.c,tl.b)),b.Y(42,49152,null,0,W.a,[P.a,U.a,T.a,ql.a],null,null),(l()(),b._18(-1,null,["\n  "])),(l()(),b._18(-1,1,["\n\n"]))],null,function(l,n){l(n,10,0,b._13(n,11).statusbarPadding,b._13(n,11)._hasRefresher)})}function i(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n                        Please enter a valid email.\n                "]))],null,null)}function s(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n                    Please enter a valid password.\n                "]))],null,null)}function c(l){return b._19(0,[(l()(),b.Z(0,0,null,null,5,"ion-header",[],null,null,null,null,null)),b.Y(1,16384,null,0,Tl.a,[gl.a,b.j,b.z,[2,Dl.a]],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(3,0,null,null,1,"custom-navbar",[],null,null,null,el.c,el.b)),b.Y(4,49152,null,0,O.a,[fl.a,ol.a,U.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n\n"])),(l()(),b.Z(7,0,null,null,62,"ion-content",[["padding",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(8,4374528,null,0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n    "])),(l()(),b.Z(10,0,null,1,0,"img",[["src","assets/imgs/alcometer.png"]],null,null,null,null,null)),(l()(),b._18(-1,1,["\n        "])),(l()(),b.Z(12,0,null,1,56,"form",[["novalidate",""]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"submit"],[null,"reset"]],function(l,n,u){var a=!0;if("submit"===n){a=!1!==b._13(l,14).onSubmit(u)&&a}if("reset"===n){a=!1!==b._13(l,14).onReset()&&a}return a},null,null)),b.Y(13,16384,null,0,z.p,[],null,null),b.Y(14,540672,null,0,z.f,[[8,null],[8,null]],{form:[0,"form"]},null),b._15(2048,null,z.b,null,[z.f]),b.Y(16,16384,null,0,z.k,[z.b],null,null),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(18,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(19,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,1,{contentLabel:0}),b._16(603979776,2,{_buttons:1}),b._16(603979776,3,{_icons:1}),b.Y(23,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n                "])),(l()(),b.Z(25,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(26,16384,[[1,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["E-mail"])),(l()(),b._18(-1,2,["\n                "])),(l()(),b.Z(29,0,null,3,4,"ion-input",[["placeholder","E-mail"],["type","email"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],null,null,nn.b,nn.a)),b.Y(30,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"]},null),b._15(2048,null,z.i,null,[z.e]),b.Y(32,16384,null,0,z.j,[z.i],null,null),b.Y(33,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n            "])),(l()(),b._18(-1,null,["\n                "])),(l()(),b.U(16777216,null,null,1,null,i)),b.Y(37,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(39,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(40,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,4,{contentLabel:0}),b._16(603979776,5,{_buttons:1}),b._16(603979776,6,{_icons:1}),b.Y(44,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n                "])),(l()(),b.Z(46,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(47,16384,[[4,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Password"])),(l()(),b._18(-1,2,["\n                "])),(l()(),b.Z(50,0,null,3,4,"ion-input",[["placeholder","Password"],["type","password"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.pass=u)&&a}return a},nn.b,nn.a)),b.Y(51,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(53,16384,null,0,z.j,[z.i],null,null),b.Y(54,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n            "])),(l()(),b._18(-1,null,["\n                "])),(l()(),b.U(16777216,null,null,1,null,s)),b.Y(58,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(60,0,null,null,2,"button",[["full",""],["ion-button",""]],[[8,"disabled",0]],[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.login()&&a}return a},xl.b,xl.a)),b.Y(61,1097728,null,0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),(l()(),b._18(-1,0,["Login"])),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(64,0,null,null,3,"button",[["class","content"],["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==b._13(l,66).onClick()&&a}return a},xl.b,xl.a)),b.Y(65,1097728,null,0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),b.Y(66,16384,null,0,Wl.a,[[2,ol.a]],{navPush:[0,"navPush"]},null),(l()(),b._18(-1,0,["Register"])),(l()(),b._18(-1,null,["\n        "])),(l()(),b._18(-1,1,["\n  "])),(l()(),b._18(-1,null,["\n  \n  "])),(l()(),b.Z(71,0,null,null,2,"call-for-help",[],null,null,null,tl.c,tl.b)),b.Y(72,49152,null,0,W.a,[P.a,U.a,T.a,ql.a],null,null),(l()(),b._18(-1,null,["\n  "])),(l()(),b._18(-1,null,["\n\n\n"]))],function(l,n){var u=n.component;l(n,14,0,u.loginForm);l(n,26,0,"primary");l(n,30,0,u.loginForm.controls.email);l(n,33,0,"email","E-mail");l(n,37,0,!u.loginForm.controls.email.valid&&u.loginForm.controls.email.dirty);l(n,47,0,"primary");l(n,51,0,u.loginForm.controls.password,u.pass);l(n,54,0,"password","Password");l(n,58,0,!u.loginForm.controls.password.valid&&u.loginForm.controls.password.dirty);l(n,61,0,"");l(n,65,0,"");l(n,66,0,u.rs)},function(l,n){var u=n.component;l(n,7,0,b._13(n,8).statusbarPadding,b._13(n,8)._hasRefresher);l(n,12,0,b._13(n,16).ngClassUntouched,b._13(n,16).ngClassTouched,b._13(n,16).ngClassPristine,b._13(n,16).ngClassDirty,b._13(n,16).ngClassValid,b._13(n,16).ngClassInvalid,b._13(n,16).ngClassPending);l(n,29,0,b._13(n,32).ngClassUntouched,b._13(n,32).ngClassTouched,b._13(n,32).ngClassPristine,b._13(n,32).ngClassDirty,b._13(n,32).ngClassValid,b._13(n,32).ngClassInvalid,b._13(n,32).ngClassPending);l(n,50,0,b._13(n,53).ngClassUntouched,b._13(n,53).ngClassTouched,b._13(n,53).ngClassPristine,b._13(n,53).ngClassDirty,b._13(n,53).ngClassValid,b._13(n,53).ngClassInvalid,b._13(n,53).ngClassPending);l(n,60,0,!u.loginForm.valid)})}function d(l){return b._19(0,[(l()(),b._18(-1,null,["\n"])),(l()(),b.Z(1,0,null,null,5,"ion-header",[],null,null,null,null,null)),b.Y(2,16384,null,0,Tl.a,[gl.a,b.j,b.z,[2,Dl.a]],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(4,0,null,null,1,"custom-navbar",[],null,null,null,el.c,el.b)),b.Y(5,49152,null,0,O.a,[fl.a,ol.a,U.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n\n"])),(l()(),b.Z(8,0,null,null,29,"ion-content",[["padding",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(9,4374528,null,0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n    "])),(l()(),b.Z(11,0,null,1,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(12,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,1,{contentLabel:0}),b._16(603979776,2,{_buttons:1}),b._16(603979776,3,{_icons:1}),b.Y(16,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n        "])),(l()(),b.Z(18,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(19,16384,[[1,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Terugbel nummer"])),(l()(),b._18(-1,2,["\n        "])),(l()(),b.Z(22,0,null,3,4,"ion-input",[["type","number"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.phone=u)&&a}return a},nn.b,nn.a)),b.Y(23,671744,null,0,z.l,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.l]),b.Y(25,16384,null,0,z.j,[z.i],null,null),b.Y(26,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,1,["\n        "])),(l()(),b.Z(29,0,null,1,7,"ion-buttons",[],null,null,null,null,null)),b.Y(30,16384,null,1,on.a,[gl.a,b.j,b.z,[2,wl.a],[2,Fl.a]],null,null),b._16(603979776,4,{_buttons:1}),(l()(),b._18(-1,null,["\n            "])),(l()(),b.Z(33,0,null,null,2,"button",[["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.updateSettings()&&a}return a},xl.b,xl.a)),b.Y(34,1097728,[[4,4]],0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),(l()(),b._18(-1,0,["Sla mijn telefoonnummer op"])),(l()(),b._18(-1,null,["\n        "])),(l()(),b._18(-1,1,["\n"])),(l()(),b._18(-1,null,["\n"])),(l()(),b.Z(39,0,null,null,2,"call-for-help",[],null,null,null,tl.c,tl.b)),b.Y(40,49152,null,0,W.a,[P.a,U.a,T.a,ql.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n"]))],function(l,n){var u=n.component;l(n,19,0,"primary");l(n,23,0,u.phone);l(n,26,0,"number");l(n,34,0,"")},function(l,n){l(n,8,0,b._13(n,9).statusbarPadding,b._13(n,9)._hasRefresher);l(n,22,0,b._13(n,25).ngClassUntouched,b._13(n,25).ngClassTouched,b._13(n,25).ngClassPristine,b._13(n,25).ngClassDirty,b._13(n,25).ngClassValid,b._13(n,25).ngClassInvalid,b._13(n,25).ngClassPending)})}function g(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n              Please enter a valid email.\n    "]))],null,null)}function _(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n      Please enter a valid password, with at least 6 characters\n    "]))],null,null)}function h(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n              Please enter a valid email.\n    "]))],null,null)}function p(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"div",[["class","validator-error"]],null,null,null,null,null)),(l()(),b._18(-1,null,["\n      Please enter a valid password, with at least 6 characters\n    "]))],null,null)}function f(l){return b._19(0,[(l()(),b.Z(0,0,null,null,5,"ion-header",[],null,null,null,null,null)),b.Y(1,16384,null,0,Tl.a,[gl.a,b.j,b.z,[2,Dl.a]],null,null),(l()(),b._18(-1,null,["\n  "])),(l()(),b.Z(3,0,null,null,1,"custom-navbar",[],null,null,null,el.c,el.b)),b.Y(4,49152,null,0,O.a,[fl.a,ol.a,U.a],null,null),(l()(),b._18(-1,null,["\n"])),(l()(),b._18(-1,null,["\n\n"])),(l()(),b.Z(7,0,null,null,188,"ion-content",[],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,Il.b,Il.a)),b.Y(8,4374528,null,0,Ul.a,[gl.a,jl.a,Yl.a,b.j,b.z,kl.a,yl.a,b.u,[2,Dl.a],[2,ol.a]],null,null),(l()(),b._18(-1,1,["\n  "])),(l()(),b.Z(10,0,null,1,184,"form",[["novalidate",""]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"submit"],[null,"reset"]],function(l,n,u){var a=!0;if("submit"===n){a=!1!==b._13(l,12).onSubmit(u)&&a}if("reset"===n){a=!1!==b._13(l,12).onReset()&&a}return a},null,null)),b.Y(11,16384,null,0,z.p,[],null,null),b.Y(12,540672,null,0,z.f,[[8,null],[8,null]],{form:[0,"form"]},null),b._15(2048,null,z.b,null,[z.f]),b.Y(14,16384,null,0,z.k,[z.b],null,null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(16,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(17,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,1,{contentLabel:0}),b._16(603979776,2,{_buttons:1}),b._16(603979776,3,{_icons:1}),b.Y(21,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(23,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(24,16384,[[1,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["E-mail"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(27,0,null,3,4,"ion-input",[["placeholder","E-mail"],["type","email"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],null,null,nn.b,nn.a)),b.Y(28,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"]},null),b._15(2048,null,z.i,null,[z.e]),b.Y(30,16384,null,0,z.j,[z.i],null,null),b.Y(31,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.U(16777216,null,null,1,null,g)),b.Y(35,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(37,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(38,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,4,{contentLabel:0}),b._16(603979776,5,{_buttons:1}),b._16(603979776,6,{_icons:1}),b.Y(42,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(44,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(45,16384,[[4,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Password"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(48,0,null,3,4,"ion-input",[["placeholder","Password"],["type","password"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.pass=u)&&a}return a},nn.b,nn.a)),b.Y(49,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(51,16384,null,0,z.j,[z.i],null,null),b.Y(52,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.U(16777216,null,null,1,null,_)),b.Y(56,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b.Z(57,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(58,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,7,{contentLabel:0}),b._16(603979776,8,{_buttons:1}),b._16(603979776,9,{_icons:1}),b.Y(62,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(64,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(65,16384,[[7,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["E-mail"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(68,0,null,3,4,"ion-input",[["placeholder","E-mail"],["type","email"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],null,null,nn.b,nn.a)),b.Y(69,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"]},null),b._15(2048,null,z.i,null,[z.e]),b.Y(71,16384,null,0,z.j,[z.i],null,null),b.Y(72,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.U(16777216,null,null,1,null,h)),b.Y(76,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(78,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(79,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,10,{contentLabel:0}),b._16(603979776,11,{_buttons:1}),b._16(603979776,12,{_icons:1}),b.Y(83,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(85,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(86,16384,[[10,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Password"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(89,0,null,3,4,"ion-input",[["placeholder","Password"],["type","password"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.pass=u)&&a}return a},nn.b,nn.a)),b.Y(90,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(92,16384,null,0,z.j,[z.i],null,null),b.Y(93,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.U(16777216,null,null,1,null,p)),b.Y(97,16384,null,0,Ll.i,[b.I,b.F],{ngIf:[0,"ngIf"]},null),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(99,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(100,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,13,{contentLabel:0}),b._16(603979776,14,{_buttons:1}),b._16(603979776,15,{_icons:1}),b.Y(104,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(106,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(107,16384,[[13,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["First Name"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(110,0,null,3,4,"ion-input",[["placeholder","First name"],["type","text"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.firstName=u)&&a}return a},nn.b,nn.a)),b.Y(111,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(113,16384,null,0,z.j,[z.i],null,null),b.Y(114,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(117,0,null,null,16,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(118,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,16,{contentLabel:0}),b._16(603979776,17,{_buttons:1}),b._16(603979776,18,{_icons:1}),b.Y(122,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(124,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(125,16384,[[16,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Last Name"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(128,0,null,3,4,"ion-input",[["placeholder","Last name"],["type","text"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,u){var a=!0;if("ngModelChange"===n){a=!1!==(l.component.lastName=u)&&a}return a},nn.b,nn.a)),b.Y(129,540672,null,0,z.e,[[8,null],[8,null],[8,null]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(131,16384,null,0,z.j,[z.i],null,null),b.Y(132,5423104,null,0,un.a,[gl.a,jl.a,dl.a,kl.a,b.j,b.z,[2,Ul.a],[2,cl.a],[2,z.i],Yl.a],{type:[0,"type"],placeholder:[1,"placeholder"]},null),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n      "])),(l()(),b.Z(135,0,null,null,17,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(136,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,19,{contentLabel:0}),b._16(603979776,20,{_buttons:1}),b._16(603979776,21,{_icons:1}),b.Y(140,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n        "])),(l()(),b.Z(142,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(143,16384,[[19,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Birth date"])),(l()(),b._18(-1,2,["\n        "])),(l()(),b.Z(146,0,null,3,5,"ion-datetime",[["displayFormat","DD/MM/YYYY"],["pickerFormat","DD MMMM YYYY"],["placeholder","day/month/year"]],[[2,"datetime-disabled",null],[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"],[null,"click"],[null,"keyup.space"]],function(l,n,u){var a=!0,e=l.component;if("click"===n){a=!1!==b._13(l,147)._click(u)&&a}if("keyup.space"===n){a=!1!==b._13(l,147)._keyup()&&a}if("ngModelChange"===n){a=!1!==(e.birthDate=u)&&a}return a},cn.b,cn.a)),b.Y(147,1228800,null,0,dn.a,[dl.a,gl.a,b.j,b.z,[2,cl.a],[2,gn.a]],{displayFormat:[0,"displayFormat"],pickerFormat:[1,"pickerFormat"],placeholder:[2,"placeholder"]},null),b._15(1024,null,z.h,function(l){return[l]},[dn.a]),b.Y(149,540672,null,0,z.e,[[8,null],[8,null],[2,z.h]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(151,16384,null,0,z.j,[z.i],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b._18(-1,null,["\n      "])),(l()(),b.Z(154,0,null,null,27,"ion-item",[["class","item item-block"]],null,null,null,sl.b,sl.a)),b.Y(155,1097728,null,3,cl.a,[dl.a,gl.a,b.j,b.z,[2,_l.a]],null,null),b._16(335544320,22,{contentLabel:0}),b._16(603979776,23,{_buttons:1}),b._16(603979776,24,{_icons:1}),b.Y(159,16384,null,0,hl.a,[],null,null),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(161,0,null,1,2,"ion-label",[["color","primary"],["stacked",""]],null,null,null,null,null)),b.Y(162,16384,[[22,4]],0,ln.a,[gl.a,b.j,b.z,[8,null],[8,""],[8,null],[8,null]],{color:[0,"color"]},null),(l()(),b._18(-1,null,["Gender"])),(l()(),b._18(-1,2,["\n      "])),(l()(),b.Z(165,0,null,3,15,"ion-select",[["placeholder","Choose your gender"]],[[2,"select-disabled",null],[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"],[null,"click"],[null,"keyup.space"]],function(l,n,u){var a=!0,e=l.component;if("click"===n){a=!1!==b._13(l,166)._click(u)&&a}if("keyup.space"===n){a=!1!==b._13(l,166)._keyup()&&a}if("ngModelChange"===n){a=!1!==(e.gender=u)&&a}return a},_n.b,_n.a)),b.Y(166,1228800,null,1,hn.a,[kl.a,dl.a,gl.a,b.j,b.z,[2,cl.a],Vl.a],{placeholder:[0,"placeholder"]},null),b._16(603979776,25,{options:1}),b._15(1024,null,z.h,function(l){return[l]},[hn.a]),b.Y(169,540672,null,0,z.e,[[8,null],[8,null],[2,z.h]],{form:[0,"form"],model:[1,"model"]},{update:"ngModelChange"}),b._15(2048,null,z.i,null,[z.e]),b.Y(171,16384,null,0,z.j,[z.i],null,null),(l()(),b._18(-1,null,["\n        "])),(l()(),b.Z(173,0,null,null,2,"ion-option",[["value","Female"]],null,null,null,null,null)),b.Y(174,16384,[[25,4]],0,pn.a,[b.j],{value:[0,"value"]},null),(l()(),b._18(-1,null,["Female"])),(l()(),b._18(-1,null,["\n        "])),(l()(),b.Z(177,0,null,null,2,"ion-option",[["value","Male"]],null,null,null,null,null)),b.Y(178,16384,[[25,4]],0,pn.a,[b.j],{value:[0,"value"]},null),(l()(),b._18(-1,null,["Male"])),(l()(),b._18(-1,null,["\n      "])),(l()(),b._18(-1,2,["\n    "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b.Z(183,0,null,null,10,"ion-row",[["class","row"]],null,null,null,null,null)),b.Y(184,16384,null,0,fn.a,[],null,null),(l()(),b._18(-1,null,["\n      "])),(l()(),b.Z(186,0,null,null,6,"ion-col",[["class","col"],["text-center",""]],null,null,null,null,null)),b.Y(187,16384,null,0,mn.a,[],null,null),(l()(),b._18(-1,null,["\n        "])),(l()(),b.Z(189,0,null,null,2,"button",[["full",""],["ion-button",""]],[[8,"disabled",0]],[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.register()&&a}return a},xl.b,xl.a)),b.Y(190,1097728,null,0,Ol.a,[[8,""],gl.a,b.j,b.z],{full:[0,"full"]},null),(l()(),b._18(-1,0,["Register"])),(l()(),b._18(-1,null,["\n      "])),(l()(),b._18(-1,null,["\n    "])),(l()(),b._18(-1,null,["\n  "])),(l()(),b._18(-1,1,["\n"]))],function(l,n){var u=n.component;l(n,12,0,u.registerForm);l(n,24,0,"primary");l(n,28,0,u.registerForm.controls.email);l(n,31,0,"email","E-mail");l(n,35,0,!u.registerForm.controls.email.valid&&u.registerForm.controls.email.dirty);l(n,45,0,"primary");l(n,49,0,u.registerForm.controls.password,u.pass);l(n,52,0,"password","Password");l(n,56,0,!u.registerForm.controls.password.valid&&u.registerForm.controls.password.dirty);l(n,65,0,"primary");l(n,69,0,u.registerForm.controls.email);l(n,72,0,"email","E-mail");l(n,76,0,!u.registerForm.controls.email.valid&&u.registerForm.controls.email.dirty);l(n,86,0,"primary");l(n,90,0,u.registerForm.controls.password,u.pass);l(n,93,0,"password","Password");l(n,97,0,!u.registerForm.controls.password.valid&&u.registerForm.controls.password.dirty);l(n,107,0,"primary");l(n,111,0,u.registerForm.controls.firstname,u.firstName);l(n,114,0,"text","First name");l(n,125,0,"primary");l(n,129,0,u.registerForm.controls.lastname,u.lastName);l(n,132,0,"text","Last name");l(n,143,0,"primary");l(n,147,0,"DD/MM/YYYY","DD MMMM YYYY","day/month/year");l(n,149,0,u.registerForm.controls.birthdate,u.birthDate);l(n,162,0,"primary");l(n,166,0,"Choose your gender");l(n,169,0,u.registerForm.controls.gender,u.gender);l(n,174,0,"Female");l(n,178,0,"Male");l(n,190,0,"")},function(l,n){var u=n.component;l(n,7,0,b._13(n,8).statusbarPadding,b._13(n,8)._hasRefresher);l(n,10,0,b._13(n,14).ngClassUntouched,b._13(n,14).ngClassTouched,b._13(n,14).ngClassPristine,b._13(n,14).ngClassDirty,b._13(n,14).ngClassValid,b._13(n,14).ngClassInvalid,b._13(n,14).ngClassPending);l(n,27,0,b._13(n,30).ngClassUntouched,b._13(n,30).ngClassTouched,b._13(n,30).ngClassPristine,b._13(n,30).ngClassDirty,b._13(n,30).ngClassValid,b._13(n,30).ngClassInvalid,b._13(n,30).ngClassPending);l(n,48,0,b._13(n,51).ngClassUntouched,b._13(n,51).ngClassTouched,b._13(n,51).ngClassPristine,b._13(n,51).ngClassDirty,b._13(n,51).ngClassValid,b._13(n,51).ngClassInvalid,b._13(n,51).ngClassPending);l(n,68,0,b._13(n,71).ngClassUntouched,b._13(n,71).ngClassTouched,b._13(n,71).ngClassPristine,b._13(n,71).ngClassDirty,b._13(n,71).ngClassValid,b._13(n,71).ngClassInvalid,b._13(n,71).ngClassPending);l(n,89,0,b._13(n,92).ngClassUntouched,b._13(n,92).ngClassTouched,b._13(n,92).ngClassPristine,b._13(n,92).ngClassDirty,b._13(n,92).ngClassValid,b._13(n,92).ngClassInvalid,b._13(n,92).ngClassPending);l(n,110,0,b._13(n,113).ngClassUntouched,b._13(n,113).ngClassTouched,b._13(n,113).ngClassPristine,b._13(n,113).ngClassDirty,b._13(n,113).ngClassValid,b._13(n,113).ngClassInvalid,b._13(n,113).ngClassPending);l(n,128,0,b._13(n,131).ngClassUntouched,b._13(n,131).ngClassTouched,b._13(n,131).ngClassPristine,b._13(n,131).ngClassDirty,b._13(n,131).ngClassValid,b._13(n,131).ngClassInvalid,b._13(n,131).ngClassPending);l(n,146,0,b._13(n,147)._disabled,b._13(n,151).ngClassUntouched,b._13(n,151).ngClassTouched,b._13(n,151).ngClassPristine,b._13(n,151).ngClassDirty,b._13(n,151).ngClassValid,b._13(n,151).ngClassInvalid,b._13(n,151).ngClassPending);l(n,165,0,b._13(n,166)._disabled,b._13(n,171).ngClassUntouched,b._13(n,171).ngClassTouched,b._13(n,171).ngClassPristine,b._13(n,171).ngClassDirty,b._13(n,171).ngClassValid,b._13(n,171).ngClassInvalid,b._13(n,171).ngClassPending);l(n,189,0,!u.registerForm.valid)})}Object.defineProperty(n,"__esModule",{value:!0});var m=u(47),b=u(0),v=(u(4),u(30),u(131)),j=u(132),y=u(95),C=function(){function l(l,n){this.navCtrl=l,this.loadingCtrl=n,this.GoResult=y.a}return l.prototype.Load=function(){this.loadingCtrl.create({content:"Please wait for your result",duration:3e3,dismissOnPageChange:!0}).present()},l}(),Y=u(128),k=u(94),Z=u(185),w=function(){function l(l){this.navCtrl=l}return l.prototype.ionViewDidLoad=function(){this.barChart=new Z.Chart(this.barCanvas.nativeElement,{type:"bar",data:{labels:["Red","Blue","Yellow","Green","Purple","Orange"],datasets:[{label:"# of Votes",data:[12,19,3,5,2,3],backgroundColor:["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(153, 102, 255, 0.2)","rgba(255, 159, 64, 0.2)"],borderColor:["rgba(255,99,132,1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)","rgba(153, 102, 255, 1)","rgba(255, 159, 64, 1)"],borderWidth:1}]},options:{scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}}),this.doughnutChart=new Z.Chart(this.doughnutCanvas.nativeElement,{type:"doughnut",data:{labels:["DangerZone","Blue","Yellow","SafeZone","Purple","Orange"],datasets:[{label:"# of Votes",data:[12,19,3,5,2,3],backgroundColor:["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(153, 102, 255, 0.2)","rgba(255, 159, 64, 0.2)"],hoverBackgroundColor:["#FF6384","#36A2EB","#FFCE56","#FF6384","#36A2EB","#FFCE56"]}]}}),this.lineChart=new Z.Chart(this.lineCanvas.nativeElement,{type:"line",data:{labels:["January","February","March","April","May","June","July"],datasets:[{label:"My First dataset",fill:!1,lineTension:.1,backgroundColor:"rgba(75,192,192,0.4)",borderColor:"rgba(75,192,192,1)",borderCapStyle:"butt",borderDash:[],borderDashOffset:0,borderJoinStyle:"miter",pointBorderColor:"rgba(75,192,192,1)",pointBackgroundColor:"#fff",pointBorderWidth:1,pointHoverRadius:5,pointHoverBackgroundColor:"rgba(75,192,192,1)",pointHoverBorderColor:"rgba(220,220,220,1)",pointHoverBorderWidth:2,pointRadius:1,pointHitRadius:10,data:[65,59,80,81,56,55,40],spanGaps:!1}]}})},l}(),P=u(33),z=u(18),F=function(){function l(l,n,u,a){this.navCtrl=l,this.navParams=n,this.firebaseProvider=u,this.formBuilder=a,this.registerForm=this.formBuilder.group({email:["",z.n.compose([z.n.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),z.n.required])],password:["",z.n.compose([z.n.minLength(6),z.n.required])],firstname:["",z.n.required],lastname:["",z.n.required],birthdate:["",z.n.required],gender:["",z.n.required]})}return l.prototype.onSignIn=function(){},l.prototype.ngOnInit=function(){k.auth().onAuthStateChanged(function(l){l&&k.auth().signOut()})},l.prototype.ionViewDidLoad=function(){console.log("ionViewDidLoad RegisterPage")},l.prototype.register=function(){var l=this;k.auth().createUserWithEmailAndPassword(this.registerForm.controls.email.value,this.registerForm.controls.password.value).then(function(n){var u=k.auth().currentUser.uid,a=l.registerForm.controls.birthdate.value.replace(/-/g,""),e=a.substr(0,4),t=a.substr(4,2),o=a.substr(6,2);l.firebaseProvider.addUser(u,o,t,e,l.registerForm.controls.gender.value,l.registerForm.controls.firstname.value,l.registerForm.controls.lastname.value,l.registerForm.controls.email.value,"."),console.log("email"),console.log(l.registerForm.controls.email.value),console.log("pass"),console.log(l.registerForm.controls.password.value),k.auth().signInWithEmailAndPassword(l.registerForm.controls.email.value,l.registerForm.controls.password.value).then(function(l){console.log("nextPage worked!")}).catch(function(l){var n=l.message;alert(n)})}).catch(function(l){var n=l.message;console.log(n)}),this.navCtrl.push(C)},l}(),I=u(181),U=u(35),D=this&&this.__awaiter||function(l,n,u,a){return new(u||(u=Promise))(function(e,t){function o(l){try{i(a.next(l))}catch(l){t(l)}}function r(l){try{i(a.throw(l))}catch(l){t(l)}}function i(l){l.done?e(l.value):new u(function(n){n(l.value)}).then(o,r)}i((a=a.apply(l,n||[])).next())})},M=this&&this.__generator||function(l,n){function u(u){return function(o){return function(u){if(a)throw new TypeError("Generator is already executing.");for(;r;)try{if(a=1,e&&(t=e[2&u[0]?"return":u[0]?"throw":"next"])&&!(t=t.call(e,u[1])).done)return t;switch(e=0,t&&(u=[0,t.value]),u[0]){case 0:case 1:t=u;break;case 4:return r.label++,{value:u[1],done:!1};case 5:r.label++,e=u[1],u=[0];continue;case 7:u=r.ops.pop(),r.trys.pop();continue;default:if(t=r.trys,!(t=t.length>0&&t[t.length-1])&&(6===u[0]||2===u[0])){r=0;continue}if(3===u[0]&&(!t||u[1]>t[0]&&u[1]<t[3])){r.label=u[1];break}if(6===u[0]&&r.label<t[1]){r.label=t[1],t=u;break}if(t&&r.label<t[2]){r.label=t[2],r.ops.push(u);break}t[2]&&r.ops.pop(),r.trys.pop();continue}u=n.call(l,r)}catch(l){u=[6,l],e=0}finally{a=t=0}if(5&u[0])throw u[1];return{value:u[0]?u[1]:void 0,done:!0}}([u,o])}}var a,e,t,o,r={label:0,sent:function(){if(1&t[0])throw t[1];return t[1]},trys:[],ops:[]};return o={next:u(0),throw:u(1),return:u(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o},L=function(){function l(l,n,u,a,e){this.nav=l,this.firebaseProvider=n,this.auth=u,this.formBuilder=a,this.alertCtr=e,this.rs=F,this.ct=w,this.loginForm=this.formBuilder.group({email:["",z.n.required],password:["",z.n.required]})}return l.prototype.login=function(){return D(this,void 0,void 0,function(){var l,n;return M(this,function(u){switch(u.label){case 0:return l=this,[4,I.auth().signInWithEmailAndPassword(this.loginForm.controls.email.value,this.loginForm.controls.password.value).catch(function(l){console.log("Login failed!"),alert(l.message)})];case 1:return(n=u.sent())&&(console.log(n),this.auth.loginState=!0,l.nav.push(C)),null!=I.auth().currentUser&&(this.userId=I.auth().currentUser.uid),[2]}})})},l.prototype.gLogin=function(){var l=new I.auth.GoogleAuthProvider;I.auth().signInWithRedirect(l),I.auth().getRedirectResult().then(function(l){if(l.credential){alert("Logged in with google!")}}).catch(function(l){alert("connection with google failed")})},l.prototype.fbLogin=function(){var l=new I.auth.FacebookAuthProvider;I.auth().signInWithPopup(l).then(function(l){alert("fbLog worked")}).catch(function(l){alert("connection with facebook failed")})},l}(),R=function(){function l(l,n,u){this.rootPage=L,l.ready().then(function(){n.styleDefault(),u.hide()}),this.pages=[{title:"Home",page:C},{title:"Result",page:y.a},{title:"About",page:C},{title:"Settings",page:Y.a}],null!=k.auth().currentUser&&(this.userId=k.auth().currentUser.uid)}return l.prototype.openPage=function(l){this.rootPage=l.page},l}(),B=u(66),E=u(172),V=u(417),N=u(418),S=u(129),T=u(45),A=u(133),x=function(){function l(l,n){this.navCtrl=l,this.geolocation=n}return l.prototype.ngOnInit=function(){this.initMap()},l.prototype.addMarker=function(){var l=new google.maps.Marker({map:this.map,animation:google.maps.Animation.DROP,position:this.map.getCenter()});this.addInfoWindow(l,"<h4>Information!</h4>")},l.prototype.addInfoWindow=function(l,n){var u=this,a=new google.maps.InfoWindow({content:n});google.maps.event.addListener(l,"click",function(){a.open(u.map,l)})},l.prototype.initMap=function(){var l=this;this.geolocation.getCurrentPosition().then(function(n){var u={center:new google.maps.LatLng(n.coords.latitude,n.coords.longitude),zoom:18,mapTypeId:google.maps.MapTypeId.ROADMAP};l.map=new google.maps.Map(l.mapElement.nativeElement,u)},function(l){console.log(l)})},l}(),O=u(57),W=u(67),q=function(){return function(){}}();k.initializeApp({apiKey:"AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",authDomain:"alcometer-abfbf.firebaseapp.com",databaseURL:"https://alcometer-abfbf.firebaseio.com",projectId:"alcometer-abfbf",storageBucket:"alcometer-abfbf.appspot.com",messagingSenderId:"1031304897035"});var X=function(){return function(){}}(),G=u(81),H=u(419),K=u(420),J=u(421),$=u(422),Q=u(423),ll=u(424),nl=u(425),ul=u(426),al=u(427),el=u(62),tl=u(75),ol=u(22),rl=b.X({encapsulation:2,styles:[],data:{}}),il=b.V("google",x,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"google",[],null,null,null,a,rl)),b.Y(1,114688,null,0,x,[ol.a,A.a],null,null)],function(l,n){l(n,1,0)},null)},{},{},[]),sl=u(89),cl=u(23),dl=u(20),gl=u(2),_l=u(44),hl=u(61),pl=u(150),fl=u(25),ml=u(595),bl=u(55),vl=u(109),jl=u(6),yl=u(29),Cl=u(14),Yl=u(10),kl=u(8),Zl=u(415),wl=u(39),Pl=u(186),zl=u(77),Fl=u(38),Il=u(58),Ul=u(24),Dl=u(7),Ml=u(85),Ll=u(16),Rl=u(596),Bl=u(86),El=u(50),Vl=u(26),Nl=b.X({encapsulation:2,styles:[],data:{}}),Sl=b.V("ng-component",R,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"ng-component",[],null,null,null,t,Nl)),b.Y(1,49152,null,0,R,[jl.a,v.a,j.a],null,null)],null,null)},{},{},[]),Tl=u(46),Al=u(76),xl=u(27),Ol=u(17),Wl=u(91),ql=u(43),Xl=u(108),Gl=b.X({encapsulation:2,styles:[],data:{}}),Hl=b.V("page-about",C,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"page-about",[],null,null,null,o,Gl)),b.Y(1,49152,null,0,C,[ol.a,Xl.a],null,null)],null,null)},{},{},[]),Kl=u(97),Jl=u(96),$l=b.X({encapsulation:2,styles:[],data:{}}),Ql=b.V("page-contact",w,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"page-contact",[],null,null,null,r,$l)),b.Y(1,49152,null,0,w,[ol.a],null,null)],null,null)},{},{},[]),ln=u(53),nn=u(183),un=u(73),an=b.X({encapsulation:2,styles:[],data:{}}),en=b.V("page-home",L,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"page-home",[],null,null,null,c,an)),b.Y(1,49152,null,0,L,[ol.a,P.a,U.a,z.d,ql.a],null,null)],null,null)},{},{},[]),tn=u(429),on=u(119),rn=b.X({encapsulation:2,styles:[],data:{}}),sn=b.V("page-settings",Y.a,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"page-settings",[],null,null,null,d,rn)),b.Y(1,114688,null,0,Y.a,[S.c,P.a,ql.a],null,null)],function(l,n){l(n,1,0)},null)},{},{},[]),cn=u(597),dn=u(103),gn=u(72),_n=u(598),hn=u(118),pn=u(117),fn=u(146),mn=u(145),bn=u(19),vn=b.X({encapsulation:2,styles:[],data:{}}),jn=b.V("page-register",F,function(l){return b._19(0,[(l()(),b.Z(0,0,null,null,1,"page-register",[],null,null,null,f,vn)),b.Y(1,114688,null,0,F,[ol.a,bn.a,P.a,z.d],null,null)],function(l,n){l(n,1,0)},null)},{},{},[]),yn=u(153),Cn=u(141),Yn=u(152),kn=u(54),Zn=u(184),wn=u(83),Pn=u(68),zn=u(157),Fn=u(159),In=u(155),Un=u(167),Dn=u(416),Mn=u(154),Ln=u(151),Rn=u(156),Bn=b.W(X,[G.b],function(l){return b._10([b._11(512,b.i,b.S,[[8,[H.a,K.a,J.a,$.a,Q.a,ll.a,nl.a,ul.a,al.a,el.a,tl.a,il,Sl,Hl,Ql,en,tn.a,sn,jn]],[3,b.i],b.s]),b._11(5120,b.r,b._9,[[3,b.r]]),b._11(4608,Ll.k,Ll.j,[b.r,[2,Ll.s]]),b._11(5120,b.b,b._0,[]),b._11(5120,b.p,b._6,[]),b._11(5120,b.q,b._7,[]),b._11(4608,m.c,m.q,[Ll.c]),b._11(6144,b.D,null,[m.c]),b._11(4608,m.f,yn.a,[]),b._11(5120,m.d,function(l,n,u,a,e){return[new m.k(l,n),new m.o(u),new m.n(a,e)]},[Ll.c,b.u,Ll.c,Ll.c,m.f]),b._11(4608,m.e,m.e,[m.d,b.u]),b._11(135680,m.m,m.m,[Ll.c]),b._11(4608,m.l,m.l,[m.e,m.m]),b._11(6144,b.B,null,[m.l]),b._11(6144,m.p,null,[m.m]),b._11(4608,b.G,b.G,[b.u]),b._11(4608,m.h,m.h,[Ll.c]),b._11(4608,m.i,m.i,[Ll.c]),b._11(4608,z.q,z.q,[]),b._11(4608,z.d,z.d,[]),b._11(4608,N.c,N.c,[]),b._11(4608,N.g,N.b,[]),b._11(5120,N.i,N.j,[]),b._11(4608,N.h,N.h,[N.c,N.g,N.i]),b._11(4608,N.f,N.a,[]),b._11(5120,N.d,N.k,[N.h,N.f]),b._11(4608,S.h,S.m,[Ll.c,b.w,S.k]),b._11(4608,S.n,S.n,[S.h,S.l]),b._11(5120,S.a,function(l){return[l]},[S.n]),b._11(4608,S.j,S.j,[]),b._11(6144,S.i,null,[S.j]),b._11(4608,S.g,S.g,[S.i]),b._11(6144,S.b,null,[S.g]),b._11(5120,S.f,S.o,[S.b,[2,S.a]]),b._11(4608,S.c,S.c,[S.f]),b._11(5120,B.b,B.f,[B.c,B.d]),b._11(5120,E.a,E.c,[B.b]),b._11(5120,V.a,V.c,[B.b]),b._11(4608,Cn.a,Cn.a,[kl.a,gl.a]),b._11(4608,ql.a,ql.a,[kl.a,gl.a]),b._11(4608,Yn.a,Yn.a,[]),b._11(4608,dl.a,dl.a,[]),b._11(4608,kn.a,kn.a,[jl.a]),b._11(4608,yl.a,yl.a,[gl.a,jl.a,b.u,Yl.a]),b._11(4608,Xl.a,Xl.a,[kl.a,gl.a]),b._11(5120,Ll.f,Zn.c,[Ll.q,[2,Ll.a],gl.a]),b._11(4608,Ll.e,Ll.e,[Ll.f]),b._11(5120,wn.b,wn.d,[kl.a,wn.a]),b._11(5120,Vl.a,Vl.b,[kl.a,wn.b,Ll.e,Pn.b,b.i]),b._11(4608,zn.a,zn.a,[kl.a,gl.a,Vl.a]),b._11(4608,gn.a,gn.a,[kl.a,gl.a]),b._11(4608,Fn.a,Fn.a,[kl.a,gl.a,Vl.a]),b._11(4608,In.a,In.a,[gl.a,jl.a,Yl.a,kl.a,Cl.l]),b._11(4608,Un.a,Un.a,[kl.a,gl.a]),b._11(4608,El.a,El.a,[jl.a,gl.a]),b._11(4608,v.a,v.a,[]),b._11(4608,j.a,j.a,[]),b._11(4608,T.a,T.a,[]),b._11(4608,P.a,P.a,[E.a]),b._11(4608,U.a,U.a,[P.a]),b._11(4608,A.a,A.a,[]),b._11(512,Ll.b,Ll.b,[]),b._11(512,b.k,Dn.a,[]),b._11(256,gl.b,{},[]),b._11(1024,Mn.a,Mn.b,[]),b._11(1024,jl.a,jl.b,[m.b,Mn.a,b.u]),b._11(1024,gl.a,gl.c,[gl.b,jl.a]),b._11(512,Yl.a,Yl.a,[jl.a]),b._11(512,fl.a,fl.a,[]),b._11(512,kl.a,kl.a,[gl.a,jl.a,[2,fl.a]]),b._11(512,Cl.l,Cl.l,[kl.a]),b._11(256,wn.a,{links:[{loadChildren:"../pages/history/history.module.ngfactory#ResultPageModuleNgFactory",name:"HistoryPage",segment:"history",priority:"low",defaultHistory:[]},{loadChildren:"../pages/result/result.module.ngfactory#ResultPageModuleNgFactory",name:"ResultPage",segment:"result",priority:"low",defaultHistory:[]}]},[]),b._11(512,b.h,b.h,[]),b._11(512,Ln.a,Ln.a,[b.h]),b._11(1024,Pn.b,Pn.c,[Ln.a,b.o]),b._11(1024,b.c,function(l,n,u,a,e,t,o,r,i,s,c,d,g,_,h,p,f,b,v,j,y,C,Y,k,Z,w,P,z,F,I,U,D,M,L,R,B,E,V,N,S,T,A,x,O,W,q,X,G,H){return[m.s(l),Rn.a(n),Yn.b(u,a),In.b(e,t,o,r,i),Pn.d(s,c,d,g),Rn.a(_),Yn.b(h,p),In.b(f,b,v,j,y),Pn.d(C,Y,k,Z),Rn.a(w),Yn.b(P,z),In.b(F,I,U,D,M),Pn.d(L,R,B,E),Rn.a(V),Yn.b(N,S),In.b(T,A,x,O,W),Pn.d(q,X,G,H)]},[[2,b.t],gl.a,jl.a,Yl.a,gl.a,jl.a,Yl.a,kl.a,Cl.l,gl.a,wn.a,Pn.b,b.u,gl.a,jl.a,Yl.a,gl.a,jl.a,Yl.a,kl.a,Cl.l,gl.a,wn.a,Pn.b,b.u,gl.a,jl.a,Yl.a,gl.a,jl.a,Yl.a,kl.a,Cl.l,gl.a,wn.a,Pn.b,b.u,gl.a,jl.a,Yl.a,gl.a,jl.a,Yl.a,kl.a,Cl.l,gl.a,wn.a,Pn.b,b.u]),b._11(512,b.d,b.d,[[2,b.c]]),b._11(131584,b.f,b.f,[b.u,b.T,b.o,b.k,b.i,b.d]),b._11(512,b.e,b.e,[b.f]),b._11(512,m.a,m.a,[[3,m.a]]),b._11(512,z.o,z.o,[]),b._11(512,z.g,z.g,[]),b._11(512,z.m,z.m,[]),b._11(512,Zn.a,Zn.a,[]),b._11(512,N.e,N.e,[]),b._11(512,S.e,S.e,[]),b._11(512,S.d,S.d,[]),b._11(512,B.a,B.a,[]),b._11(512,E.b,E.b,[]),b._11(512,V.b,V.b,[]),b._11(512,q,q,[]),b._11(512,X,X,[]),b._11(256,S.k,"XSRF-TOKEN",[]),b._11(256,S.l,"X-XSRF-TOKEN",[]),b._11(256,B.c,{apiKey:"AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",authDomain:"alcometer-abfbf.firebaseapp.com",databaseURL:"https://alcometer-abfbf.firebaseio.com",projectId:"alcometer-abfbf",storageBucket:"alcometer-abfbf.appspot.com",messagingSenderId:"1031304897035"},[]),b._11(256,B.d,void 0,[]),b._11(256,G.a,R,[]),b._11(256,Ll.a,"/",[])])});Object(b.M)(),Object(m.j)().bootstrapModuleFactory(Bn)},482:function(l,n,u){function a(l){return u(e(l))}function e(l){var n=t[l];if(!(n+1))throw new Error("Cannot find module '"+l+"'.");return n}var t={"./af":229,"./af.js":229,"./ar":230,"./ar-dz":231,"./ar-dz.js":231,"./ar-kw":232,"./ar-kw.js":232,"./ar-ly":233,"./ar-ly.js":233,"./ar-ma":234,"./ar-ma.js":234,"./ar-sa":235,"./ar-sa.js":235,"./ar-tn":236,"./ar-tn.js":236,"./ar.js":230,"./az":237,"./az.js":237,"./be":238,"./be.js":238,"./bg":239,"./bg.js":239,"./bm":240,"./bm.js":240,"./bn":241,"./bn.js":241,"./bo":242,"./bo.js":242,"./br":243,"./br.js":243,"./bs":244,"./bs.js":244,"./ca":245,"./ca.js":245,"./cs":246,"./cs.js":246,"./cv":247,"./cv.js":247,"./cy":248,"./cy.js":248,"./da":249,"./da.js":249,"./de":250,"./de-at":251,"./de-at.js":251,"./de-ch":252,"./de-ch.js":252,"./de.js":250,"./dv":253,"./dv.js":253,"./el":254,"./el.js":254,"./en-au":255,"./en-au.js":255,"./en-ca":256,"./en-ca.js":256,"./en-gb":257,"./en-gb.js":257,"./en-ie":258,"./en-ie.js":258,"./en-il":259,"./en-il.js":259,"./en-nz":260,"./en-nz.js":260,"./eo":261,"./eo.js":261,"./es":262,"./es-do":263,"./es-do.js":263,"./es-us":264,"./es-us.js":264,"./es.js":262,"./et":265,"./et.js":265,"./eu":266,"./eu.js":266,"./fa":267,"./fa.js":267,"./fi":268,"./fi.js":268,"./fo":269,"./fo.js":269,"./fr":270,"./fr-ca":271,"./fr-ca.js":271,"./fr-ch":272,"./fr-ch.js":272,"./fr.js":270,"./fy":273,"./fy.js":273,"./gd":274,"./gd.js":274,"./gl":275,"./gl.js":275,"./gom-latn":276,"./gom-latn.js":276,"./gu":277,"./gu.js":277,"./he":278,"./he.js":278,"./hi":279,"./hi.js":279,"./hr":280,"./hr.js":280,"./hu":281,"./hu.js":281,"./hy-am":282,"./hy-am.js":282,"./id":283,"./id.js":283,"./is":284,"./is.js":284,"./it":285,"./it.js":285,"./ja":286,"./ja.js":286,"./jv":287,"./jv.js":287,"./ka":288,"./ka.js":288,"./kk":289,"./kk.js":289,"./km":290,"./km.js":290,"./kn":291,"./kn.js":291,"./ko":292,"./ko.js":292,"./ky":293,"./ky.js":293,"./lb":294,"./lb.js":294,"./lo":295,"./lo.js":295,"./lt":296,"./lt.js":296,"./lv":297,"./lv.js":297,"./me":298,"./me.js":298,"./mi":299,"./mi.js":299,"./mk":300,"./mk.js":300,"./ml":301,"./ml.js":301,"./mn":302,"./mn.js":302,"./mr":303,"./mr.js":303,"./ms":304,"./ms-my":305,"./ms-my.js":305,"./ms.js":304,"./mt":306,"./mt.js":306,"./my":307,"./my.js":307,"./nb":308,"./nb.js":308,"./ne":309,"./ne.js":309,"./nl":310,"./nl-be":311,"./nl-be.js":311,"./nl.js":310,"./nn":312,"./nn.js":312,"./pa-in":313,"./pa-in.js":313,"./pl":314,"./pl.js":314,"./pt":315,"./pt-br":316,"./pt-br.js":316,"./pt.js":315,"./ro":317,"./ro.js":317,"./ru":318,"./ru.js":318,"./sd":319,"./sd.js":319,"./se":320,"./se.js":320,"./si":321,"./si.js":321,"./sk":322,"./sk.js":322,"./sl":323,"./sl.js":323,"./sq":324,"./sq.js":324,"./sr":325,"./sr-cyrl":326,"./sr-cyrl.js":326,"./sr.js":325,"./ss":327,"./ss.js":327,"./sv":328,"./sv.js":328,"./sw":329,"./sw.js":329,"./ta":330,"./ta.js":330,"./te":331,"./te.js":331,"./tet":332,"./tet.js":332,"./tg":333,"./tg.js":333,"./th":334,"./th.js":334,"./tl-ph":335,"./tl-ph.js":335,"./tlh":336,"./tlh.js":336,"./tr":337,"./tr.js":337,"./tzl":338,"./tzl.js":338,"./tzm":339,"./tzm-latn":340,"./tzm-latn.js":340,"./tzm.js":339,"./ug-cn":341,"./ug-cn.js":341,"./uk":342,"./uk.js":342,"./ur":343,"./ur.js":343,"./uz":344,"./uz-latn":345,"./uz-latn.js":345,"./uz.js":344,"./vi":346,"./vi.js":346,"./x-pseudo":347,"./x-pseudo.js":347,"./yo":348,"./yo.js":348,"./zh-cn":349,"./zh-cn.js":349,"./zh-hk":350,"./zh-hk.js":350,"./zh-tw":351,"./zh-tw.js":351};a.keys=function(){return Object.keys(t)},a.resolve=e,l.exports=a,a.id=482},57:function(l,n,u){"use strict";u.d(n,"a",function(){return e});u(4),u(30);var a=u(128),e=function(){function l(l,n,u){this.menuCtrl=l,this.nav=n,this.auth=u}return l.prototype.openSettings=function(){this.nav.push(a.a)},l.prototype.openNavigation=function(){this.menuCtrl.open()},l.prototype.openPage=function(l){this.rootPage=l},l}()},62:function(l,n,u){"use strict";function a(l){return t._19(0,[(l()(),t.Z(0,0,null,null,30,"ion-navbar",[["class","toolbar"],["hideBackButton",""]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,o.b,o.a)),t.Y(1,49152,null,0,r.a,[i.a,[2,s.a],[2,c.a],d.a,t.j,t.z],{hideBackButton:[0,"hideBackButton"]},null),(l()(),t._18(-1,3,["\n    "])),(l()(),t.Z(3,0,null,1,10,"ion-buttons",[["start",""]],null,null,null,null,null)),t.Y(4,16384,null,1,g.a,[d.a,t.j,t.z,[2,_.a],[2,r.a]],null,null),t._16(603979776,1,{_buttons:1}),(l()(),t._18(-1,null,["\n      "])),(l()(),t.Z(7,0,null,null,5,"button",[["icon-only",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.openNavigation()&&a}return a},h.b,h.a)),t.Y(8,1097728,[[1,4]],0,p.a,[[8,""],d.a,t.j,t.z],null,null),(l()(),t._18(-1,0,["\n        "])),(l()(),t.Z(10,0,null,0,1,"ion-icon",[["name","menu"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t.Y(11,147456,null,0,f.a,[d.a,t.j,t.z],{name:[0,"name"]},null),(l()(),t._18(-1,0,["\n      "])),(l()(),t._18(-1,null,["\n    "])),(l()(),t._18(-1,3,["\n    "])),(l()(),t.Z(15,0,null,3,2,"ion-title",[],null,null,null,m.b,m.a)),t.Y(16,49152,null,0,b.a,[d.a,t.j,t.z,[2,_.a],[2,r.a]],null,null),(l()(),t._18(17,0,["\n      ","\n    "])),(l()(),t._18(-1,3,["\n    "])),(l()(),t.Z(19,0,null,2,10,"ion-buttons",[["end",""]],null,null,null,null,null)),t.Y(20,16384,null,1,g.a,[d.a,t.j,t.z,[2,_.a],[2,r.a]],null,null),t._16(603979776,2,{_buttons:1}),(l()(),t._18(-1,null,["\n      "])),(l()(),t.Z(23,0,null,null,5,"button",[["icon-only",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.openSettings()&&a}return a},h.b,h.a)),t.Y(24,1097728,[[2,4]],0,p.a,[[8,""],d.a,t.j,t.z],null,null),(l()(),t._18(-1,0,["\n        "])),(l()(),t.Z(26,0,null,0,1,"ion-icon",[["name","settings"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t.Y(27,147456,null,0,f.a,[d.a,t.j,t.z],{name:[0,"name"]},null),(l()(),t._18(-1,0,["\n      "])),(l()(),t._18(-1,null,["\n    "])),(l()(),t._18(-1,3,["\n"]))],function(l,n){l(n,1,0,"");l(n,11,0,"menu");l(n,27,0,"settings")},function(l,n){var u=n.component;l(n,0,0,t._13(n,1)._hidden,t._13(n,1)._sbPadding);l(n,10,0,t._13(n,11)._hidden);l(n,17,0,u.pageTitle);l(n,26,0,t._13(n,27)._hidden)})}function e(l){return t._19(0,[(l()(),t.U(16777216,null,null,1,null,a)),t.Y(1,16384,null,0,v.i,[t.I,t.F],{ngIf:[0,"ngIf"]},null),(l()(),t._18(-1,null,["\n\n \n\n"]))],function(l,n){l(n,1,0,n.component.auth.loginState)},null)}u.d(n,"b",function(){return Y}),n.c=e,u.d(n,"a",function(){return k});var t=u(0),o=u(428),r=u(38),i=u(8),s=u(7),c=u(22),d=u(2),g=u(119),_=u(39),h=u(27),p=u(17),f=u(52),m=u(186),b=u(77),v=u(16),j=u(57),y=u(25),C=u(35),Y=t.X({encapsulation:2,styles:[],data:{}}),k=t.V("custom-navbar",j.a,function(l){return t._19(0,[(l()(),t.Z(0,0,null,null,1,"custom-navbar",[],null,null,null,e,Y)),t.Y(1,49152,null,0,j.a,[y.a,c.a,C.a],null,null)],null,null)},{},{},[])},67:function(l,n,u){"use strict";u.d(n,"a",function(){return a});u(4),u(45),u(30);var a=function(){function l(l,n,u,a){this.firebaseProvider=l,this.auth=n,this.callNumber=u,this.alertCtrl=a,console.log("Hello CallForHelpComponent Component"),this.auth.loginState&&(this.userId=this.auth.getLoggedUID(),this.isValid="."!=this.phone||null==this.phone),console.log("callforhelp isvalid"),console.log(this.isValid)}return l.prototype.callMyNumber=function(){"."!=this.phone?(this.callNumber.callNumber(this.phone,!0).then(function(l){return console.log("Launched dialer!",l)}).catch(function(l){return console.log("Error launching dialer",l)}),console.log("call success")):this.showMessage()},l.prototype.showMessage=function(){this.alertCtrl.create({title:"Telefoon nummer",subTitle:"Er is nog geen telefoonnummer toegevoegd aan uw account!",buttons:["OK"]}).present(),console.log("call failed")},l}()},75:function(l,n,u){"use strict";function a(l){return r._19(0,[(l()(),r.Z(0,0,null,null,6,"button",[["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.callMyNumber()&&a}return a},i.b,i.a)),r.Y(1,1097728,null,0,s.a,[[8,""],c.a,r.j,r.z],{full:[0,"full"]},null),(l()(),r._18(-1,0,["\n            "])),(l()(),r.Z(3,0,null,0,1,"ion-icon",[["name","call"],["role","img"]],[[2,"hide",null]],null,null,null,null)),r.Y(4,147456,null,0,d.a,[c.a,r.j,r.z],{name:[0,"name"]},null),(l()(),r._18(-1,0,["\n            "])),(l()(),r._18(-1,0,["\n          "]))],function(l,n){l(n,1,0,"");l(n,4,0,"call")},function(l,n){l(n,3,0,r._13(n,4)._hidden)})}function e(l){return r._19(0,[(l()(),r.Z(0,0,null,null,5,"button",[["full",""],["ion-button",""]],null,[[null,"click"]],function(l,n,u){var a=!0;if("click"===n){a=!1!==l.component.showMessage()&&a}return a},i.b,i.a)),r.Y(1,1097728,null,0,s.a,[[8,""],c.a,r.j,r.z],{full:[0,"full"]},null),(l()(),r._18(-1,0,["\n            "])),(l()(),r.Z(3,0,null,0,1,"ion-icon",[["name","alert"],["role","img"]],[[2,"hide",null]],null,null,null,null)),r.Y(4,147456,null,0,d.a,[c.a,r.j,r.z],{name:[0,"name"]},null),(l()(),r._18(-1,0,["\n          "]))],function(l,n){l(n,1,0,"");l(n,4,0,"alert")},function(l,n){l(n,3,0,r._13(n,4)._hidden)})}function t(l){return r._19(0,[(l()(),r.Z(0,0,null,null,12,"ion-footer",[],null,null,null,null,null)),r.Y(1,16384,null,0,g.a,[c.a,r.j,r.z,[2,_.a]],null,null),(l()(),r._18(-1,null,["\n  "])),(l()(),r.Z(3,0,null,null,8,"ion-toolbar",[["class","toolbar"]],[[2,"statusbar-padding",null]],null,null,h.b,h.a)),r.Y(4,49152,null,0,p.a,[c.a,r.j,r.z],null,null),(l()(),r._18(-1,3,["\n          "])),(l()(),r.U(16777216,null,3,1,null,a)),r.Y(7,16384,null,0,f.i,[r.I,r.F],{ngIf:[0,"ngIf"]},null),(l()(),r._18(-1,3,["\n          "])),(l()(),r.U(16777216,null,3,1,null,e)),r.Y(10,16384,null,0,f.i,[r.I,r.F],{ngIf:[0,"ngIf"]},null),(l()(),r._18(-1,3,["\n  "])),(l()(),r._18(-1,null,["\n"]))],function(l,n){var u=n.component;l(n,7,0,u.isValid);l(n,10,0,!u.isValid)},function(l,n){l(n,3,0,r._13(n,4)._sbPadding)})}function o(l){return r._19(0,[(l()(),r.U(16777216,null,null,1,null,t)),r.Y(1,16384,null,0,f.i,[r.I,r.F],{ngIf:[0,"ngIf"]},null)],function(l,n){l(n,1,0,n.component.userId)},null)}u.d(n,"b",function(){return C}),n.c=o,u.d(n,"a",function(){return Y});var r=u(0),i=u(27),s=u(17),c=u(2),d=u(52),g=u(168),_=u(7),h=u(415),p=u(39),f=u(16),m=u(67),b=u(33),v=u(35),j=u(45),y=u(43),C=r.X({encapsulation:2,styles:[],data:{}}),Y=r.V("call-for-help",m.a,function(l){return r._19(0,[(l()(),r.Z(0,0,null,null,1,"call-for-help",[],null,null,null,o,C)),r.Y(1,49152,null,0,m.a,[b.a,v.a,j.a,y.a],null,null)],null,null)},{},{},[])},95:function(l,n,u){"use strict";u.d(n,"a",function(){return e});u(4),u(30);var a=u(185),e=(u.n(a),function(){function l(l,n){this.navCtrl=l,this.navParams=n,this.BACLevels=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,.002,.003,.004,.005,.006,.006,.007,.008,.008,.009,.01,.01,.011,.011,.012,.013,.013,.014,.014,.015,.015,.016,.016,.017,.017,.017,.018,.018,.019,.019,.019,.02,.02,.02,.021,.021,.021,.022,.022,.022,.022,.023,.023,.023,.023,.024,.024,.024,.024,.024,.024,.025,.025,.025,.025,.025,.025,.026,.026,.026,.026,.026,.026,.026,.026,.027,.027,.027,.027,.027,.027,.027,.027,.027,.027,.027,.027,.027,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.028,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.029,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.03,.031,.031,.031,.031,.031,.031,.031,.031,.031,.031,.031,.031,.032,.032,.032,.032,.032,.032,.032,.032,.032,.032,.033,.033,.033,.033,.033,.033,.033,.033,.033,.034,.034,.034,.034,.034,.034,.034,.035,.035,.035,.035,.035,.035,.035,.035,.036,.036,.036,.036,.036,.036,.037,.037,.037,.037,.037,.037,.037,.038,.038,.038,.038,.038,.038,.039,.039,.039,.039,.039,.039,.04,.04,.04,.04,.04,.04,.041,.041,.041,.041,.041,.041,.042,.042,.042,.042,.042,.043,.043,.043,.043,.043,.043,.044,.044,.044,.044,.044,.044,.045,.045,.045,.045,.045,.046,.046,.046,.046,.046,.046,.047,.047,.047,.047,.047,.048,.048,.048,.048,.048,.048,.049,.049,.049,.049,.049,.05,.05,.05,.05,.05,.05,.051,.051,.051,.051,.051,.052,.052,.052,.052,.052,.052,.053,.053,.053,.053,.053,.054,.054,.054,.054,.054,.054,.055,.055,.055,.055,.055,.056,.056,.056,.056,.056,.057,.057,.057,.057,.058,.058,.058,.058,.058,.059,.059,.059,.059,.06,.06,.06,.06,.061,.061,.061,.061,.062,.062,.062,.062,.063,.063,.063,.064,.064,.064,.064,.065,.065,.065,.066,.066,.066,.067,.067,.067,.068,.068,.069,.069,.069,.07,.07,.071,.071,.071,.072,.072,.073,.073,.074,.074,.075,.075,.076,.076,.077,.077,.078,.078,.079,.08,.08,.081,.081,.082,.083,.083,.084,.085,.085,.086,.087,.088,.088,.089,.09,.091,.092,.093,.093,.094,.095,.096,.097,.098,.099,.1,.101,.102,.103,.104,.105,.106,.107,.109,.11,.111,.112,.113,.115,.116,.117,.119,.12,.121,.123,.124,.126,.127,.129,.13,.132,.134,.135,.137,.139,.14,.142,.144,.146,.148,.15,.151,.153,.155,.157,.16,.162,.164,.166,.168,.17,.173,.175,.177,.18,.182,.185,.187,.19,.193,.195,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25,.25]}return l.prototype.ionViewDidLoad=function(){this.allowedPromilleLevel=.4,a.Chart.pluginService.register({afterDraw:function(l){if(void 0!==l.config.options.lineAt){var n=l.chart.ctx,u=l.scales[l.config.options.scales.xAxes[0].id],a=l.scales[l.config.options.scales.yAxes[0].id];if(0!=a.min)return;n.strokeStyle="red",n.beginPath();var e=a.getPixelForValue(.4);n.moveTo(u.left,e),n.lineTo(u.right,e),n.stroke()}}}),a.Chart.defaults.global.legend.display=!1,this.barChart=new a.Chart(this.barCanvas.nativeElement,{}),this.voltage=Math.floor(1023*Math.random()),this.promilleLevel=+(10*this.BACLevels[this.voltage]).toFixed(2),this.allowedPromilleLevel=.4,this.newChart(this.promilleLevel,this.allowedPromilleLevel)},l.prototype.Random=function(){this.voltage=Math.floor(1023*Math.random()),this.promilleLevel=+(10*this.BACLevels[this.voltage]).toFixed(2),this.allowedPromilleLevel=.4,this.newChart(this.promilleLevel,this.allowedPromilleLevel)},l.prototype.newChart=function(l,n){var u;l>n&&(this.barColor="rgba(255, 5, 5, 1)"),l==n&&(this.barColor="rgba(255, 113, 25, 1)"),l<n&&(this.barColor="rgba(52, 255, 25, 1)"),u=l<.5?.6:l<.9?1:l<1.4?1.5:2,this.barChart.destroy(),this.barChart=new a.Chart(this.barCanvas.nativeElement,{type:"bar",data:{label:"Your Result",datasets:[{label:"Your Color",data:[l],backgroundColor:[this.barColor],borderColor:[this.barColor],borderWidth:1}]},options:{lineAt:14,scales:{yAxes:[{ticks:{min:0,max:u}}]}}})},l}())}},[430]);
+webpackJsonp([2],{
+
+/***/ 141:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(152);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the SettingsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SettingsPage = (function () {
+    function SettingsPage(firebaseProvider, alertCtrl, auth, nav) {
+        var _this = this;
+        this.firebaseProvider = firebaseProvider;
+        this.alertCtrl = alertCtrl;
+        this.auth = auth;
+        this.nav = nav;
+        this.firebaseProvider.getPhone(this.userId).subscribe(function (val) { _this.phone = val; });
+        if (this.auth.loginState) {
+            this.auth.UID = this.auth.getLoggedUID();
+            this.auth.phone = this.getUserData(this.auth.UID);
+        }
+    }
+    SettingsPage.prototype.ngOnInit = function () {
+    };
+    SettingsPage.prototype.getUserData = function (id) {
+        var _this = this;
+        return this.firebaseProvider.getPhone(id).subscribe(function (val) { return _this.phone = val; });
+    };
+    SettingsPage.prototype.updateSettings = function () {
+        if (this.phone != null) {
+            this.firebaseProvider.updateUser(this.userId, this.phone);
+            this.showAlert();
+        }
+    };
+    SettingsPage.prototype.logout = function () {
+        this.auth.logout();
+        this.nav.push(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
+    };
+    SettingsPage.prototype.showAlert = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Wijziging',
+            subTitle: 'Telefoonnummer opgeslagen!',
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    SettingsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-settings',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\settings\settings.html"*/'<!--\n\n  Generated template for the SettingsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <custom-navbar></custom-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <ion-item>\n\n        <ion-label color="primary" stacked>Terugbel nummer</ion-label>\n\n        <ion-input [(ngModel)]="phone" type="number"></ion-input>\n\n    </ion-item>\n\n        <ion-buttons>\n\n            <button ion-button full (click)="updateSettings()">Save my callback number</button>\n\n        </ion-buttons>\n\n        <ion-buttons>\n\n            <button ion-button full (click)="logout()">Logout from my account</button>\n\n        </ion-buttons>\n\n</ion-content>\n\n<call-for-help>\n\n</call-for-help>\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\settings\settings.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__["a" /* FirebaseProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */]])
+    ], SettingsPage);
+    return SettingsPage;
+}());
+
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ 152:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_about__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_contact__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_forms__ = __webpack_require__(23);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+var HomePage = (function () {
+    function HomePage(nav, firebaseProvider, auth, formBuilder, alertCtr) {
+        this.nav = nav;
+        this.firebaseProvider = firebaseProvider;
+        this.auth = auth;
+        this.formBuilder = formBuilder;
+        this.alertCtr = alertCtr;
+        this.rs = __WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */];
+        this.ct = __WEBPACK_IMPORTED_MODULE_3__contact_contact__["a" /* ContactPage */];
+        this.loginForm = this.formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_8__angular_forms__["f" /* Validators */].required],
+            password: ['', __WEBPACK_IMPORTED_MODULE_8__angular_forms__["f" /* Validators */].required]
+        });
+    }
+    HomePage.prototype.ionViewDidLoad = function () {
+        var me = this;
+    };
+    HomePage.prototype.login = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var me;
+            return __generator(this, function (_a) {
+                me = this;
+                __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().signInWithEmailAndPassword(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+                    .then(function (user) {
+                    if (user) {
+                        console.log(user);
+                        _this.auth.loginState = true;
+                        me.nav.push(__WEBPACK_IMPORTED_MODULE_2__about_about__["a" /* AboutPage */]);
+                    }
+                })
+                    .catch(function (error) {
+                    console.log("Login failed!");
+                    alert(error.message);
+                });
+                if (__WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().currentUser != null) {
+                    this.userId = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().currentUser.uid;
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    HomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/'<ion-header>\n\n    <custom-navbar></custom-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <img src="assets/imgs/alcometer.png">\n\n        <form [formGroup]="loginForm">\n\n            <ion-item>\n\n                <ion-label color="primary" stacked>E-mail</ion-label>\n\n                <ion-input [formControl]="loginForm.controls[\'email\']" type="email" placeholder="E-mail"></ion-input>\n\n            </ion-item>\n\n                <div *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty"  class="validator-error">\n\n                        Please enter a valid email.\n\n                </div>\n\n            <ion-item>\n\n                <ion-label color="primary" stacked>Password</ion-label>\n\n                <ion-input [formControl]="loginForm.controls[\'password\']" [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>\n\n            </ion-item>\n\n                <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty" class="validator-error">\n\n                    Please enter a valid password.\n\n                </div>\n\n            <button ion-button full [disabled]="!loginForm.valid" (click)="login()">Login</button>\n\n            <button ion-button full class="content" [navPush]="rs">Register</button>\n\n        </form>\n\n  </ion-content>\n\n  \n\n  <call-for-help>\n\n  </call-for-help>\n\n\n\n\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
+    ], HomePage);
+    return HomePage;
+    var _a, _b, _c, _d, _e;
+}());
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 165:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 165;
+
+/***/ }),
+
+/***/ 207:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/history/history.module": [
+		666,
+		0
+	],
+	"../pages/result/result.module": [
+		667,
+		1
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 207;
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ 432:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_chart_js__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ContactPage = (function () {
+    function ContactPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    ContactPage.prototype.ionViewDidLoad = function () {
+        this.barChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](this.barCanvas.nativeElement, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                }
+            }
+        });
+        this.doughnutChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](this.doughnutCanvas.nativeElement, {
+            type: 'doughnut',
+            data: {
+                labels: ["DangerZone", "Blue", "Yellow", "SafeZone", "Purple", "Orange"],
+                datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        hoverBackgroundColor: [
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56",
+                            "#FF6384",
+                            "#36A2EB",
+                            "#FFCE56"
+                        ]
+                    }]
+            }
+        });
+        this.lineChart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__["Chart"](this.lineCanvas.nativeElement, {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75,192,192,0.4)",
+                        borderColor: "rgba(75,192,192,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                        spanGaps: false,
+                    }
+                ]
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('barCanvas'),
+        __metadata("design:type", Object)
+    ], ContactPage.prototype, "barCanvas", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('doughnutCanvas'),
+        __metadata("design:type", Object)
+    ], ContactPage.prototype, "doughnutCanvas", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('lineCanvas'),
+        __metadata("design:type", Object)
+    ], ContactPage.prototype, "lineCanvas", void 0);
+    ContactPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/'<ion-header>\n\n    <custom-navbar></custom-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n \n\n  <ion-card>\n\n    <ion-card-header>\n\n      Bar Chart\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <canvas #barCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n      Doughnut Chart\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <canvas #doughnutCanvas></canvas>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <call-for-help>\n\n  </call-for-help>\n\n\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
+    ], ContactPage);
+    return ContactPage;
+}());
+
+//# sourceMappingURL=contact.js.map
+
+/***/ }),
+
+/***/ 433:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_app__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__about_about__ = __webpack_require__(81);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+/**
+ * Generated class for the RegisterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var RegisterPage = (function () {
+    function RegisterPage(navCtrl, navParams, firebaseProvider, formBuilder, auth) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.firebaseProvider = firebaseProvider;
+        this.formBuilder = formBuilder;
+        this.auth = auth;
+        this.registerForm = this.formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].compose([
+                    __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
+                    __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required
+                ])],
+            password: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].compose([
+                    __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].minLength(6),
+                    __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required
+                ])],
+            firstname: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            lastname: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            birthdate: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            gender: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required]
+        });
+    }
+    RegisterPage.prototype.onSignIn = function () {
+        //this.logger.info('SignInPage: onSignIn()');
+    };
+    RegisterPage.prototype.ngOnInit = function () {
+        __WEBPACK_IMPORTED_MODULE_2_firebase_app__["auth"]().onAuthStateChanged(function (user) {
+            if (user) {
+                __WEBPACK_IMPORTED_MODULE_2_firebase_app__["auth"]().signOut();
+            }
+        });
+    };
+    RegisterPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RegisterPage');
+    };
+    RegisterPage.prototype.register = function () {
+        var _this = this;
+        var me = this;
+        __WEBPACK_IMPORTED_MODULE_2_firebase_app__["auth"]().createUserWithEmailAndPassword(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value)
+            .then(function (response) {
+            var userID = __WEBPACK_IMPORTED_MODULE_2_firebase_app__["auth"]().currentUser.uid;
+            var date = _this.registerForm.controls['birthdate'].value;
+            var datestring = date.replace(/-/g, "");
+            var year = datestring.substr(0, 4);
+            var month = datestring.substr(4, 2);
+            var day = datestring.substr(6, 2);
+            _this.firebaseProvider.addUser(userID, day, month, year, _this.registerForm.controls['gender'].value, _this.registerForm.controls['firstname'].value, _this.registerForm.controls['lastname'].value, _this.registerForm.controls['email'].value, ".");
+            __WEBPACK_IMPORTED_MODULE_2_firebase_app__["auth"]().signInWithEmailAndPassword(_this.registerForm.controls['email'].value, _this.registerForm.controls['password'].value)
+                .then(function (response) {
+                console.log(response);
+                me.auth.loginState = true;
+                me.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__about_about__["a" /* AboutPage */]);
+                console.log("nextPage worked!");
+            })
+                .catch(function (error) {
+                var errorMessage = error.message;
+                alert(errorMessage);
+            });
+        })
+            .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+            console.log(errorMessage);
+        });
+    };
+    RegisterPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-register',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\register\register.html"*/'<ion-header>\n\n  <custom-navbar></custom-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <form [formGroup]="registerForm">\n\n    <ion-item>\n\n      <ion-label color="primary" stacked>E-mail</ion-label>\n\n      <ion-input [formControl]="registerForm.controls[\'email\']" type="email" placeholder="E-mail"></ion-input>\n\n    </ion-item>\n\n    <div *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty"  class="validator-error">\n\n              Please enter a valid email.\n\n    </div>\n\n    <ion-item>\n\n      <ion-label color="primary" stacked>Password</ion-label>\n\n      <ion-input [formControl]="registerForm.controls[\'password\']" [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>\n\n    </ion-item>\n\n    <div *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.dirty" class="validator-error">\n\n      Please enter a valid password, with at least 6 characters\n\n    </div>\n\n    <ion-item>\n\n      <ion-label color="primary" stacked>First Name</ion-label>\n\n      <ion-input [formControl]="registerForm.controls[\'firstname\']" [(ngModel)]="firstName" type="text" placeholder="First name"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label color="primary" stacked>Last Name</ion-label>\n\n      <ion-input [formControl]="registerForm.controls[\'lastname\']" [(ngModel)]="lastName" type="text" placeholder="Last name"></ion-input>\n\n    </ion-item>\n\n      <ion-item>\n\n        <ion-label color="primary" stacked>Birth date</ion-label>\n\n        <ion-datetime [formControl]="registerForm.controls[\'birthdate\']" displayFormat="DD/MM/YYYY" [(ngModel)]="birthDate" placeholder="day/month/year" pickerFormat="DD MMMM YYYY"></ion-datetime>\n\n      </ion-item>\n\n      <ion-item>\n\n      <ion-label color="primary" stacked>Gender</ion-label>\n\n      <ion-select [formControl]="registerForm.controls[\'gender\']" placeholder="Choose your gender" [(ngModel)]="gender">\n\n        <ion-option value="Female">Female</ion-option>\n\n        <ion-option value="Male">Male</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-row>\n\n      <ion-col text-center>\n\n        <button ion-button full [disabled]="!registerForm.valid" (click)="register()">Register</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </form>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\register\register.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _e || Object])
+    ], RegisterPage);
+    return RegisterPage;
+    var _a, _b, _c, _d, _e;
+}());
+
+//# sourceMappingURL=register.js.map
+
+/***/ }),
+
+/***/ 437:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(457);
+
+
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 457:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(654);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase_app__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_about_about__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_contact_contact__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_home_home__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_settings_settings__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_register_register__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_status_bar__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_splash_screen__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_result_result__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_call_number__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_geolocation__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_components_module__ = __webpack_require__(662);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var config = {
+    apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
+    authDomain: "alcometer-abfbf.firebaseapp.com",
+    databaseURL: "https://alcometer-abfbf.firebaseio.com",
+    projectId: "alcometer-abfbf",
+    storageBucket: "alcometer-abfbf.appspot.com",
+    messagingSenderId: "1031304897035"
+};
+__WEBPACK_IMPORTED_MODULE_7_firebase_app__["initializeApp"](config);
+var AppModule = (function () {
+    function AppModule() {
+    }
+    AppModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_about_about__["a" /* AboutPage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_contact_contact__["a" /* ContactPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_result_result__["a" /* ResultPage */],
+                //GoogleComponent,
+                __WEBPACK_IMPORTED_MODULE_14__pages_settings_settings__["a" /* SettingsPage */],
+                //CustomNavbarComponent,
+                //CallForHelpComponent,
+                __WEBPACK_IMPORTED_MODULE_15__pages_register_register__["a" /* RegisterPage */]
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                    links: [
+                        { loadChildren: '../pages/history/history.module#ResultPageModule', name: 'HistoryPage', segment: 'history', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/result/result.module#ResultPageModule', name: 'ResultPage', segment: 'result', priority: 'low', defaultHistory: [] }
+                    ]
+                }),
+                __WEBPACK_IMPORTED_MODULE_8__angular_http__["a" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_4_angularfire2__["a" /* AngularFireModule */].initializeApp(config),
+                __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["b" /* AngularFireDatabaseModule */],
+                __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__["a" /* AngularFireAuthModule */],
+                __WEBPACK_IMPORTED_MODULE_22__components_components_module__["a" /* ComponentsModule */]
+            ],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_about_about__["a" /* AboutPage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_contact_contact__["a" /* ContactPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_result_result__["a" /* ResultPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_settings_settings__["a" /* SettingsPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_register_register__["a" /* RegisterPage */]
+            ],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_16__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_17__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_20__ionic_native_call_number__["a" /* CallNumber */],
+                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_10__providers_firebase_firebase__["a" /* FirebaseProvider */],
+                __WEBPACK_IMPORTED_MODULE_19__providers_auth_auth__["a" /* AuthProvider */],
+                __WEBPACK_IMPORTED_MODULE_21__ionic_native_geolocation__["a" /* Geolocation */]
+            ]
+        })
+    ], AppModule);
+    return AppModule;
+}());
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirebaseProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__ = __webpack_require__(640);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/*
+  Generated class for the FirebaseProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var FirebaseProvider = (function () {
+    function FirebaseProvider(db) {
+        this.db = db;
+        console.log('Hello FirebaseProvider Provider');
+        var userCount;
+        this.db.database.ref('UserDatabase/Users/UserCount').on('value', function (snapshot) {
+            userCount = snapshot.val();
+        });
+    }
+    FirebaseProvider.prototype.addItem = function (userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms) {
+        var itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({
+            date: datestring, time: timestring, age: age, gender: gender,
+            location: location, alcoholLevel: alcoholLevel, sortingms: sortingms //  
+        }); //
+        var itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/').push().set({
+            date: datestring, time: timestring, location: location, alcoholLevel: alcoholLevel, sortingms: sortingms // adds Reading into user specific database
+        }); //
+    };
+    FirebaseProvider.prototype.addUser = function (userID, birthDay, birthMonth, birthYear, gender, firstName, lastName, email, phoneNumber) {
+        var userCount;
+        this.db.database.ref('UserDatabase/Users/UserCount').on('value', function (snapshot) {
+            userCount = snapshot.val();
+        });
+        var itemRef = this.db.database.ref('UserDatabase/Users/' + userID).set({
+            firstName: firstName, lastName: lastName, gender: gender,
+            birthDay: birthDay, birthMonth: birthMonth, birthYear: birthYear, email: email,
+            phoneNumber: phoneNumber
+        }); //
+        userCount++; // this is number of users 
+        var itemRef2 = this.db.database.ref('UserDatabase/Users').update({ UserCount: userCount }); //
+    };
+    FirebaseProvider.prototype.updateUser = function (userID, phoneNumber) {
+        var userRef = this.db.database.ref('UserDatabase/Users'); //
+        var specificRef = userRef.child(userID); //git
+        /*if (height != -1) {                                                //
+          specificRef.update({height:height})                                //
+        }                                                                    //  Updates user with UserID:userID
+        if (weight != -1) {                                                  //  Updates the email,height and/or weight
+          specificRef.update({weight:weight})                                //  If value doesn't need to change use values:
+        }  */ //       gender: "."
+        if (phoneNumber != ".") {
+            specificRef.update({ phoneNumber: phoneNumber }); //
+        } //
+    }; //
+    FirebaseProvider.prototype.getList = function () {
+        var items;
+        items = this.db.list('Readings').valueChanges();
+        return items;
+    };
+    //Get user vars
+    //Subscriben anders krijg je observable
+    //#region "getUserVars"
+    /*getWeight(userID){
+      var weight;
+      weight = this.db.object('UserDatabase/Users/' + userID + '/weight').valueChanges();
+      return weight;
+    }*/
+    FirebaseProvider.prototype.getFirstName = function (userID) {
+        var firstName;
+        firstName = this.db.object('UserDatabase/Users/' + userID + '/firstName').valueChanges();
+        return firstName;
+    };
+    FirebaseProvider.prototype.getLastName = function (userID) {
+        var lastName;
+        lastName = this.db.object('UserDatabase/Users/' + userID + '/lastName').valueChanges();
+        return lastName;
+    };
+    FirebaseProvider.prototype.getGender = function (userID) {
+        var gender;
+        gender = this.db.object('UserDatabase/Users/' + userID + '/gender').valueChanges();
+        return gender;
+    }; /*
+    getHeight(userID){
+      var height;
+      height = this.db.object('UserDatabase/Users/' + userID + '/height').valueChanges();
+      return height;
+    }*/
+    FirebaseProvider.prototype.getBirthDay = function (userID) {
+        var birthDay;
+        birthDay = this.db.object('UserDatabase/Users/' + userID + '/birthDay').valueChanges();
+        return birthDay;
+    };
+    FirebaseProvider.prototype.getBirthMonth = function (userID) {
+        var birthMonth;
+        birthMonth = this.db.object('UserDatabase/Users/' + userID + '/birthMonth').valueChanges();
+        return birthMonth;
+    };
+    FirebaseProvider.prototype.getBirthYear = function (userID) {
+        var birthYear;
+        birthYear = this.db.object('UserDatabase/Users/' + userID + '/birthYear').valueChanges();
+        return birthYear;
+    };
+    FirebaseProvider.prototype.getEmail = function (userID) {
+        var email;
+        email = this.db.object('UserDatabase/Users/' + userID + '/email').valueChanges();
+        return email;
+    };
+    FirebaseProvider.prototype.getPhone = function (userID) {
+        var phone;
+        phone = this.db.object('UserDatabase/Users/' + userID + '/phoneNumber').valueChanges();
+        return phone;
+    };
+    FirebaseProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+    ], FirebaseProvider);
+    return FirebaseProvider;
+}());
+
+//# sourceMappingURL=firebase.js.map
+
+/***/ }),
+
+/***/ 509:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 212,
+	"./af.js": 212,
+	"./ar": 213,
+	"./ar-dz": 214,
+	"./ar-dz.js": 214,
+	"./ar-kw": 215,
+	"./ar-kw.js": 215,
+	"./ar-ly": 216,
+	"./ar-ly.js": 216,
+	"./ar-ma": 217,
+	"./ar-ma.js": 217,
+	"./ar-sa": 218,
+	"./ar-sa.js": 218,
+	"./ar-tn": 219,
+	"./ar-tn.js": 219,
+	"./ar.js": 213,
+	"./az": 220,
+	"./az.js": 220,
+	"./be": 221,
+	"./be.js": 221,
+	"./bg": 222,
+	"./bg.js": 222,
+	"./bm": 223,
+	"./bm.js": 223,
+	"./bn": 224,
+	"./bn.js": 224,
+	"./bo": 225,
+	"./bo.js": 225,
+	"./br": 226,
+	"./br.js": 226,
+	"./bs": 227,
+	"./bs.js": 227,
+	"./ca": 228,
+	"./ca.js": 228,
+	"./cs": 229,
+	"./cs.js": 229,
+	"./cv": 230,
+	"./cv.js": 230,
+	"./cy": 231,
+	"./cy.js": 231,
+	"./da": 232,
+	"./da.js": 232,
+	"./de": 233,
+	"./de-at": 234,
+	"./de-at.js": 234,
+	"./de-ch": 235,
+	"./de-ch.js": 235,
+	"./de.js": 233,
+	"./dv": 236,
+	"./dv.js": 236,
+	"./el": 237,
+	"./el.js": 237,
+	"./en-au": 238,
+	"./en-au.js": 238,
+	"./en-ca": 239,
+	"./en-ca.js": 239,
+	"./en-gb": 240,
+	"./en-gb.js": 240,
+	"./en-ie": 241,
+	"./en-ie.js": 241,
+	"./en-il": 242,
+	"./en-il.js": 242,
+	"./en-nz": 243,
+	"./en-nz.js": 243,
+	"./eo": 244,
+	"./eo.js": 244,
+	"./es": 245,
+	"./es-do": 246,
+	"./es-do.js": 246,
+	"./es-us": 247,
+	"./es-us.js": 247,
+	"./es.js": 245,
+	"./et": 248,
+	"./et.js": 248,
+	"./eu": 249,
+	"./eu.js": 249,
+	"./fa": 250,
+	"./fa.js": 250,
+	"./fi": 251,
+	"./fi.js": 251,
+	"./fo": 252,
+	"./fo.js": 252,
+	"./fr": 253,
+	"./fr-ca": 254,
+	"./fr-ca.js": 254,
+	"./fr-ch": 255,
+	"./fr-ch.js": 255,
+	"./fr.js": 253,
+	"./fy": 256,
+	"./fy.js": 256,
+	"./gd": 257,
+	"./gd.js": 257,
+	"./gl": 258,
+	"./gl.js": 258,
+	"./gom-latn": 259,
+	"./gom-latn.js": 259,
+	"./gu": 260,
+	"./gu.js": 260,
+	"./he": 261,
+	"./he.js": 261,
+	"./hi": 262,
+	"./hi.js": 262,
+	"./hr": 263,
+	"./hr.js": 263,
+	"./hu": 264,
+	"./hu.js": 264,
+	"./hy-am": 265,
+	"./hy-am.js": 265,
+	"./id": 266,
+	"./id.js": 266,
+	"./is": 267,
+	"./is.js": 267,
+	"./it": 268,
+	"./it.js": 268,
+	"./ja": 269,
+	"./ja.js": 269,
+	"./jv": 270,
+	"./jv.js": 270,
+	"./ka": 271,
+	"./ka.js": 271,
+	"./kk": 272,
+	"./kk.js": 272,
+	"./km": 273,
+	"./km.js": 273,
+	"./kn": 274,
+	"./kn.js": 274,
+	"./ko": 275,
+	"./ko.js": 275,
+	"./ky": 276,
+	"./ky.js": 276,
+	"./lb": 277,
+	"./lb.js": 277,
+	"./lo": 278,
+	"./lo.js": 278,
+	"./lt": 279,
+	"./lt.js": 279,
+	"./lv": 280,
+	"./lv.js": 280,
+	"./me": 281,
+	"./me.js": 281,
+	"./mi": 282,
+	"./mi.js": 282,
+	"./mk": 283,
+	"./mk.js": 283,
+	"./ml": 284,
+	"./ml.js": 284,
+	"./mn": 285,
+	"./mn.js": 285,
+	"./mr": 286,
+	"./mr.js": 286,
+	"./ms": 287,
+	"./ms-my": 288,
+	"./ms-my.js": 288,
+	"./ms.js": 287,
+	"./mt": 289,
+	"./mt.js": 289,
+	"./my": 290,
+	"./my.js": 290,
+	"./nb": 291,
+	"./nb.js": 291,
+	"./ne": 292,
+	"./ne.js": 292,
+	"./nl": 293,
+	"./nl-be": 294,
+	"./nl-be.js": 294,
+	"./nl.js": 293,
+	"./nn": 295,
+	"./nn.js": 295,
+	"./pa-in": 296,
+	"./pa-in.js": 296,
+	"./pl": 297,
+	"./pl.js": 297,
+	"./pt": 298,
+	"./pt-br": 299,
+	"./pt-br.js": 299,
+	"./pt.js": 298,
+	"./ro": 300,
+	"./ro.js": 300,
+	"./ru": 301,
+	"./ru.js": 301,
+	"./sd": 302,
+	"./sd.js": 302,
+	"./se": 303,
+	"./se.js": 303,
+	"./si": 304,
+	"./si.js": 304,
+	"./sk": 305,
+	"./sk.js": 305,
+	"./sl": 306,
+	"./sl.js": 306,
+	"./sq": 307,
+	"./sq.js": 307,
+	"./sr": 308,
+	"./sr-cyrl": 309,
+	"./sr-cyrl.js": 309,
+	"./sr.js": 308,
+	"./ss": 310,
+	"./ss.js": 310,
+	"./sv": 311,
+	"./sv.js": 311,
+	"./sw": 312,
+	"./sw.js": 312,
+	"./ta": 313,
+	"./ta.js": 313,
+	"./te": 314,
+	"./te.js": 314,
+	"./tet": 315,
+	"./tet.js": 315,
+	"./tg": 316,
+	"./tg.js": 316,
+	"./th": 317,
+	"./th.js": 317,
+	"./tl-ph": 318,
+	"./tl-ph.js": 318,
+	"./tlh": 319,
+	"./tlh.js": 319,
+	"./tr": 320,
+	"./tr.js": 320,
+	"./tzl": 321,
+	"./tzl.js": 321,
+	"./tzm": 322,
+	"./tzm-latn": 323,
+	"./tzm-latn.js": 323,
+	"./tzm.js": 322,
+	"./ug-cn": 324,
+	"./ug-cn.js": 324,
+	"./uk": 325,
+	"./uk.js": 325,
+	"./ur": 326,
+	"./ur.js": 326,
+	"./uz": 327,
+	"./uz-latn": 328,
+	"./uz-latn.js": 328,
+	"./uz.js": 327,
+	"./vi": 329,
+	"./vi.js": 329,
+	"./x-pseudo": 330,
+	"./x-pseudo.js": 330,
+	"./yo": 331,
+	"./yo.js": 331,
+	"./zh-cn": 332,
+	"./zh-cn.js": 332,
+	"./zh-hk": 333,
+	"./zh-hk.js": 333,
+	"./zh-tw": 334,
+	"./zh-tw.js": 334
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 509;
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AuthProvider = (function () {
+    function AuthProvider(firebaseProvider) {
+        this.firebaseProvider = firebaseProvider;
+        this.loginState = false;
+        if (this.loginState) {
+            this.UID = this.getLoggedUID();
+            this.phone = this.getPhoneNumber();
+        }
+    }
+    AuthProvider.prototype.getLoggedUID = function () {
+        if (__WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser) {
+            this.UID = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser.uid;
+        }
+        return this.UID;
+    };
+    AuthProvider.prototype.getPhoneNumber = function () {
+        var _this = this;
+        this.phone = this.firebaseProvider.getPhone(this.UID).subscribe(function (val) { return _this.phone = val; });
+        return this.phone;
+    };
+    AuthProvider.prototype.logout = function () {
+        if (this.loginState == true) {
+            __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().signOut();
+            this.loginState = false;
+            this.UID = null;
+        }
+    };
+    AuthProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__["a" /* FirebaseProvider */]])
+    ], AuthProvider);
+    return AuthProvider;
+}());
+
+//# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 545:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_result_result__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase_app__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(51);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+var MyApp = (function () {
+    function MyApp(platform, statusBar, splashScreen, auth) {
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */];
+        platform.ready().then(function () {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+        this.pages = [
+            { title: 'Home', page: __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */] },
+            { title: 'Result', page: __WEBPACK_IMPORTED_MODULE_6__pages_result_result__["a" /* ResultPage */] },
+            { title: 'About', page: __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */] },
+            { title: 'Settings', page: __WEBPACK_IMPORTED_MODULE_5__pages_settings_settings__["a" /* SettingsPage */] }
+        ];
+        if (__WEBPACK_IMPORTED_MODULE_7_firebase_app__["auth"]().currentUser != null) {
+            this.userId = __WEBPACK_IMPORTED_MODULE_7_firebase_app__["auth"]().currentUser.uid;
+        }
+    }
+    MyApp.prototype.openPage = function (page) {
+        this.rootPage = page.page;
+    };
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/'<ion-menu [content]="content">\n\n        <ion-toolbar>\n\n          <ion-title>Navigatie</ion-title>\n\n        </ion-toolbar>\n\n      \n\n        <ion-content>\n\n          <ion-list class="navList">\n\n            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n              {{p.title}}\n\n            </button>\n\n            <button menuClose ion-item>Sluit menu</button>\n\n          </ion-list>\n\n        </ion-content>\n\n      </ion-menu>\n\n<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>\n\n\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _d || Object])
+    ], MyApp);
+    return MyApp;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 662:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_google__ = __webpack_require__(663);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__custom_navbar_custom_navbar__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__call_for_help_call_for_help__ = __webpack_require__(665);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(18);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var ComponentsModule = (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__custom_navbar_custom_navbar__["a" /* CustomNavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_3__call_for_help_call_for_help__["a" /* CallForHelpComponent */],
+                __WEBPACK_IMPORTED_MODULE_1__google_google__["a" /* GoogleComponent */]
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_2__custom_navbar_custom_navbar__["a" /* CustomNavbarComponent */]),
+                __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__call_for_help_call_for_help__["a" /* CallForHelpComponent */]),
+                __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_1__google_google__["a" /* GoogleComponent */]),
+            ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_2__custom_navbar_custom_navbar__["a" /* CustomNavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_3__call_for_help_call_for_help__["a" /* CallForHelpComponent */],
+                __WEBPACK_IMPORTED_MODULE_1__google_google__["a" /* GoogleComponent */]
+            ]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
+/***/ 663:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the GoogleComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var GoogleComponent = (function () {
+    function GoogleComponent(navCtrl, geolocation) {
+        this.navCtrl = navCtrl;
+        this.geolocation = geolocation;
+    }
+    GoogleComponent.prototype.ngOnInit = function () {
+        this.initMap();
+    };
+    GoogleComponent.prototype.addMarker = function () {
+        var marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.map.getCenter()
+        });
+        var content = "<h4>Information!</h4>";
+        this.addInfoWindow(marker, content);
+    };
+    GoogleComponent.prototype.addInfoWindow = function (marker, content) {
+        var _this = this;
+        var infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infoWindow.open(_this.map, marker);
+        });
+    };
+    GoogleComponent.prototype.initMap = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 18,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            /*
+            let coords = new google.maps.LatLng(51.2300507,4.41608839);
+            let mapOptions: google.maps.MapOptions = {
+              center: coords,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            */
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("map"),
+        __metadata("design:type", Object)
+    ], GoogleComponent.prototype, "mapElement", void 0);
+    GoogleComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'google-component',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\google\google.html"*/'<div #map id ="map"></div>'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\google\google.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]])
+    ], GoogleComponent);
+    return GoogleComponent;
+}());
+
+//# sourceMappingURL=google.js.map
+
+/***/ }),
+
+/***/ 664:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomNavbarComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_settings_settings__ = __webpack_require__(141);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the CustomNavbarComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var CustomNavbarComponent = (function () {
+    function CustomNavbarComponent(menuCtrl, nav, auth) {
+        this.menuCtrl = menuCtrl;
+        this.nav = nav;
+        this.auth = auth;
+    }
+    CustomNavbarComponent.prototype.openSettings = function () {
+        this.nav.push(__WEBPACK_IMPORTED_MODULE_3__pages_settings_settings__["a" /* SettingsPage */]);
+    };
+    CustomNavbarComponent.prototype.openNavigation = function () {
+        this.menuCtrl.open();
+    };
+    CustomNavbarComponent.prototype.openPage = function (p) {
+        this.rootPage = p;
+    };
+    CustomNavbarComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'custom-navbar',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\custom-navbar\custom-navbar.html"*/'<ion-navbar hideBackButton *ngIf="auth.loginState">\n\n    <ion-buttons start >\n\n      <button ion-button icon-only (click)="openNavigation()">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      {{pageTitle}}\n\n    </ion-title>\n\n    <ion-buttons end >\n\n      <button ion-button icon-only (click)="openSettings()">\n\n        <ion-icon name="settings"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n</ion-navbar>\n\n\n\n \n\n\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\custom-navbar\custom-navbar.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */]])
+    ], CustomNavbarComponent);
+    return CustomNavbarComponent;
+}());
+
+//# sourceMappingURL=custom-navbar.js.map
+
+/***/ }),
+
+/***/ 665:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CallForHelpComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(18);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+/**
+ * Generated class for the CallForHelpComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var CallForHelpComponent = (function () {
+    function CallForHelpComponent(firebaseProvider, auth, callNumber, alertCtrl) {
+        var _this = this;
+        this.firebaseProvider = firebaseProvider;
+        this.auth = auth;
+        this.callNumber = callNumber;
+        this.alertCtrl = alertCtrl;
+        if (this.auth.loginState) {
+            this.userId = this.auth.getLoggedUID();
+            (function () { return __awaiter(_this, void 0, void 0, function () {
+                var _this = this;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, this.firebaseProvider.getPhone(this.userId).subscribe(function (val) { _this.phone = val; })];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); });
+            //console.log(this.phone);
+            if (this.phone == "." || this.phone == null) {
+                this.isValid = false;
+            }
+            else {
+                this.isValid = true;
+            }
+        }
+        console.log("callforhelp isvalid");
+        console.log(this.isValid);
+    }
+    CallForHelpComponent.prototype.callMyNumber = function () {
+        if (this.phone != ".") {
+            this.callNumber.callNumber(this.phone, true)
+                .then(function (res) { return console.log('Launched dialer!', res); })
+                .catch(function (err) { return console.log('Error launching dialer', err); });
+            console.log("call success");
+        }
+        else {
+            this.showMessage();
+        }
+    };
+    CallForHelpComponent.prototype.showMessage = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Telefoon nummer',
+            subTitle: 'Er is nog geen telefoonnummer toegevoegd aan uw account!',
+            buttons: ['OK']
+        });
+        alert.present();
+        console.log("call failed");
+    };
+    CallForHelpComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'call-for-help',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\call-for-help\call-for-help.html"*/'<ion-footer *ngIf="userId">\n\n  <ion-toolbar>\n\n          <button *ngIf="isValid" ion-button full (click)="callMyNumber()">\n\n            <ion-icon name="call"></ion-icon>\n\n            <!-- {{phone}} !-->\n\n          </button>\n\n          <button *ngIf="!isValid" ion-button full (click)="showMessage()">\n\n            <ion-icon name="alert"></ion-icon>\n\n          </button>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\components\call-for-help\call-for-help.html"*/
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
+    ], CallForHelpComponent);
+    return CallForHelpComponent;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=call-for-help.js.map
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__result_result__ = __webpack_require__(91);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AboutPage = (function () {
+    function AboutPage(navCtrl, loadingCtrl) {
+        this.navCtrl = navCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.GoResult = __WEBPACK_IMPORTED_MODULE_2__result_result__["a" /* ResultPage */];
+    }
+    AboutPage.prototype.Load = function () {
+        this.loadingCtrl.create({
+            //spinner: "true",
+            content: "Please wait for your result",
+            duration: 3000,
+            dismissOnPageChange: true
+            //dismissOnPageChange: true
+        }).present();
+    };
+    AboutPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/'<ion-header>\n\n    <custom-navbar></custom-navbar>\n\n</ion-header>\n\n  <ion-content padding>\n\n    <ion-card>\n\n        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>\n\n    </ion-card>\n\n    \n\n    \n\n  <button [navPush]="rs" ion-button full>Tutorial</button>\n\n  <button (click)="Load()" [navPush]="GoResult" ion-button full>Start Test</button>\n\n  \n\n\n\n</ion-content>\n\n\n\n<call-for-help>\n\n</call-for-help>\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+    ], AboutPage);
+    return AboutPage;
+}());
+
+//# sourceMappingURL=about.js.map
+
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_chart_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the ResultPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ResultPage = (function () {
+    function ResultPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.BACLevels = [0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.002, 0.003, 0.004, 0.005, 0.006, 0.006, 0.007, 0.008, 0.008, 0.009, 0.010, 0.010, 0.011, 0.011, 0.012, 0.013, 0.013, 0.014, 0.014, 0.015, 0.015, 0.016, 0.016, 0.017, 0.017, 0.017, 0.018, 0.018, 0.019, 0.019, 0.019, 0.020, 0.020, 0.020, 0.021, 0.021, 0.021, 0.022, 0.022, 0.022, 0.022, 0.023, 0.023, 0.023, 0.023, 0.024, 0.024, 0.024, 0.024, 0.024, 0.024, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.026, 0.026, 0.026, 0.026, 0.026, 0.026, 0.026, 0.026, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.027, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.028, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.029, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.030, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.031, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.032, 0.033, 0.033, 0.033, 0.033, 0.033, 0.033, 0.033, 0.033, 0.033, 0.034, 0.034, 0.034, 0.034, 0.034, 0.034, 0.034, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.035, 0.036, 0.036, 0.036, 0.036, 0.036, 0.036, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.037, 0.038, 0.038, 0.038, 0.038, 0.038, 0.038, 0.039, 0.039, 0.039, 0.039, 0.039, 0.039, 0.040, 0.040, 0.040, 0.040, 0.040, 0.040, 0.041, 0.041, 0.041, 0.041, 0.041, 0.041, 0.042, 0.042, 0.042, 0.042, 0.042, 0.043, 0.043, 0.043, 0.043, 0.043, 0.043, 0.044, 0.044, 0.044, 0.044, 0.044, 0.044, 0.045, 0.045, 0.045, 0.045, 0.045, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.047, 0.047, 0.047, 0.047, 0.047, 0.048, 0.048, 0.048, 0.048, 0.048, 0.048, 0.049, 0.049, 0.049, 0.049, 0.049, 0.050, 0.050, 0.050, 0.050, 0.050, 0.050, 0.051, 0.051, 0.051, 0.051, 0.051, 0.052, 0.052, 0.052, 0.052, 0.052, 0.052, 0.053, 0.053, 0.053, 0.053, 0.053, 0.054, 0.054, 0.054, 0.054, 0.054, 0.054, 0.055, 0.055, 0.055, 0.055, 0.055, 0.056, 0.056, 0.056, 0.056, 0.056, 0.057, 0.057, 0.057, 0.057, 0.058, 0.058, 0.058, 0.058, 0.058, 0.059, 0.059, 0.059, 0.059, 0.060, 0.060, 0.060, 0.060, 0.061, 0.061, 0.061, 0.061, 0.062, 0.062, 0.062, 0.062, 0.063, 0.063, 0.063, 0.064, 0.064, 0.064, 0.064, 0.065, 0.065, 0.065, 0.066, 0.066, 0.066, 0.067, 0.067, 0.067, 0.068, 0.068, 0.069, 0.069, 0.069, 0.070, 0.070, 0.071, 0.071, 0.071, 0.072, 0.072, 0.073, 0.073, 0.074, 0.074, 0.075, 0.075, 0.076, 0.076, 0.077, 0.077, 0.078, 0.078, 0.079, 0.080, 0.080, 0.081, 0.081, 0.082, 0.083, 0.083, 0.084, 0.085, 0.085, 0.086, 0.087, 0.088, 0.088, 0.089, 0.090, 0.091, 0.092, 0.093, 0.093, 0.094, 0.095, 0.096, 0.097, 0.098, 0.099, 0.100, 0.101, 0.102, 0.103, 0.104, 0.105, 0.106, 0.107, 0.109, 0.110, 0.111, 0.112, 0.113, 0.115, 0.116, 0.117, 0.119, 0.120, 0.121, 0.123, 0.124, 0.126, 0.127, 0.129, 0.130, 0.132, 0.134, 0.135, 0.137, 0.139, 0.140, 0.142, 0.144, 0.146, 0.148, 0.150, 0.151, 0.153, 0.155, 0.157, 0.160, 0.162, 0.164, 0.166, 0.168, 0.170, 0.173, 0.175, 0.177, 0.180, 0.182, 0.185, 0.187, 0.190, 0.193, 0.195, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250, 0.250];
+    }
+    ResultPage.prototype.ionViewDidLoad = function () {
+        this.allowedPromilleLevel = 0.4;
+        __WEBPACK_IMPORTED_MODULE_1_chart_js__["Chart"].pluginService.register({
+            afterDraw: function (chart) {
+                var pixelValue = getMax();
+                if (typeof chart.config.options.lineAt != 'undefined') {
+                    //var lineAt = chart.config.options.lineAt;
+                    var ctxPlugin = chart.chart.ctx;
+                    var xAxe = chart.scales[chart.config.options.scales.xAxes[0].id];
+                    var yAxe = chart.scales[chart.config.options.scales.yAxes[0].id];
+                    // I'm not good at maths
+                    // So I couldn't find a way to make it work ...
+                    // ... without having the `min` property set to 0
+                    if (yAxe.min != 0)
+                        return;
+                    ctxPlugin.strokeStyle = "red";
+                    ctxPlugin.beginPath();
+                    var position = yAxe.getPixelForValue(pixelValue);
+                    ctxPlugin.moveTo(xAxe.left, position);
+                    ctxPlugin.lineTo(xAxe.right, position);
+                    ctxPlugin.stroke();
+                }
+            }
+        });
+        __WEBPACK_IMPORTED_MODULE_1_chart_js__["Chart"].defaults.global.legend.display = false;
+        this.barChart = new __WEBPACK_IMPORTED_MODULE_1_chart_js__["Chart"](this.barCanvas.nativeElement, {});
+        this.voltage = Math.floor(Math.random() * 1023);
+        this.promilleLevel = +(this.BACLevels[this.voltage] * 10).toFixed(2);
+        this.allowedPromilleLevel = 0.4; //placeholder
+        this.newChart(this.promilleLevel, this.allowedPromilleLevel);
+    };
+    ResultPage.prototype.Random = function () {
+        this.voltage = Math.floor(Math.random() * 1023);
+        this.promilleLevel = +(this.BACLevels[this.voltage] * 10).toFixed(2);
+        this.allowedPromilleLevel = 0.4; //placeholder
+        this.newChart(this.promilleLevel, this.allowedPromilleLevel);
+    };
+    ResultPage.prototype.newChart = function (newPromilleLevel, maxpromille) {
+        var maxTick;
+        if (newPromilleLevel > maxpromille) {
+            this.barColor = 'rgba(255, 5, 5, 1)';
+        }
+        if (newPromilleLevel == maxpromille) {
+            this.barColor = 'rgba(255, 113, 25, 1)';
+        }
+        if (newPromilleLevel < maxpromille) {
+            this.barColor = 'rgba(52, 255, 25, 1)';
+        }
+        if (newPromilleLevel < 0.5) {
+            maxTick = 0.6;
+        }
+        else if (newPromilleLevel < 0.9) {
+            maxTick = 1;
+        }
+        else if (newPromilleLevel < 1.4) {
+            maxTick = 1.5;
+        }
+        else {
+            maxTick = 2;
+        }
+        this.barChart.destroy();
+        this.barChart = new __WEBPACK_IMPORTED_MODULE_1_chart_js__["Chart"](this.barCanvas.nativeElement, {
+            type: 'bar',
+            data: {
+                label: "Your Result",
+                datasets: [{
+                        label: 'Your Color',
+                        data: [newPromilleLevel],
+                        backgroundColor: [
+                            this.barColor,
+                        ],
+                        borderColor: [
+                            this.barColor,
+                        ],
+                        borderWidth: 1,
+                    }]
+            },
+            options: {
+                lineAt: 14,
+                scales: {
+                    yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: maxTick
+                            }
+                        }],
+                }
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_8" /* ViewChild */])('barCanvas'),
+        __metadata("design:type", Object)
+    ], ResultPage.prototype, "barCanvas", void 0);
+    ResultPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'page-result',template:/*ion-inline-start:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <custom-navbar></custom-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding text-center>\n\n\n\n  <ion-card>\n\n    <ion-card-header>\n\n      Your alchohol test\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <canvas #barCanvas></canvas> \n\n      <!--<p style="font-weight: bold; font-size: 20px;">Warning! You are in no condition to drive. Use another means of transportation. You might want to consider drinking less.</p>\n\n      <p>Your Promile level is 2, you need to wait 13,5 hours before driving </p> -->\n\n      <p>Voltage: {{voltage}}</p>\n\n      <p>Promille: {{promilleLevel}}</p>\n\n      <button ion-button (click)="Random()"> Test </button>\n\n\n\n    </ion-card-content>\n\n    \n\n    \n\n  </ion-card>\n\n  <google-component>\n\n    \n\n  </google-component>\n\n</ion-content>\n\n<call-for-help>\n\n</call-for-help>\n\n\n\n'/*ion-inline-end:"C:\Users\Bas\Dropbox\2EA\Internationaal Project\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\result\result.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["i" /* NavParams */]])
+    ], ResultPage);
+    return ResultPage;
+}());
+
+function getMax() {
+    return 0.4;
+}
+//# sourceMappingURL=result.js.map
+
+/***/ })
+
+},[437]);
+//# sourceMappingURL=main.js.map

@@ -34,25 +34,20 @@ export class ResultPage {
   
   ionViewDidLoad() {
     this.allowedPromilleLevel = 0.4
-
-
     Chart.pluginService.register({
         afterDraw: function(chart) {
             var pixelValue = getMax();
             if (typeof chart.config.options.lineAt != 'undefined') {
-                var lineAt = chart.config.options.lineAt;
+                //var lineAt = chart.config.options.lineAt;
                 var ctxPlugin = chart.chart.ctx;
                 var xAxe = chart.scales[chart.config.options.scales.xAxes[0].id];
                 var yAxe = chart.scales[chart.config.options.scales.yAxes[0].id];
-                   
                 // I'm not good at maths
                 // So I couldn't find a way to make it work ...
                 // ... without having the `min` property set to 0
                 if(yAxe.min != 0) return;
-                
                 ctxPlugin.strokeStyle = "red";
                 ctxPlugin.beginPath();
-                
                 var position = yAxe.getPixelForValue(pixelValue);
                 ctxPlugin.moveTo(xAxe.left, position);
                 ctxPlugin.lineTo(xAxe.right, position);
@@ -60,16 +55,12 @@ export class ResultPage {
             }
         }
     });
-    
-
-    Chart.defaults.global.legend.display = false;
+        Chart.defaults.global.legend.display = false;
         this.barChart = new Chart(this.barCanvas.nativeElement,{});
         this.voltage = Math.floor(Math.random()*1023);
         this.promilleLevel = +(this.BACLevels[this.voltage]*10).toFixed(2);
         this.allowedPromilleLevel = 0.4 //placeholder
         this.newChart(this.promilleLevel,this.allowedPromilleLevel);
-
-    
     }
     Random(){
         this.voltage = Math.floor(Math.random()*1023);

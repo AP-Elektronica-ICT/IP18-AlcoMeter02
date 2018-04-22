@@ -17,7 +17,9 @@ export class AuthProvider {
     }
   }
   getLoggedUID() : string{
-    this.UID = firebase.auth().currentUser.uid;
+    if(firebase.auth().currentUser){
+      this.UID = firebase.auth().currentUser.uid;
+    }
     return this.UID;
   }
   getPhoneNumber(){
