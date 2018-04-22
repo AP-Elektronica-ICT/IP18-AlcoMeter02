@@ -8,11 +8,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ResultPage} from '../pages/result/result';
 import * as firebase from 'firebase/app'; 
 import { HomePage } from '../pages/home/home';
-<<<<<<< HEAD
 import { AndroidPermissions } from '@ionic-native/android-permissions';
-=======
 import { AuthProvider } from '../providers/auth/auth';
->>>>>>> master
 
 @Component({
   templateUrl: 'app.html'
@@ -22,16 +19,14 @@ export class MyApp {
   pageTitle: string;
   pages: Array<{title: string, page: any}>;
   userId : string;
-<<<<<<< HEAD
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private androidPermissions: AndroidPermissions) {
-=======
+  
   constructor(
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    auth: AuthProvider
+    auth: AuthProvider,
+    private androidPermissions: AndroidPermissions
   ) {
->>>>>>> master
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
