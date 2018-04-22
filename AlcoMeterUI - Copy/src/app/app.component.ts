@@ -8,6 +8,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ResultPage} from '../pages/result/result';
 import * as firebase from 'firebase/app'; 
 import { HomePage } from '../pages/home/home';
+import { AlcHistoryPage } from '../pages/alc-history/alc-history';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Home', page: AboutPage },
-      { title: 'About', page: AboutPage },
+      { title: 'History', page: AlcHistoryPage },
       { title: 'Settings', page: SettingsPage }
     ];
     if(firebase.auth().currentUser != null){

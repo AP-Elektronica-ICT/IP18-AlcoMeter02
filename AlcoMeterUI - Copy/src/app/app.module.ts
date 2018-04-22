@@ -27,6 +27,7 @@ import { CallNumber } from '@ionic-native/call-number';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { AlcHistoryPage } from '../pages/alc-history/alc-history';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -50,7 +51,8 @@ firebase.initializeApp(config);
     CustomNavbarComponent,
     CallForHelpComponent,
     RegisterPage,
-    TutorialPage
+    TutorialPage,
+    AlcHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ firebase.initializeApp(config);
     ResultPage,
     SettingsPage,
     RegisterPage,
-    TutorialPage
+    TutorialPage,
+    AlcHistoryPage
   ],
   providers: [
     StatusBar,
