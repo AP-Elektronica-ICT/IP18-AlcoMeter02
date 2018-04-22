@@ -14,3 +14,19 @@ page-result {
      
     }
 }
+
+
+#driveWarningDanger{
+    color: red;
+}
+#driveWarningMild{
+    color: coral;
+}
+#driveWarningSafe{
+    color: rgb(117, 196, 0);
+}
+
+#hoursTillDriving{
+    color: grey;
+    font-size: 80%;
+}

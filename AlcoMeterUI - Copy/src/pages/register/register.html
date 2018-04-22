@@ -2,34 +2,45 @@
   <custom-navbar></custom-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
+<ion-content>
+  <form [formGroup]="registerForm">
+    <ion-item>
       <ion-label color="primary" stacked>E-mail</ion-label>
-      <ion-input [(ngModel)]="mail" type="email" placeholder="E-mail"></ion-input>
+      <ion-input [formControl]="registerForm.controls['email']" type="email" placeholder="E-mail"></ion-input>
     </ion-item>
+    <div *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty"  class="validator-error">
+              Please enter a valid email.
+    </div>
     <ion-item>
       <ion-label color="primary" stacked>Password</ion-label>
-      <ion-input [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>
+      <ion-input [formControl]="registerForm.controls['password']" [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>
     </ion-item>
+    <div *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.dirty" class="validator-error">
+      Please enter a valid password, with at least 6 characters
+    </div>
     <ion-item>
       <ion-label color="primary" stacked>First Name</ion-label>
-      <ion-input [(ngModel)]="firstName" type="text" placeholder="First name"></ion-input>
+      <ion-input [formControl]="registerForm.controls['firstname']" [(ngModel)]="firstName" type="text" placeholder="First name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Last Name</ion-label>
-      <ion-input [(ngModel)]="lastName" type="text" placeholder="Last name"></ion-input>
+      <ion-input [formControl]="registerForm.controls['lastname']" [(ngModel)]="lastName" type="text" placeholder="Last name"></ion-input>
     </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>Birth date</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="birthDate" placeholder="day/month/year" pickerFormat="DD MMMM YYYY"></ion-datetime>
+        <ion-datetime [formControl]="registerForm.controls['birthdate']" displayFormat="DD/MM/YYYY" [(ngModel)]="birthDate" placeholder="day/month/year" pickerFormat="DD MMMM YYYY"></ion-datetime>
       </ion-item>
       <ion-item>
       <ion-label color="primary" stacked>Gender</ion-label>
-      <ion-select placeholder="Choose your gender" [(ngModel)]="gender">
+      <ion-select [formControl]="registerForm.controls['gender']" placeholder="Choose your gender" [(ngModel)]="gender">
         <ion-option value="Female">Female</ion-option>
         <ion-option value="Male">Male</ion-option>
       </ion-select>
     </ion-item>
-      <button ion-button full (click)="register()">Register</button>
-      <button ion-button full (click)="log()">log</button>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button full [disabled]="!registerForm.valid" (click)="register()">Register</button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

@@ -24,10 +24,15 @@ import { ResultPage } from '../pages/result/result';
 import { GoogleComponent } from '../components/google/google';
 import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
-
 import { Geolocation } from '@ionic-native/geolocation';
+<<<<<<< HEAD
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AlcHistoryPage } from '../pages/alc-history/alc-history';
+=======
+import { ComponentsModule} from '../components/components.module';
+import { GeocodeProvider } from '../providers/geocode/geocode';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+>>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -46,13 +51,19 @@ firebase.initializeApp(config);
     ContactPage,
     HomePage,
     ResultPage,
-    GoogleComponent,
+    //GoogleComponent,
     SettingsPage, 
+<<<<<<< HEAD
     CustomNavbarComponent,
     CallForHelpComponent,
     RegisterPage,
     TutorialPage,
     AlcHistoryPage
+=======
+    //CustomNavbarComponent,
+    //CallForHelpComponent,
+    RegisterPage
+>>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
   ],
   imports: [
     BrowserModule,
@@ -61,7 +72,8 @@ firebase.initializeApp(config);
     HttpClientModule,
     AngularFireModule.initializeApp(config), 
     AngularFireDatabaseModule, 
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,7 +94,9 @@ firebase.initializeApp(config);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     AuthProvider,
-    Geolocation
+    Geolocation,
+    GeocodeProvider,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

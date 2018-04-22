@@ -3,6 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AuthProvider } from './../../providers/auth/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AboutPage } from '../about/about';
 
 /**
  * Generated class for the RegisterPage page.
@@ -16,18 +19,33 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+  registerForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public firebaseProvider: FirebaseProvider,
+    private formBuilder: FormBuilder,
+    public auth: AuthProvider
+  ) {
+      this.registerForm = this.formBuilder.group({
+        email: ['', Validators.compose([
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
+          Validators.required
+        ])],
+        password: ['', Validators.compose([
+          Validators.minLength(6),
+          Validators.required
+        ])],
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        birthdate: ['', Validators.required],
+        gender: ['', Validators.required]
+      });
   }
-  public mail: any = ""; 
-  pass: any = ""; 
-  public weight: number;
-  public height = 50;
-  public birthDate;
-  public gender;
-  public firstName;
-  public lastName;
-  public userID1;
-  
+  onSignIn() {
+    //this.logger.info('SignInPage: onSignIn()');
+  }
   
   ngOnInit(){
     firebase.auth().onAuthStateChanged(function(user){
@@ -45,22 +63,36 @@ export class RegisterPage {
 
 
   register() {
-    firebase.auth().createUserWithEmailAndPassword(this.mail, this.pass).then((response) =>{
-      var userID = firebase.auth().currentUser.uid;
-        var date = this.birthDate;
+    var me = this;
+    firebase.auth().createUserWithEmailAndPassword(
+      this.registerForm.controls['email'].value, 
+      this.registerForm.controls['password'].value)
+    .then((response) =>{
+        var userID = firebase.auth().currentUser.uid;
+        var date = this.registerForm.controls['birthdate'].value;
         var datestring = date.replace(/-/g,"");
         var year = datestring.substr(0,4);
         var month = datestring.substr(4,2);
         var day = datestring.substr(6,2);
 
-      this.firebaseProvider.addUser(userID,day,month,year,this.gender,this.firstName,this.lastName,this.mail, ".");
-      console.log("email");
-      console.log(this.mail);
-      console.log("pass");
-      console.log(this.pass);
-      firebase.auth().signInWithEmailAndPassword(this.mail, this.pass).then(function(response){
+      this.firebaseProvider.addUser(
+        userID,
+        day,
+        month,
+        year,
+        this.registerForm.controls['gender'].value,
+        this.registerForm.controls['firstname'].value,
+        this.registerForm.controls['lastname'].value,
+        this.registerForm.controls['email'].value,
+        ".");
+      firebase.auth().signInWithEmailAndPassword(
+        this.registerForm.controls['email'].value, 
+        this.registerForm.controls['password'].value)
+      .then(function(response){
+        console.log(response);
+        me.auth.loginState = true;
+        me.navCtrl.push(AboutPage);
         console.log("nextPage worked!");
-        console.log(firebase.auth().currentUser);
       })
       .catch(function(error) {
         var errorMessage = error.message;
@@ -71,20 +103,10 @@ export class RegisterPage {
     .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
+      alert(errorMessage);
+      console.log(errorMessage);
     });
-
     
-    
-
-  }
-
-  log(){
-    var date = this.birthDate;
-      var datestring = date.replace(/-/g,"");
-      var year = datestring.substr(0,4);
-      var month = datestring.substr(4,2);
-      var day = datestring.substr(6,2);
-      console.log("Year: " +year  +" Month: " + month + " Day: " + day);
   }
 
 }

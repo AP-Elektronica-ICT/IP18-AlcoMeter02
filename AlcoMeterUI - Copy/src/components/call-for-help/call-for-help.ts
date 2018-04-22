@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { FirebaseProvider } from './../../providers/firebase/firebase'; 
 import { CallNumber} from '@ionic-native/call-number'; 
+import { AuthProvider } from './../../providers/auth/auth';
 import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the CallForHelpComponent component.
@@ -18,14 +19,18 @@ export class CallForHelpComponent {
   phone: string;
   isValid: Boolean;
   userId: string;
-  constructor(public firebaseProvider: FirebaseProvider, private callNumber: CallNumber, public alertCtrl: AlertController) {
-    console.log('Hello CallForHelpComponent Component');
-    if(firebase.auth().currentUser != null){
-      this.userId = firebase.auth().currentUser.uid;
-
-      this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
+  constructor(
+    public firebaseProvider: FirebaseProvider, 
+    public auth: AuthProvider, 
+    private callNumber: CallNumber, 
+    public alertCtrl: AlertController) {
+    if(this.auth.loginState){
+      this.userId = this.auth.getLoggedUID();
+      async () => {
+        await this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
+      }
       //console.log(this.phone);
-      if(this.phone == ".")
+      if(this.phone == "." || this.phone == null)
       {
         this.isValid = false;
       } 
@@ -36,7 +41,6 @@ export class CallForHelpComponent {
     }
     console.log("callforhelp isvalid")
     console.log(this.isValid);
-    //console.log("callforhelp phone")
     
   }
   callMyNumber(){
