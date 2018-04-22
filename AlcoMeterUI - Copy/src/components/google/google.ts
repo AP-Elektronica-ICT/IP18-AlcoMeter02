@@ -18,9 +18,11 @@ export class GoogleComponent {
   map: any;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+    
   }
 
   ngOnInit(){
+    
     this.initMap();
   }
   
@@ -60,23 +62,22 @@ export class GoogleComponent {
         center: latLng,
         zoom: 18,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
+      }
     
-   /* let coords = new google.maps.LatLng(51.2300507,4.41608839);
-    let mapOptions: google.maps.MapOptions = {
-      center: coords,
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }*/
     
 
-   this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      let marker: google.maps.Marker = new google.maps.Marker({
+        map: this.map,
+        position: latLng
+  })
  
-  }, (err) => {
-    console.log("err");
-  });
+    }, (err) => {
+      console.log("err");
+    });
 
-}
+  }
 
 }
 
