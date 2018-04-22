@@ -127,7 +127,7 @@ export class ResultPage {
                 console.log((+this.array[i][1])*10);
               this.maxPro = (+this.array[i][1])*10 ;
                 this.mixedChart.destroy();
-              this.newChart(0.0,this.maxPro); // Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!
+              this.newChart(0.5,this.maxPro); // Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!Hier waarde van meting invoegen !!
             }
         }
     }
