@@ -15,7 +15,7 @@ export class AboutPage {
   }
   Load() {
     this.loadingCtrl.create({
-      //spinner: "true",
+      spinner: "true",
       content: "Please wait for your result",
       
       duration: 3000,
