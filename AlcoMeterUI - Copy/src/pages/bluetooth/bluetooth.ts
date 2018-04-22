@@ -12,6 +12,7 @@ export class BluetoothPage {
   readOk: Boolean;
   connected: Boolean; 
   conn: String; 
+  value: String; 
 
   constructor(private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController) {
     bluetoothSerial.enable();
@@ -19,13 +20,13 @@ export class BluetoothPage {
 
   startScanning() {
     this.bluetoothSerial.write('a').then((data: any)=>{
-      this.measuring(); 
+      this.checkConn(); 
     })
     .catch((e)=>{
       this.errorBl(); 
     }); 
   }
-  measuring(){
+  checkConn(){
     this.readOk = false; 
     do {
       this.bluetoothSerial.available()
@@ -44,5 +45,30 @@ export class BluetoothPage {
   errorBl(){
     alert("Check if you are connected with the right bluetooth device."); 
     this.conn = "not connected"; 
+  }
+  getMeasurement(){
+    this.bluetoothSerial.write('b').then((data: any)=>{
+      this.measure(); 
+    })
+    .catch((e)=>{
+      this.errorBl(); 
+    }); 
+  }
+  measure(){
+    this.readOk = false; 
+    do {
+      this.bluetoothSerial.available()
+      .then((number: any) => {
+        this.bluetoothSerial.read()
+        .then((data: any) => {
+          if (data[0] == 'M'){
+            this.value = data[1] + data[2] + data[3] + data[4] + data[5]; 
+            this.bluetoothSerial.clear(); 
+            this.readOk = true; 
+            this.conn = "connected"; 
+          }
+        });
+      });
+    } while(this.readOk == false);
   }
 }
