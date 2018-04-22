@@ -26,6 +26,8 @@ import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ComponentsModule} from '../components/components.module';
+import { GeocodeProvider } from '../providers/geocode/geocode';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -77,7 +79,9 @@ firebase.initializeApp(config);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     AuthProvider,
-    Geolocation
+    Geolocation,
+    GeocodeProvider,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

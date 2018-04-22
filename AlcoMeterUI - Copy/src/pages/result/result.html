@@ -19,9 +19,12 @@
       <canvas #barCanvas></canvas> 
       <!--<p style="font-weight: bold; font-size: 20px;">Warning! You are in no condition to drive. Use another means of transportation. You might want to consider drinking less.</p>
       <p>Your Promile level is 2, you need to wait 13,5 hours before driving </p> -->
-      <p>Voltage: {{voltage}}</p>
-      <p>Promille: {{promilleLevel}}</p>
-      <button ion-button (click)="Random()"> Test </button>
+      <p id = "warningString">{{warningString}}</p>
+      <p ng-if="driveWarningSafe" id = "driveWarningSafe">{{driveWarningSafe}}</p>
+      <p ng-if="driveWarningMild" id = "driveWarningMild">{{driveWarningMild}}</p>
+      <p ng-if="driveWarningDanger" id = "driveWarningDanger">{{driveWarningDanger}}</p>
+      <p ng-if="hoursTillDriving" id = "hoursTillDriving">{{hoursTillDriving}}</p>
+      
 
     </ion-card-content>
     

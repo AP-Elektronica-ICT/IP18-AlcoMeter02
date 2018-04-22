@@ -60,20 +60,20 @@ export class GoogleComponent {
         center: latLng,
         zoom: 18,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-    /*
-    let coords = new google.maps.LatLng(51.2300507,4.41608839);
+  }
+    
+   /* let coords = new google.maps.LatLng(51.2300507,4.41608839);
     let mapOptions: google.maps.MapOptions = {
       center: coords,
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    */
+    }*/
+    
 
    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
  
   }, (err) => {
-    console.log(err);
+    console.log("err");
   });
 
 }
