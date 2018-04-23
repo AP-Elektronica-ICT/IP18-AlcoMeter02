@@ -41,13 +41,14 @@ export class FirebaseProvider {
 
     var datestring = daystring + '/' + monthstring +'/' + year;                                                                              
     var timestring = hourstring + ':' + minutesstring;
+    var databaseString = year + monthstring +  daystring +  hourstring +  minutesstring + seconden
     const itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({                
       date : datestring, time: timestring, age:age, gender:gender,                                
       location:location, alcoholLevel:alcoholLevel, sortingms:sortingms                            
     })                                                                                            
     
-    const itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/' + year + '/' + month).push().set({   
-      date: datestring,time:timestring, location:location, alcoholLevel:alcoholLevel, sortingms:sortingms   
+    const itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/' + year + '/' + month + '/').update({   
+      [databaseString]:alcoholLevel  
     })                                                                                           
   }
 

@@ -3,6 +3,8 @@ import { IonicPage, NavController, LoadingController, ToastController } from 'io
 import { AngularFireDatabase, AngularFireObject,  AngularFireList } from 'angularfire2/database';
 import { Chart } from 'chart.js';
 import firebase from 'firebase';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { AuthProvider } from './../../providers/auth/auth';
 
 
 @Component({
@@ -14,26 +16,47 @@ export class AlcHistoryPage {
   todoList$: AngularFireList<any[]>;
   private lineChart: any;
   items;
+  userID;
   xArray: any[] = [];
   yArray: any[] = [];
-  constructor(public navCtrl: NavController, private afDatabase: AngularFireDatabase){
-    this.items= firebase.database().ref('chart/data').orderByKey();
+  constructor(public navCtrl: NavController, private afDatabase: AngularFireDatabase, private fireBaseProvider:FirebaseProvider, private Auth: AuthProvider){
+    
+  }
+  ngOnInit(){
+
+    this.userID = this.Auth.getLoggedUID();
+    var DateObject = new Date();
+    var year = DateObject.getFullYear();
+    var month = DateObject.getUTCMonth();
+
+    this.items= firebase.database().ref('ReadingDatabase/Users/' + this.userID + '/' + year + '/' + month + '/').orderByKey();
+    console.log('ReadingDatabase/Users/' + this.userID + '/' + year + '/' + month);
+    console.log(this.items);
     this.items.on('value', (snapshot) =>{
       this.xArray.splice(0,this.xArray.length);
       this.yArray.splice(0,this.yArray.length);
       snapshot.forEach((childSnapshot) =>{
-        this.xArray.push(childSnapshot.key);
+        var temp = String(childSnapshot.key);
+        var year = temp.slice(0,4);
+        var month = String(+temp.slice(4,6) + 1);
+        var Day = temp.slice(6,8);
+        var Hour = temp.slice(8,10);
+        var Minutes = temp.slice(10,12);
+        var stringforlabel = Day + '/' + month + '/' + year + " " + Hour + ':' + Minutes
+        this.xArray.push(stringforlabel);
         this.yArray.push(childSnapshot.val());
       });
       this.basicChart(this.xArray, this.yArray);
     });
   }
 
+
   basicChart(key, value){
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        labels: key,
+        
         datasets: [{
           label: "Alcohol Promile History",
           fill: true,
@@ -61,7 +84,7 @@ export class AlcHistoryPage {
         scales:{
           xAxes:[{
             scaleLabel:{
-              display: true,
+              
               labelString: 'Months'
             }
           }],
