@@ -34,11 +34,6 @@ export class HomePage {
         password: ['', Validators.required]
       });
   }
-  ionViewDidLoad(){
-    var me = this;
-    
-    
-  }
   async login(){
     var me = this;
     firebase.auth().signInWithEmailAndPassword(

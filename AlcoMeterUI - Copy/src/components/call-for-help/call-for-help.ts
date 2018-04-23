@@ -16,7 +16,7 @@ import { AlertController } from 'ionic-angular';
 })
 export class CallForHelpComponent {
 
-  phone: string;
+  public phone: number;
   isValid: Boolean;
   userId: string;
   constructor(
@@ -25,31 +25,35 @@ export class CallForHelpComponent {
     private callNumber: CallNumber, 
     public alertCtrl: AlertController) {
     if(this.auth.loginState){
-      this.userId = this.auth.getLoggedUID();
-      async () => {
-        await this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
-      }
-      //console.log(this.phone);
-      if(this.phone == "." || this.phone == null)
-      {
-        this.isValid = false;
-      } 
-      else
-      {
-        this.isValid = true;
-      }
+      this.auth.UID = this.auth.getLoggedUID();
+      this.auth.phone = this.getPhoneNumber();
+      this.checkNumber();
     }
     console.log("callforhelp isvalid")
     console.log(this.isValid);
     
   }
+  getPhoneNumber(){
+    return this.firebaseProvider.getPhone(this.auth.UID).subscribe(val => this.phone = val);
+  }
+  checkNumber(){
+    if(this.auth.phone == null)
+    {
+      this.isValid = false;
+    } 
+    else
+    {
+      this.isValid = true;
+    }
+  }
   callMyNumber(){
-      if(this.phone != "."){
+      if(this.phone != null){
         this.callNumber.callNumber(
-          this.phone, true)
+          this.phone.toString(), true)
         .then(res => console.log('Launched dialer!', res))
         .catch(err => console.log('Error launching dialer', err));
         console.log("call success");
+        console.log(this.phone.toString());
       } else{
         this.showMessage();
       }
