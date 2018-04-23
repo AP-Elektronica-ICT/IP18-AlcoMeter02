@@ -38,7 +38,7 @@ export class SettingsPage {
   }
   updateSettings(){
     if(this.phone != null){
-      this.firebaseProvider.updateUser(this.userId, this.phone);
+      this.firebaseProvider.updateUser(this.auth.UID, this.phone);
       this.showAlert();
     }
   }
