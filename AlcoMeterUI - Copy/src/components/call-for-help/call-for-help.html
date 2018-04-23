@@ -1,4 +1,4 @@
-<ion-footer *ngIf="userId">
+<ion-footer *ngIf="auth.loginState">
   <ion-toolbar>
           <button *ngIf="isValid" ion-button full (click)="callMyNumber()">
             <ion-icon name="call"></ion-icon>

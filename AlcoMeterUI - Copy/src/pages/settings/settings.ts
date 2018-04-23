@@ -24,14 +24,11 @@ export class SettingsPage {
     public auth: AuthProvider,
     public nav: NavController
   ) {
-    this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
+    //this.firebaseProvider.getPhone(this.userId).subscribe(val => { this.phone = val });
     if(this.auth.loginState){
       this.auth.UID = this.auth.getLoggedUID();
       this.auth.phone = this.getUserData(this.auth.UID);
     }
-  }
-  ngOnInit(){
-
   }
   getUserData(id : string){
     return this.firebaseProvider.getPhone(id).subscribe(val => this.phone = val);
