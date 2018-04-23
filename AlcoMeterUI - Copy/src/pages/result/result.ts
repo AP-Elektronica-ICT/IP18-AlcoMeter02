@@ -51,7 +51,7 @@ export class ResultPage {
   { }
   
   addItem(){
-    this.fireBaseProvider.addItem(1,15,'Male','Belgium',0.4);
+    this.fireBaseProvider.addItem(this.auth.getLoggedUID(),15,'Male','Belgium',0.4);
   }
   
   ngOnInit(){
