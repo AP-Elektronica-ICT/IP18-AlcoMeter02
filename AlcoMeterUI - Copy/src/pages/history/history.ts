@@ -40,30 +40,7 @@ export class HistoryPage {
     this.allowedPromilleLevel = 0.4
 
 
-    Chart.pluginService.register({
-        afterDraw: function(chart) {
-            var pixelValue = getMax();
-            if (typeof chart.config.options.lineAt != 'undefined') {
-                var lineAt = chart.config.options.lineAt;
-                var ctxPlugin = chart.chart.ctx;
-                var xAxe = chart.scales[chart.config.options.scales.xAxes[0].id];
-                var yAxe = chart.scales[chart.config.options.scales.yAxes[0].id];
-                   
-                // I'm not good at maths
-                // So I couldn't find a way to make it work ...
-                // ... without having the `min` property set to 0
-                if(yAxe.min != 0) return;
-                
-                ctxPlugin.strokeStyle = "red";
-                ctxPlugin.beginPath();
-                
-                var position = yAxe.getPixelForValue(pixelValue);
-                ctxPlugin.moveTo(xAxe.left, position);
-                ctxPlugin.lineTo(xAxe.right, position);
-                ctxPlugin.stroke();
-            }
-        }
-    });
+ 
     
 
     Chart.defaults.global.legend.display = false;

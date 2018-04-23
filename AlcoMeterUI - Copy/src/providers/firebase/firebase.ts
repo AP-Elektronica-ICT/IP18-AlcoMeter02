@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
 
+
 /*
   Generated class for the FirebaseProvider provider.
 
@@ -22,15 +23,32 @@ export class FirebaseProvider {
     });
   }
 
-  addItem(userID, age, gender, location, alcoholLevel, datestring, timestring , sortingms){
-    const itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({                //
-      date : datestring, time: timestring, age:age, gender:gender,                                // adds Reading into general readingsdatabase 
-      location:location, alcoholLevel:alcoholLevel, sortingms:sortingms                           //  
-    })                                                                                            //
+  addItem(userID, age, gender, location, alcoholLevel){
+    var DateObject = new Date();
+    var year = DateObject.getFullYear();
+    var month = DateObject.getUTCMonth();
+    var seconden = DateObject.getUTCSeconds();
+    var milliseconds = DateObject.getUTCMilliseconds();
+    var date = DateObject.getDate();
+    var minutes = DateObject.getMinutes();
+    var hour = DateObject.getHours();
+    var sortingms = Date.UTC(year,month,date,hour,minutes,seconden,milliseconds);
+
+    if(date < 10){var daystring = ("0" + date).slice(-2);}else{daystring = date.toString()}                         
+    if(month < 10){var monthstring = ("0" +month).slice(-2);}else{monthstring = month.toString();}                 
+    if(minutes < 10){var minutesstring = ("0" +minutes).slice(-2);}else{ minutesstring = minutes.toString();}       
+    if(hour < 10){var hourstring = ("0" +hour).slice(-2);}else{ hourstring = hour.toString();}              
+
+    var datestring = daystring + '/' + monthstring +'/' + year;                                                                              
+    var timestring = hourstring + ':' + minutesstring;
+    const itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({                
+      date : datestring, time: timestring, age:age, gender:gender,                                
+      location:location, alcoholLevel:alcoholLevel, sortingms:sortingms                            
+    })                                                                                            
     
-    const itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/').push().set({   //
-      date: datestring,time:timestring, location:location, alcoholLevel:alcoholLevel, sortingms   // adds Reading into user specific database
-    })                                                                                            //
+    const itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/' + year + '/' + month).push().set({   
+      date: datestring,time:timestring, location:location, alcoholLevel:alcoholLevel, sortingms:sortingms   
+    })                                                                                           
   }
 
   addUser(userID,birthDay,birthMonth,birthYear, gender, firstName, lastName, email, phoneNumber ){
