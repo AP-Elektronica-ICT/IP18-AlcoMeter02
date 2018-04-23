@@ -8,12 +8,10 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ResultPage} from '../pages/result/result';
 import * as firebase from 'firebase/app'; 
 import { HomePage } from '../pages/home/home';
-<<<<<<< HEAD
-import { AlcHistoryPage } from '../pages/alc-history/alc-history';
-=======
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { AuthProvider } from '../providers/auth/auth';
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { AlcHistoryPage } from '../pages/alc-history/alc-history';
 
 @Component({
   templateUrl: 'app.html'
@@ -56,12 +54,9 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Home', page: AboutPage },
-<<<<<<< HEAD
-      { title: 'History', page: AlcHistoryPage },
-=======
       { title: 'Result', page: ResultPage },
-      { title: 'About', page: AboutPage },
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
+      { title: 'Tutorial', page: TutorialPage },
+      { title: 'History', page: AlcHistoryPage },
       { title: 'Settings', page: SettingsPage }
     ];
     if(firebase.auth().currentUser != null){

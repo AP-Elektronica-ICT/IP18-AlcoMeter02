@@ -25,14 +25,11 @@ import { GoogleComponent } from '../components/google/google';
 import { AuthProvider } from '../providers/auth/auth';
 import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation } from '@ionic-native/geolocation';
-<<<<<<< HEAD
-import { TutorialPage } from '../pages/tutorial/tutorial';
-import { AlcHistoryPage } from '../pages/alc-history/alc-history';
-=======
 import { ComponentsModule} from '../components/components.module';
 import { GeocodeProvider } from '../providers/geocode/geocode';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { AlcHistoryPage } from '../pages/alc-history/alc-history';
 
 var config = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -53,17 +50,11 @@ firebase.initializeApp(config);
     ResultPage,
     //GoogleComponent,
     SettingsPage, 
-<<<<<<< HEAD
-    CustomNavbarComponent,
-    CallForHelpComponent,
+    //CustomNavbarComponent,
+    //CallForHelpComponent,
     RegisterPage,
     TutorialPage,
     AlcHistoryPage
-=======
-    //CustomNavbarComponent,
-    //CallForHelpComponent,
-    RegisterPage
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, LoadingController, ToastController } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject,  AngularFireList } from 'angularfire2/database';
 import { Chart } from 'chart.js';
+import firebase from 'firebase';
 
 
 @Component({
@@ -10,152 +10,64 @@ import { Chart } from 'chart.js';
   templateUrl: 'alc-history.html',
 })
 export class AlcHistoryPage {
-  data: Observable<any[]>;
-  ref: AngularFireList<any>;
-
-  Months = [
-    { value: 0, name: 'January'},
-    { value: 1, name: 'February'},
-    { value: 2, name: 'March'},
-    { value: 3, name: 'April'},
-    { value: 4, name: 'May'},
-    { value: 5, name: 'June'},
-    { value: 6, name: 'July'},
-    { value: 7, name: 'August'},
-    { value: 8, name: 'September'},
-    { value: 9, name: 'October'},
-    { value: 10, name: 'November'},
-    { value: 11, name: 'December'},
-  ];
-
-  ValueAlc = {
-    value: 0,
-    expense: false,
-    month: 0
-
-  }
-
-  @ViewChild('CanvasBar') CanvasBar;
-  valueBarChart: any;
-
-  chartData = null;
-  constructor(public navCtrl: NavController, private db: AngularFireDatabase, private toastCtrl: ToastController) {
-  }
-
-    ionViewDidLoad(){
-      this.ref = this.db.list('AlcoholPromile', ref => ref.orderByChild('month'));
-      this.ref.valueChanges().subscribe(result =>{
-        if (this.chartData){
-          this.updateCharts(result);
-        } else{
-          this.createCharts(result);
-        }
+  @ViewChild('lineCanvas') lineCanvas;
+  todoList$: AngularFireList<any[]>;
+  private lineChart: any;
+  items;
+  xArray: any[] = [];
+  yArray: any[] = [];
+  constructor(public navCtrl: NavController, private afDatabase: AngularFireDatabase){
+    this.items= firebase.database().ref('chart/data').orderByKey();
+    this.items.on('value', (snapshot) =>{
+      this.xArray.splice(0,this.xArray.length);
+      this.yArray.splice(0,this.yArray.length);
+      snapshot.forEach((childSnapshot) =>{
+        this.xArray.push(childSnapshot.key);
+        this.yArray.push(childSnapshot.val());
       });
-    }
-    createCharts(data){
-      this.chartData = data;     
-      // Calculate Values for the Chart
-      let chartData = this.getReportValues();
-     
-      // Create the chart
-      this.valueBarChart = new Chart(this.CanvasBar.nativeElement, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(this.ValueAlc).map(a => this.ValueAlc[a].name),
-          datasets: [{
-            data: chartData,
-            backgroundColor: '#32db64'
-          }]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          tooltips: {
-            callbacks: {
-              label: function (tooltipItems, data) {
-                return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] +' $';
-              }
+      this.basicChart(this.xArray, this.yArray);
+    });
+  }
+
+  basicChart(key, value){
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [{
+          label: "Alcohol Promile History",
+          fill: true,
+          lineTenstion:0.1,
+          backgroundColor: "rgba(72,138,255,0.4)",
+          borderColor: "rgba(72,138,255,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(72,138,255,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 8,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(72,138,255,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 3,
+          pointHitRadius: 10,
+          data: value,
+          spanGaps:false,
+        }]
+      },
+      options:{
+        scales:{
+          xAxes:[{
+            scaleLabel:{
+              display: true,
+              labelString: 'Months'
             }
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                callback: function (value, index, values) {
-                  return value + '$';
-                },
-                suggestedMin: 0
-              }
-            }]
-          },
+          }],
         }
-      });
-    }
-    updateCharts(data){
-      this.chartData = data;
-      let chartData = this.getReportValues();
-     
-      // Update our dataset
-      this.valueBarChart.data.datasets.forEach((dataset) => {
-        dataset.data = chartData
-      });
-      this.valueBarChart.update();
-    }
-    
-
-14
-addValueAlc() {
-    this.ref.push(this.ValueAlc).then(() => {
-      this.ValueAlc = {
-        value: 0,
-        month: 0,
-        expense: false
-      };
-      let toast = this.toastCtrl.create({
-        message: 'New Transaction added',
-        duration: 3000
-      });
-      toast.present();
-    })
-}
-
-getReportValues() {
-  let reportByMonth = {
-    0: null,
-    1: null,
-    2: null,
-    3: null,
-    4: null,
-    5: null,
-    6: null,
-    7: null,
-    8: null,
-    9: null,
-    10: null,
-    11: null
-  };
- 
-  for (let trans of this.chartData) {
-    if (reportByMonth[trans.month]) {
-      if (trans.expense) {
-        reportByMonth[trans.month] -= +trans.value;
-      } else {
-        reportByMonth[trans.month] += +trans.value;
       }
-    } else {
-      if (trans.expense) {
-        reportByMonth[trans.month] = 0 - +trans.value;
-      } else {
-        reportByMonth[trans.month] = +trans.value;
-      }
-    }
+    });
   }
-  return Object.keys(reportByMonth).map(a => reportByMonth[a]);
-}
 
 }

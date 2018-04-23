@@ -3,11 +3,13 @@ import { GoogleComponent } from './google/google';
 import { CustomNavbarComponent } from './custom-navbar/custom-navbar';
 import { CallForHelpComponent } from './call-for-help/call-for-help';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 @NgModule({
 	declarations: [
 		CustomNavbarComponent,
 		CallForHelpComponent,
-		GoogleComponent
+		GoogleComponent,
+  
 	],
 	imports: [
 		IonicModule.forRoot(CustomNavbarComponent),
@@ -17,7 +19,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 	exports: [
 		CustomNavbarComponent,
 		CallForHelpComponent,
-		GoogleComponent
+		GoogleComponent,
+   
 	]
 })
 export class ComponentsModule {}

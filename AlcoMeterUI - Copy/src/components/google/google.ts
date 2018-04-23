@@ -39,14 +39,6 @@ export class GoogleComponent {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
     
-<<<<<<< HEAD
-     
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-   
-  }, (err) => {
-    console.log(err);
-  });
-=======
     
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -59,7 +51,6 @@ export class GoogleComponent {
     }, (err) => {
       console.log("err");
     });
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
 
   }
 

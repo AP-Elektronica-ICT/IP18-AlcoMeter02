@@ -6,26 +6,15 @@ import { RegisterPage} from '../register/register';
 import * as firebase from 'firebase';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AuthProvider } from './../../providers/auth/auth';
-<<<<<<< HEAD
-import { TutorialPage } from '../tutorial/tutorial';
-=======
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-<<<<<<< HEAD
- 
-  
-
-  //rs = RegisterPage;
-=======
   rs = RegisterPage;
->>>>>>> de4eabfb143443fe6ac5ddf733530b4581f5499c
   ct = ContactPage;
 
   loginForm: FormGroup;
