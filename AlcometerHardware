@@ -51,7 +51,7 @@ int value, limit;
 int y=0, i=0, summa=0, haverage=0;
 float average;
 int taulukko[20];
-for (int x=0; x <= 100; x++){
+for (int x=0; x <= 19; x++){
 value= analogRead(AOUTpin);//reads the analaog value from the alcohol sensor's AOUT pin
 Serial.println(value);
 taulukko[i] = value;
