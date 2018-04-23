@@ -19,6 +19,7 @@ export class AlcHistoryPage {
   userID;
   xArray: any[] = [];
   yArray: any[] = [];
+  monthString;
   constructor(public navCtrl: NavController, private afDatabase: AngularFireDatabase, private fireBaseProvider:FirebaseProvider, private Auth: AuthProvider){
     
   }
@@ -28,6 +29,46 @@ export class AlcHistoryPage {
     var DateObject = new Date();
     var year = DateObject.getFullYear();
     var month = DateObject.getUTCMonth();
+
+    switch(month){
+      case 0:
+        this.monthString = 'January';
+        break;
+      case 1:
+        this.monthString = 'February';
+        break;
+      case 2: 
+        this.monthString = 'March';
+        break;
+      case 3:
+        this.monthString = 'April';
+        break;
+      case 4:
+        this.monthString = 'May';
+        break;
+      case 5: 
+        this.monthString = 'June';
+        break;
+      case 6:
+        this.monthString = 'July';
+        break;
+      case 7:
+        this.monthString = 'August';
+        break;
+      case 8: 
+        this.monthString = 'September';
+        break;
+      case 9:
+        this.monthString = 'Octobre';
+        break;
+      case 10:
+        this.monthString = 'November';
+        break;
+      case 11: 
+        this.monthString = 'December';
+        break;
+      
+    }
 
     this.items= firebase.database().ref('ReadingDatabase/Users/' + this.userID + '/' + year + '/' + month + '/').orderByKey();
     console.log('ReadingDatabase/Users/' + this.userID + '/' + year + '/' + month);
@@ -86,7 +127,8 @@ export class AlcHistoryPage {
             scaleLabel:{
               
               labelString: 'Months'
-            }
+            },
+            display: false
           }],
         }
       }

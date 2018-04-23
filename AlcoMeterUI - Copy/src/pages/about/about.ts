@@ -15,12 +15,18 @@ export class AboutPage {
   }
   Load() {
     this.loadingCtrl.create({
-      spinner: "true",
+      spinner: "dots",
       content: "Please wait for your result",
       
-      duration: 3000,
-      dismissOnPageChange:	true
+      duration: 6000,
+      dismissOnPageChange:	false
       //dismissOnPageChange: true
     }).present();
+
+    setTimeout(() => {
+      this.navCtrl.push(ResultPage);
+    }, 5000);
+
+    
   }
 }

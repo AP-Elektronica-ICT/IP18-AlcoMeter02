@@ -54,8 +54,8 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Home', page: AboutPage },
-      { title: 'Result', page: ResultPage },
-      { title: 'Tutorial', page: TutorialPage },
+      /*{ title: 'Result', page: ResultPage },
+      { title: 'Tutorial', page: TutorialPage },*/
       { title: 'History', page: AlcHistoryPage },
       { title: 'Settings', page: SettingsPage }
     ];
